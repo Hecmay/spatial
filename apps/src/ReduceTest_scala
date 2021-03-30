@@ -1,0 +1,32 @@
+import spatial.dsl._
+
+@spatial object ReduceTest extends SpatialApp {
+  def main(args: Array[String]): Unit = {
+    val a = Array.tabulate[Int](32)(i => 1)
+    val ad = DRAM[Int](32)
+    val rA = ArgOut[Int]
+    val fA = ArgOut[Int]
+
+    setMem(ad, a)
+
+    Accel {
+      val reduceMem = SRAM[Int](32)
+      val foldMem = SRAM[Int](32)
+
+      reduceMem load a
+      foldMem load a
+
+      rA := Reduce(Reg[Int](3))(32 by 1){i =>
+        reduceMem(i)
+      } {_+_}
+
+      fA := Fold(3)(32 by 1){i =>
+        foldMem(i)
+      } {_+_}
+
+    }
+
+    println(getArg(rA))
+    println(getArg(fA))
+  }
+}

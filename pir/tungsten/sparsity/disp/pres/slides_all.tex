@@ -1,0 +1,214 @@
+\documentclass[aspectratio=169]{beamer}
+
+\definecolor{cardinal}{RGB}{140,21,21}
+\definecolor{offblack}{RGB}{46,45,41}
+\definecolor{cloud}{RGB}{218,215,203}
+\definecolor{driftwood}{RGB}{182,177,169}
+\usetheme[progressbar=frametitle,sectionpage=progressbar]{metropolis}
+%\usetheme[progressbar=frametitle,sectionpage=progressbar]{metropolis}
+
+%\setbeamercolor{palette primary}{bg=cardinal,fg=white}
+%\setbeamercolor{palette secondary}{bg=cardinal,fg=white}
+%\setbeamercolor{palette tertiary}{bg=cardinal,fg=white}
+%\setbeamercolor{palette quaternary}{bg=cardinal,fg=white}
+%\setbeamercolor{structure}{fg=cardinal} % itemize, enumerate, etc
+%\setbeamercolor{section in toc}{fg=cardinal} % TOC sections
+
+\setbeamercolor{normal text}{bg=white,fg=offblack}
+\setbeamercolor{frametitle}{fg=white,bg=cardinal}
+\setbeamercolor{progress bar}{fg=white,bg=white}
+\setbeamercolor{title separator}{fg=cardinal}
+%\setbeamercolor{progress bar in head/foot}{bg=cardinal,fg=white}
+\setbeamercolor{progress bar in section page}{fg=cardinal,bg=driftwood}
+\setsansfont[BoldFont={Source Sans Pro Semibold}, RawFeature={+kern, +ss01, +lnum, +liga, +tlig},
+             SmallCapsFont={Source Sans Pro}, SmallCapsFeatures={Letters=SmallCaps}]{Source Sans Pro}
+\setmonofont{Source Code Pro}
+\newfontfamily{\halfbf}{Source Sans Pro Semibold}[RawFeature={+kern, +ss01, +liga, +tlig}]
+\DeclareTextFontCommand{\texthalfbf}{\halfbf}
+\newfontfamily{\fullbf}{Source Sans Pro Bold}[RawFeature={+kern, +ss01, +liga, +tlig}]
+\DeclareTextFontCommand{\textfullbf}{\fullbf}
+\newfontfamily{\doublebf}{Source Sans Pro Black}[RawFeature={+kern, +ss01, +liga, +tlig}]
+\DeclareTextFontCommand{\textdoublebf}{\doublebf}
+\usepackage{tabu}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{graphicx}
+\usepackage{textpos}
+\usepackage{savesym}
+\savesymbol{checkmark}
+\usepackage{dingbat}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{siunitx}
+\sisetup{detect-all}
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage{calc}
+\usetikzlibrary{calc}
+
+\definecolor{CB-Pl-blue}{HTML}{a6cee3}
+\definecolor{CB-Pd-blue}{HTML}{1F78b4}
+\definecolor{CB-Pl-green}{HTML}{b2dF8a}
+\definecolor{CB-Pd-green}{HTML}{33a02c}
+\definecolor{CB-Pl-red}{HTML}{Fb9a99}
+\definecolor{CB-Pd-red}{HTML}{e31a1c}
+\definecolor{CB-Pl-orange}{HTML}{FdbF6F}
+\definecolor{CB-Pd-orange}{HTML}{FF7F00}
+\definecolor{CB-Pl-purple}{HTML}{cab2d6}
+\definecolor{CB-Pd-purple}{HTML}{6a3d9a}
+\definecolor{CB-Pl-brown}{HTML}{FFFF99}
+\definecolor{CB-Pd-brown}{HTML}{b15928}
+\pgfplotscreateplotcyclelist{PairedLightDark}{%
+  {CB-Pd-blue,draw=none},
+  {CB-Pl-blue,draw=none},
+  {CB-Pd-green,draw=none},
+  {CB-Pl-green,draw=none}}
+\pgfplotscreateplotcyclelist{PairedLightDarkLines}{%
+  {CB-Pd-blue,solid,thick},
+  {CB-Pd-green,densely dotted,very thick},
+  {CB-Pd-red,densely dashed,thick},
+  {CB-Pd-brown,solid,very thick},
+  {CB-Pd-purple,densely dotted,thick},
+  {CB-Pd-orange,densely dashed,thick}}
+
+\pgfplotsset{compat=1.13}
+%\usepackage[duration=15,lastminutes=2]{pdfpcnotes}
+\renewcommand{\emph}[1]{\textcolor{cardinal}{{\halfbf #1}}}
+
+\newcommand*{\lhand}[2]{
+  \only<.(1)> {
+  \begin{textblock}{2}(#1,#2)%
+    \LARGE%
+    \textcolor{cardinalred} {%
+    \rightpointleft%
+    }%
+  \end{textblock}%
+  }
+}
+\newcommand*{\rhand}[2]{
+  \only<.(1)> {
+  \begin{textblock}{2}(#1,#2)%
+    \LARGE%
+    \textcolor{cardinalred} {%
+    \leftpointright%
+    }%
+  \end{textblock}%
+  }
+}
+\newcommand*{\uhand}[2]{
+  \only<.(1)> {
+  \begin{textblock}{2}(#1,#2)%
+    \LARGE%
+    \textcolor{cardinalred} {%
+      \rotatebox{90}{\leftpointright}%}
+    }%
+  \end{textblock}%
+  }
+}
+\newcommand*{\dhand}[2]{
+  \only<.(1)> {
+  \begin{textblock}{2}(#1,#2)%
+    \LARGE%
+    \textcolor{cardinal} {%
+      \rotatebox{90}{\rightpointleft}%}
+    }%
+  \end{textblock}%
+  }
+}
+
+\makeatletter
+\def\convertto#1#2{\strip@pt\dimexpr #2*65536/\number\dimexpr 1#1}
+\makeatother
+
+\input{../pgf/style.tex}
+
+\title{{\Huge \doublebf Capstan}}% {\Huge \bf [eRSS]}}
+\subtitle{{\Large Regular Hardware for Irregular Problems}}
+\author{{\halfbf{Alexander Rucker}}\\
+Stanford University}
+%\date{September 11, 2019}
+
+\titlegraphic{\hfill \includegraphics[scale=0.20]{SU_Seal_Red_darkbgrd.eps}}
+\newlength{\zeroheight}
+\newcommand{\sparkbar}[3]{\textcolor{CB-Pd-blue}{\rule[0.5\zeroheight-1ex*\real{0.5}]{#2*\real{#1}/\real{#3}}{1ex}}}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+
+\begin{document}
+\maketitle
+\if 0
+\begin{frame}
+  Height: \convertto{in}{\the\paperheight} in
+
+  Width: \convertto{in}{\the\paperwidth} in
+\end{frame}
+\fi
+\begin{frame}
+  \frametitle{Impact of splitter bloom filter size}
+  \hskip1.5in\input{../pgf/split_rates.tex}
+\end{frame}
+\begin{frame}
+  \frametitle{PMU issue count (not normalized, to show total cycles)}
+  \hskip1.5in\input{../pgf/iter_of.tex}
+\end{frame}
+\begin{frame}
+  \frametitle{Impact of allocator direction (\texttt{if} or \texttt{of})}
+  \hskip1.5in\mbox{\input{../pgf/ifof.tex}}
+\end{frame}
+\begin{frame}
+  \frametitle{Impact of allocator randomness}
+  \hskip1.5in\input{../pgf/rand.tex}
+\end{frame}
+\begin{frame}
+  \frametitle{Impact of pipeline depth}
+  \hskip1.5in\input{../pgf/pipedepth.tex}
+\end{frame}
+\begin{frame}
+  \frametitle{PMU vs. Lock issue rates}
+  \hskip1.5in\input{../pgf/lock_pmu.tex}
+\end{frame}
+\begin{frame}
+  \frametitle{Lock issue rates as a function of subbank count.}
+  \hskip1.5in\input{../pgf/lock_iss_protect.tex}
+\end{frame}
+\begin{frame}
+  \frametitle{Impact of allocator type}
+  \hskip1.5in\input{../pgf/alloc.tex}
+\end{frame}
+\begin{frame}
+  \frametitle{PMU read and write pipeline occupancy.}
+  \hskip1.5in\input{../pgf/read_write_PMU_occ.tex}
+\end{frame}
+\begin{frame}
+  \frametitle{Average separable allocator performance}
+  \centering
+  \input{../../merged_data/main_table.tex}
+\end{frame}
+\begin{frame}
+  \frametitle{Impact of pipeline depth}
+  \centering
+  \input{../../merged_data/pipedepth.tex}
+\end{frame}
+%\begin{frame}
+  %\frametitle{Impact of access latency (IF-3-Rand)}
+  %\centering
+  %\input{../../merged_data/pipedepth_lat_if.tex}
+%\end{frame}
+%\begin{frame}
+  %\frametitle{Impact of access latency (Augmenting)}
+  %\centering
+  %\input{../../merged_data/pipedepth_lat_aug.tex}
+%\end{frame}
+\begin{frame}
+  \frametitle{Impact of access latency}
+  \centering
+  \input{../../merged_data/pipedepth_lat.tex}
+\end{frame}
+\begin{frame}
+  \frametitle{Impact of lock protector size}
+  \centering
+  \input{../../merged_data/lock_protect.tex}
+\end{frame}
+\end{document}

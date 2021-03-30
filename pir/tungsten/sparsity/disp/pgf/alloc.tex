@@ -1,0 +1,11 @@
+\pgfplotstableread[col sep=comma]{../../merged_data/iss_hist.csv}\isshist%
+\begin{tikzpicture}
+\begin{axis}[histstyle]
+  \addplot+ [smooth] table [y expr=\thisrow{3_if_16_rand_4096_1_0_65536}, x expr=\thisrow{Counts}] {\isshist};
+  \addlegendentryexpanded{IF-3-R}
+  \addplot+ [smooth] table [y expr=\thisrow{1_augmenting_16_rand_4096_1_0_65536}, x expr=\thisrow{Counts}] {\isshist};
+  \addlegendentryexpanded{Augmenting}
+  \addplot+ [smooth] table [y expr=\thisrow{0_none_16_NA_4096_1_0_65536}, x expr=\thisrow{Counts}] {\isshist};
+  \addlegendentryexpanded{No Stalls}
+\end{axis}
+\end{tikzpicture}

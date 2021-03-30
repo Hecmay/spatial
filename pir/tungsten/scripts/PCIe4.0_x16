@@ -1,0 +1,11 @@
+#31.50752 GBps
+#400ns latency
+
+
+set /ocl bw         31.50752E9
+set /ocl lat        400E-9
+set /ocl timeout    20
+set /ocl framing    16
+set /ocl packetsize 4096
+set /ocl tx_buf     16384
+set /ocl rx_buf     65536

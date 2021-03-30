@@ -1,0 +1,103 @@
+\documentclass[11pt,twocolumn]{article}
+\usepackage{siunitx}
+\usepackage{fullpage}
+\usepackage{palatino}
+\title{Evaluating Dynamic Networks for Coarse-Grained Reconfigurable Arrays}
+\author{Alex Rucker\\acrucker@stanford.edu \and Gedeon Nyengele\\nyengele@stanford.edu \and Alex Carsello\\ajcars@stanford.edu \and Jenya Pergament\\evgenyap@stanford.edu}
+
+\begin{document}
+\maketitle
+\section{Introduction}
+Coarse-Grained Reconfigurable Arrays (CGRAs) are a promising computing
+technology. Instead of traditional computers, which apply one or more streams
+of instructions to data, CGRAs assign the instructions to locations within an
+array, and move the data throughout the array according to a pre-defined
+pattern. Previous designs have used statically configured interconnection
+networks, with each flow in the network assigned to a physical link. An
+improvement on this technology is statically scheduled networks, which are
+scheduled modulo an initiation interval, and flows are assigned to slots in the
+modular schedule. 
+
+One major limitation of these technologies comes from mapping more complicated
+applications to CGRAs, as Plasticine does. These programs have a hierarchy of
+nested loops, with inner loops happening far more frequently than outer loops,
+and a massive initiation interval for the outer loops. For Plasticine, this
+required adding many more static links to support these outer loops, even
+though this results in a massive bisection bandwidth of over \SI{30}{Tb/s} on
+only the vector links.
+
+\subsection{Plasticine}
+Plasticine is a CGRA developed by Prof. Kunle Olukotun's group. It has several
+key types of nodes: Pattern Compute Units (PCUs), Pattern Memory Units (PMUs),
+Address Generators (AGs), and DRAMs. The PCUs are 16-lane, 10-stage floating
+point SIMD units, which 4 vector input buffers, 4 scalar input buffers, and
+miscellaneous control input buffers. PMUs are 256kiB SRAMs, with the
+possibility to have multiple readers and writers. PMUs and PCUs are arranged in
+a checkerboard pattern throughout the chip (currently 16x8), with DRAMs paired
+with AGs on the side of the chip. A special argument node allows supplying
+scalar arguments to the array, receiving results, and waiting for completion. 
+
+The primary network (by area) currently is built around vector links (512b).
+Each PCU and PMU is connected at all four corners to a crossbar that also has
+four links to and from each of the +x, -x, +y, and -y crossbars. This means
+that the crossbars have a total of 20 inputs and outputs. Additionally, the
+buffers in the PCUs are allocated using end to end credit-based flow control
+with the sender. This means that the endpoint buffers are deeper than they
+would have to be with a dynamic network containing distributed buffers.
+
+\section{Existing Code}
+We already have a simulator that allows us to simulate Plasticine applications
+using a variety of dynamic network configurations, including the possibility of
+using multiple independent networks. For this project, we've been developing a
+tool that supports evaluating placements of Plasticine application graphs onto
+a rectangular mesh network. Developing and extending this analysis tool will be
+one of the main thrusts of this research effort.
+
+\section{Research Questions}
+There are several open research questions relating to developing networks on chip for CGRAs:
+\begin{itemize}
+    \item What are the best heuristics? We can place nodes onto the computation
+        graph according to multiple heuristics, including minimizing congestion
+        at the worst link, congestion at routers, and the longest link. We can
+        then evaluate how these different placements translate into performance
+        using the timing simulator.
+    \item Can we use static knowledge to prove that our system won't deadlock?
+        Dimension order routing ensures progress, but at the cost of
+        flexibility. Because the compiler knows in advance which routes will
+        actually be used by packets, it can identify and avoid any possible
+        cyclic dependencies.
+    \item Can we statically modify routes to avoid congestion? Adaptive and
+        oblivious networks may make random decisions, such as deciding to
+        randomly send 50\% of packets y-first, or sending all packets to a
+        randomly chosen intermediate node. Because we know what routes exist in
+        the network, we can make these decisions statically at compile time.
+        This allows spreading network load evenly while maintaining strict
+        in-order guarantees.
+    \item How can we avoid protocol deadlock? The individual CGRA nodes have
+        fixed-size input buffers. In certain pathological cases, it is possible
+        that an input buffer fills up and blocks packets from arriving at other
+        input buffers in the node. This will then prevent the blocked input
+        buffer from ever making progress, and lead to a deadlock. Currently,
+        this problem is solved by assigning different traffic classes to
+        packets headed to different input buffers at the same node, and
+        ensuring that they have sufficient network resources to never
+        interfere. However, by ensuring that the network is strictly fair for
+        packets headed to the same destination, we can avoid this complication.
+\end{itemize}
+
+\section{Proposed Experiments}
+To answer the questions above, we propose to conduct several experiments.
+First, we will finish extending the Plasticine placement tool for dimension
+order routing, and integrate the resulting routes with the booksim-based
+Plasticine simulator to evaluate heuristics. We then plan to extend booksim to
+support our alternate routing functions, or provide equivalent source routes,
+and also see if these alternate routes produce better quality of results.
+Finally, we will write a deadlock analyzer and possibly extend it to reason
+about ensuring network fairness. 
+
+\section{Work Distribution}
+For this course, we plan to distribute work evenly among our team members.
+However, this project also overlaps significantly with the research work that
+Alex Rucker is doing for Prof. Kunle Olukotun. Alex Rucker will also be
+receiving credit for this project as research work.
+\end{document}

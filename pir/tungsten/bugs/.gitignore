@@ -1,0 +1,10 @@
+*.o
+*.log
+target
+info/
+project/
+00*.log
+*/tungsten/tungsten
+build/*
+report/*
+banking/*

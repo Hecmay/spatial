@@ -1,0 +1,6 @@
+[submodule "parallelstl"]
+	path = parallelstl
+	url = https://github.com/intel/parallelstl
+[submodule "tbb"]
+	path = tbb
+	url = https://github.com/01org/tbb/

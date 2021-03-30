@@ -1,0 +1,79 @@
+package spatial.codegen.scalagen
+
+import argon._
+import argon.node._
+import spatial.lang._
+import spatial.node._
+
+trait ScalaGenBits extends ScalaCodegen {
+
+  def fixConst(c: Int, tp: Type[_]): String = tp match {
+    case FixPtType(s,i,f) => s"""FixedPoint(BigDecimal("$c"), FixFormat($s,$i,$f))"""
+    case _ => throw new Exception("Cannot create float constant of non-float type")
+  }
+  def fltConst(c: Int, tp: Type[_]): String = tp match {
+    case FltPtType(g,e) => s"""FloatPoint(BigDecimal("$c"), FltFormat(${g-1},$e))"""
+    case _ => throw new Exception("Cannot create float constant of non-float type")
+  }
+
+  def one(tp: ExpType[_,_]): String = tp match {
+    case _:Flt[_,_]   => fltConst(1,tp)
+    case _:Fix[_,_,_] => fixConst(1,tp)
+  }
+
+  def invalid(tp: Type[_]): String = tp match {
+    case _ => throw new Exception(s"Don't know how to generate invalid for type $tp")
+  }
+
+  override protected def gen(lhs: Sym[_], rhs: Op[_]): Unit = rhs match {
+    case Mux(sel, a, b) => emit(src"val $lhs = if ($sel) $a else $b")
+    case op @ OneHotMux(selects,datas) =>
+      open(src"val $lhs = {")
+        emit(src"List(")
+        selects.indices.foreach { i =>
+          emit(src"""(${selects(i)}, ${datas(i)}) ${if (i < selects.size-1) "," else ""}""")
+        }
+        emit(").collect{case (sel, d) if sel => d}.reduce{_|_}")
+      close("}")
+
+    case op @ PriorityMux(selects,datas) =>
+      open(src"val $lhs = {")
+      selects.indices.foreach { i =>
+        emit(src"""${if (i == 0) "if" else "else if"} (${selects(i)}) { ${datas(i)} }""")
+      }
+      emit(src"else { ${invalid(op.R)} }")
+      close("}")
+
+    case e@DataAsBits(a) => a.tp match {
+      case FltPtType(_,_)   => emit(src"val $lhs = $a.bits")
+      case FixPtType(_,_,_) => emit(src"val $lhs = $a.bits")
+      case BitType()        => emit(src"val $lhs = Array[Bool]($a)")
+    }
+
+    case BitsAsData(v,a) => a match {
+      case FltPtType(g,e)   => emit(src"val $lhs = FloatPoint.fromBits($v, FltFormat(${g-1},$e))")
+      case FixPtType(s,i,f) => emit(src"val $lhs = FixedPoint.fromBits($v, FixFormat($s,$i,$f))")
+      case BitType()        => emit(src"val $lhs = $v.head")
+    }
+
+    case e@DataAsVec(a) =>
+      val (s,i,f) = lhs.tp.typeArgs.head match {
+        case FixPtType(s,i,f) => (s,i,f)
+        case _ => throw new Exception(s"Cannot convert data ${a.tp} to vec ${lhs.tp}!  Only Vec[FixPt] supported!")
+      }
+      a.tp match {
+        case FltPtType(_,_)   => emit(src"val $lhs = $a.bits.grouped(${i+f}).toList.map(FixedPoint.fromBits(_, FixFormat($s,$i,$f)))")
+        case FixPtType(_,_,_) => emit(src"val $lhs = $a.bits.grouped(${i+f}).toList.map(FixedPoint.fromBits(_, FixFormat($s,$i,$f)))")
+        case BitType()        => emit(src"val $lhs = Array[Bool]($a)")
+      }
+
+    case VecAsData(v,a) => a match {
+      case FltPtType(g,e)   => emit(src"val $lhs = FloatPoint.fromBits($v.flatMap(_.bits), FltFormat(${g-1},$e))")
+      case FixPtType(s,i,f) => emit(src"val $lhs = FixedPoint.fromBits($v.flatMap(_.bits), FixFormat($s,$i,$f))")
+      case BitType()        => emit(src"val $lhs = $v.head")
+    }
+
+
+    case _ => super.gen(lhs,rhs)
+  }
+}

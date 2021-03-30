@@ -1,0 +1,15 @@
+source test.place
+apply /DRAM region 0       3968   /home/acrucker/fluorine/graphs/usroads-48/usroads-48.bfs.init2
+apply /DRAM region 10000000 3968   -
+apply /DRAM region 20000000 253952 /home/acrucker/fluorine/graphs/usroads-48/usroads-48.ridxlen2
+apply /DRAM region 30000000 450048 /home/acrucker/fluorine/graphs/usroads-48/usroads-48.cidx2
+apply /DRAM region 40000000 3968   /home/acrucker/fluorine/graphs/usroads-48/usroads-48.bfs.init2
+set /DUT nodes 63488
+set /DUT iter 300
+printevery 100
+stepall
+apply /DRAM dump_u   40000000 3968 reached.dat
+apply /DRAM dump_u   0 3968 front.dat
+apply /DRAM dump_sparse
+apply /DRAM list_regions
+stallstarve

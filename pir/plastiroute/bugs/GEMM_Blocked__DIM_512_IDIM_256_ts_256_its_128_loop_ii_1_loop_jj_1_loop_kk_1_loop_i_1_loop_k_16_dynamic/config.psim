@@ -1,0 +1,2716 @@
+dramnode CE13381 # FringeDenseLoad187(dfg) 
+  offset_trace = traces/EnabledLoadMem7566.trace
+  size_trace = traces/EnabledLoadMem7590.trace
+  dram_cmd_tp=dense_load
+  out_token_size = 64
+  controller=DRAM
+  count = 32768
+  link_in[0] = StreamOut128
+  scale_in[0] = 16
+  buffer[0]=16
+  link_in[1] = StreamOut127
+  scale_in[1] = 16
+  buffer[1]=16
+  link_out[0] = RetimingFIFO4033_RetimingFIFO4057_RetimingFIFO4080_RetimingFIFO4103_RetimingFIFO4126_RetimingFIFO4149_RetimingFIFO4172_RetimingFIFO4195_RetimingFIFO4218_RetimingFIFO4241_RetimingFIFO4264_RetimingFIFO4287_RetimingFIFO4310_RetimingFIFO4333_RetimingFIFO4356_RetimingFIFO4379
+  scale_out[0] = 1
+
+dramnode CE13395 # FringeDenseLoad378(dfg) 
+  offset_trace = traces/EnabledLoadMem7619.trace
+  size_trace = traces/EnabledLoadMem7643.trace
+  dram_cmd_tp=dense_load
+  out_token_size = 64
+  controller=DRAM
+  count = 16384
+  link_in[0] = StreamOut314
+  scale_in[0] = 16
+  buffer[0]=16
+  link_in[1] = StreamOut313
+  scale_in[1] = 16
+  buffer[1]=16
+  link_out[0] = RetimingFIFO4491
+  scale_out[0] = 1
+
+node CE14445 # CUContainer3056(pmu) 
+  lat = 4
+  count = 16384
+  link_in[0] = RetimingFIFO4491
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = SRAM262
+  scale_out[0] = 16
+
+node CE14435 # CUContainer3056(pmu) 
+  lat = 4
+  count = 16384
+  link_in[0] = SRAM262
+  scale_in[0] = 16
+  buffer[0]=4
+  link_out[0] = RetimingFIFO5183_RetimingFIFO5206_RetimingFIFO5229_RetimingFIFO5252_RetimingFIFO5275_RetimingFIFO5298_RetimingFIFO5321_RetimingFIFO5344_RetimingFIFO5367_RetimingFIFO5390_RetimingFIFO5413_RetimingFIFO5436_RetimingFIFO5459_RetimingFIFO5482_RetimingFIFO5505_RetimingFIFO5528
+  scale_out[0] = 1
+
+node CE13599 # CUContainer3005(ocu) 
+  lat = 8
+  count = 16384
+  link_in[0] = RetimingFIFO5183_RetimingFIFO5206_RetimingFIFO5229_RetimingFIFO5252_RetimingFIFO5275_RetimingFIFO5298_RetimingFIFO5321_RetimingFIFO5344_RetimingFIFO5367_RetimingFIFO5390_RetimingFIFO5413_RetimingFIFO5436_RetimingFIFO5459_RetimingFIFO5482_RetimingFIFO5505_RetimingFIFO5528
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = Reg504
+  scale_out[0] = 1
+
+node CE13609 # CUContainer3006(ocu) 
+  lat = 8
+  count = 16384
+  link_in[0] = RetimingFIFO5183_RetimingFIFO5206_RetimingFIFO5229_RetimingFIFO5252_RetimingFIFO5275_RetimingFIFO5298_RetimingFIFO5321_RetimingFIFO5344_RetimingFIFO5367_RetimingFIFO5390_RetimingFIFO5413_RetimingFIFO5436_RetimingFIFO5459_RetimingFIFO5482_RetimingFIFO5505_RetimingFIFO5528
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = Reg505
+  scale_out[0] = 1
+
+node CE13619 # CUContainer3007(ocu) 
+  lat = 8
+  count = 16384
+  link_in[0] = RetimingFIFO5183_RetimingFIFO5206_RetimingFIFO5229_RetimingFIFO5252_RetimingFIFO5275_RetimingFIFO5298_RetimingFIFO5321_RetimingFIFO5344_RetimingFIFO5367_RetimingFIFO5390_RetimingFIFO5413_RetimingFIFO5436_RetimingFIFO5459_RetimingFIFO5482_RetimingFIFO5505_RetimingFIFO5528
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = Reg506
+  scale_out[0] = 1
+
+node CE13629 # CUContainer3008(ocu) 
+  lat = 8
+  count = 16384
+  link_in[0] = RetimingFIFO5183_RetimingFIFO5206_RetimingFIFO5229_RetimingFIFO5252_RetimingFIFO5275_RetimingFIFO5298_RetimingFIFO5321_RetimingFIFO5344_RetimingFIFO5367_RetimingFIFO5390_RetimingFIFO5413_RetimingFIFO5436_RetimingFIFO5459_RetimingFIFO5482_RetimingFIFO5505_RetimingFIFO5528
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = Reg507
+  scale_out[0] = 1
+
+node CE13639 # CUContainer3009(ocu) 
+  lat = 6
+  count = 16384
+  link_in[0] = RetimingFIFO5183_RetimingFIFO5206_RetimingFIFO5229_RetimingFIFO5252_RetimingFIFO5275_RetimingFIFO5298_RetimingFIFO5321_RetimingFIFO5344_RetimingFIFO5367_RetimingFIFO5390_RetimingFIFO5413_RetimingFIFO5436_RetimingFIFO5459_RetimingFIFO5482_RetimingFIFO5505_RetimingFIFO5528
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = Reg508
+  scale_out[0] = 1
+
+node CE13649 # CUContainer3010(ocu) 
+  lat = 8
+  count = 16384
+  link_in[0] = RetimingFIFO5183_RetimingFIFO5206_RetimingFIFO5229_RetimingFIFO5252_RetimingFIFO5275_RetimingFIFO5298_RetimingFIFO5321_RetimingFIFO5344_RetimingFIFO5367_RetimingFIFO5390_RetimingFIFO5413_RetimingFIFO5436_RetimingFIFO5459_RetimingFIFO5482_RetimingFIFO5505_RetimingFIFO5528
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = Reg509
+  scale_out[0] = 1
+
+node CE13659 # CUContainer3011(ocu) 
+  lat = 8
+  count = 16384
+  link_in[0] = RetimingFIFO5183_RetimingFIFO5206_RetimingFIFO5229_RetimingFIFO5252_RetimingFIFO5275_RetimingFIFO5298_RetimingFIFO5321_RetimingFIFO5344_RetimingFIFO5367_RetimingFIFO5390_RetimingFIFO5413_RetimingFIFO5436_RetimingFIFO5459_RetimingFIFO5482_RetimingFIFO5505_RetimingFIFO5528
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = Reg510
+  scale_out[0] = 1
+
+node CE13669 # CUContainer3012(ocu) 
+  lat = 6
+  count = 16384
+  link_in[0] = RetimingFIFO5183_RetimingFIFO5206_RetimingFIFO5229_RetimingFIFO5252_RetimingFIFO5275_RetimingFIFO5298_RetimingFIFO5321_RetimingFIFO5344_RetimingFIFO5367_RetimingFIFO5390_RetimingFIFO5413_RetimingFIFO5436_RetimingFIFO5459_RetimingFIFO5482_RetimingFIFO5505_RetimingFIFO5528
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = Reg511
+  scale_out[0] = 1
+
+node CE13679 # CUContainer3013(ocu) 
+  lat = 6
+  count = 16384
+  link_in[0] = RetimingFIFO5183_RetimingFIFO5206_RetimingFIFO5229_RetimingFIFO5252_RetimingFIFO5275_RetimingFIFO5298_RetimingFIFO5321_RetimingFIFO5344_RetimingFIFO5367_RetimingFIFO5390_RetimingFIFO5413_RetimingFIFO5436_RetimingFIFO5459_RetimingFIFO5482_RetimingFIFO5505_RetimingFIFO5528
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = Reg512
+  scale_out[0] = 1
+
+node CE13689 # CUContainer3014(ocu) 
+  lat = 6
+  count = 16384
+  link_in[0] = RetimingFIFO5183_RetimingFIFO5206_RetimingFIFO5229_RetimingFIFO5252_RetimingFIFO5275_RetimingFIFO5298_RetimingFIFO5321_RetimingFIFO5344_RetimingFIFO5367_RetimingFIFO5390_RetimingFIFO5413_RetimingFIFO5436_RetimingFIFO5459_RetimingFIFO5482_RetimingFIFO5505_RetimingFIFO5528
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = Reg513
+  scale_out[0] = 1
+
+node CE13699 # CUContainer3015(ocu) 
+  lat = 6
+  count = 16384
+  link_in[0] = RetimingFIFO5183_RetimingFIFO5206_RetimingFIFO5229_RetimingFIFO5252_RetimingFIFO5275_RetimingFIFO5298_RetimingFIFO5321_RetimingFIFO5344_RetimingFIFO5367_RetimingFIFO5390_RetimingFIFO5413_RetimingFIFO5436_RetimingFIFO5459_RetimingFIFO5482_RetimingFIFO5505_RetimingFIFO5528
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = Reg514
+  scale_out[0] = 1
+
+node CE13709 # CUContainer3016(ocu) 
+  lat = 6
+  count = 16384
+  link_in[0] = RetimingFIFO5183_RetimingFIFO5206_RetimingFIFO5229_RetimingFIFO5252_RetimingFIFO5275_RetimingFIFO5298_RetimingFIFO5321_RetimingFIFO5344_RetimingFIFO5367_RetimingFIFO5390_RetimingFIFO5413_RetimingFIFO5436_RetimingFIFO5459_RetimingFIFO5482_RetimingFIFO5505_RetimingFIFO5528
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = Reg515
+  scale_out[0] = 1
+
+node CE13719 # CUContainer3017(ocu) 
+  lat = 4
+  count = 16384
+  link_in[0] = RetimingFIFO5183_RetimingFIFO5206_RetimingFIFO5229_RetimingFIFO5252_RetimingFIFO5275_RetimingFIFO5298_RetimingFIFO5321_RetimingFIFO5344_RetimingFIFO5367_RetimingFIFO5390_RetimingFIFO5413_RetimingFIFO5436_RetimingFIFO5459_RetimingFIFO5482_RetimingFIFO5505_RetimingFIFO5528
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = Reg516
+  scale_out[0] = 1
+
+node CE13729 # CUContainer3018(ocu) 
+  lat = 6
+  count = 16384
+  link_in[0] = RetimingFIFO5183_RetimingFIFO5206_RetimingFIFO5229_RetimingFIFO5252_RetimingFIFO5275_RetimingFIFO5298_RetimingFIFO5321_RetimingFIFO5344_RetimingFIFO5367_RetimingFIFO5390_RetimingFIFO5413_RetimingFIFO5436_RetimingFIFO5459_RetimingFIFO5482_RetimingFIFO5505_RetimingFIFO5528
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = Reg517
+  scale_out[0] = 1
+
+node CE13739 # CUContainer3019(ocu) 
+  lat = 6
+  count = 16384
+  link_in[0] = RetimingFIFO5183_RetimingFIFO5206_RetimingFIFO5229_RetimingFIFO5252_RetimingFIFO5275_RetimingFIFO5298_RetimingFIFO5321_RetimingFIFO5344_RetimingFIFO5367_RetimingFIFO5390_RetimingFIFO5413_RetimingFIFO5436_RetimingFIFO5459_RetimingFIFO5482_RetimingFIFO5505_RetimingFIFO5528
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = Reg518
+  scale_out[0] = 1
+
+node CE13749 # CUContainer3020(ocu) 
+  lat = 6
+  count = 16384
+  link_in[0] = RetimingFIFO5183_RetimingFIFO5206_RetimingFIFO5229_RetimingFIFO5252_RetimingFIFO5275_RetimingFIFO5298_RetimingFIFO5321_RetimingFIFO5344_RetimingFIFO5367_RetimingFIFO5390_RetimingFIFO5413_RetimingFIFO5436_RetimingFIFO5459_RetimingFIFO5482_RetimingFIFO5505_RetimingFIFO5528
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = Reg519
+  scale_out[0] = 1
+
+node CE13433 # ArgFringe2693(afg) 
+  lat = 1
+  start_at_tokens = 1
+  count = 1
+  link_out[2] = DramAddress2614
+  scale_out[2] = 1
+  link_out[3] = DramAddress152
+  scale_out[3] = 1
+  link_out[4] = DramAddress342
+  scale_out[4] = 1
+  link_out[5] = TokenIn13231
+  scale_out[5] = 1
+  link_out[0] = ArgIn3098_ArgIn3681_ArgIn7726_ArgIn8018_ArgIn8213_ArgIn8393_ArgIn13171_ArgIn13264
+  scale_out[0] = 1
+  link_out[1] = ArgIn3528_ArgIn3076_ArgIn3634_ArgIn3723_ArgIn7745_ArgIn8299_ArgIn9704_ArgIn13283
+  scale_out[1] = 1
+
+node CE13449 # ArgFringe2693(afg) 
+  lat = 1
+  stop_after_tokens = 1
+  count = 1
+  link_in[0] = TokenOut2816
+  scale_in[0] = 1
+  buffer[0]=1
+
+node CE13503 # CUContainer2988(dag) 
+  lat = 8
+  count = 512
+  link_in[0] = ArgIn3528_ArgIn3076_ArgIn3634_ArgIn3723_ArgIn7745_ArgIn8299_ArgIn9704_ArgIn13283
+  scale_in[0] = 512
+  buffer[0]=20
+  link_in[1] = ArgIn3098_ArgIn3681_ArgIn7726_ArgIn8018_ArgIn8213_ArgIn8393_ArgIn13171_ArgIn13264
+  scale_in[1] = 512
+  buffer[1]=20
+  link_in[2] = DramAddress2614
+  scale_in[2] = 512
+  buffer[2]=20
+  link_out[0] = StreamOut2589
+  scale_out[0] = 1
+  link_out[1] = StreamOut2588
+  scale_out[1] = 1
+
+node CE13525 # CUContainer2992(dag) 
+  lat = 6
+  count = 2048
+  link_in[0] = ArgIn3528_ArgIn3076_ArgIn3634_ArgIn3723_ArgIn7745_ArgIn8299_ArgIn9704_ArgIn13283
+  scale_in[0] = 2048
+  buffer[0]=20
+  link_in[1] = ArgIn3098_ArgIn3681_ArgIn7726_ArgIn8018_ArgIn8213_ArgIn8393_ArgIn13171_ArgIn13264
+  scale_in[1] = 2048
+  buffer[1]=20
+  link_in[2] = DramAddress152
+  scale_in[2] = 2048
+  buffer[2]=20
+  link_out[0] = StreamOut128
+  scale_out[0] = 1
+  link_out[1] = StreamOut127
+  scale_out[1] = 1
+
+node CE13545 # CUContainer2993(pcu) 
+  lat = 6
+  count = 32768
+  link_in[0] = TokenIn13231
+  scale_in[0] = 32768
+  buffer[0]=20
+  link_in[1] = ArgIn3098_ArgIn3681_ArgIn7726_ArgIn8018_ArgIn8213_ArgIn8393_ArgIn13171_ArgIn13264
+  scale_in[1] = 32768
+  buffer[1]=20
+  link_in[2] = ArgIn3528_ArgIn3076_ArgIn3634_ArgIn3723_ArgIn7745_ArgIn8299_ArgIn9704_ArgIn13283
+  scale_in[2] = 32768
+  buffer[2]=20
+  link_out[0] = RetimingFIFO4041_RetimingFIFO4065_RetimingFIFO4088_RetimingFIFO4111_RetimingFIFO4134_RetimingFIFO4157_RetimingFIFO4180_RetimingFIFO4203_RetimingFIFO4226_RetimingFIFO4249_RetimingFIFO4272_RetimingFIFO4295_RetimingFIFO4318_RetimingFIFO4341_RetimingFIFO4364_RetimingFIFO4387
+  scale_out[0] = 1
+
+node CE13561 # CUContainer2995(scu) 
+  lat = 8
+  count = 1024
+  link_in[0] = ArgIn3098_ArgIn3681_ArgIn7726_ArgIn8018_ArgIn8213_ArgIn8393_ArgIn13171_ArgIn13264
+  scale_in[0] = 1024
+  buffer[0]=20
+  link_in[1] = ArgIn3528_ArgIn3076_ArgIn3634_ArgIn3723_ArgIn7745_ArgIn8299_ArgIn9704_ArgIn13283
+  scale_in[1] = 1024
+  buffer[1]=20
+  link_out[0] = Reg263
+  scale_out[0] = 1
+
+node CE13581 # CUContainer2999(dag) 
+  lat = 8
+  count = 1024
+  link_in[0] = ArgIn3528_ArgIn3076_ArgIn3634_ArgIn3723_ArgIn7745_ArgIn8299_ArgIn9704_ArgIn13283
+  scale_in[0] = 1024
+  buffer[0]=20
+  link_in[1] = ArgIn3098_ArgIn3681_ArgIn7726_ArgIn8018_ArgIn8213_ArgIn8393_ArgIn13171_ArgIn13264
+  scale_in[1] = 1024
+  buffer[1]=20
+  link_in[2] = DramAddress342
+  scale_in[2] = 1024
+  buffer[2]=20
+  link_in[3] = Reg263
+  scale_in[3] = 1
+  buffer[3]=20
+  link_out[0] = StreamOut314
+  scale_out[0] = 1
+  link_out[1] = StreamOut313
+  scale_out[1] = 1
+
+node CE14063 # CUContainer3040(pmu) 
+  lat = 4
+  count = 32768
+  link_in[0] = RetimingFIFO4033_RetimingFIFO4057_RetimingFIFO4080_RetimingFIFO4103_RetimingFIFO4126_RetimingFIFO4149_RetimingFIFO4172_RetimingFIFO4195_RetimingFIFO4218_RetimingFIFO4241_RetimingFIFO4264_RetimingFIFO4287_RetimingFIFO4310_RetimingFIFO4333_RetimingFIFO4356_RetimingFIFO4379
+  scale_in[0] = 1
+  buffer[0]=20
+  link_in[1] = RetimingFIFO4041_RetimingFIFO4065_RetimingFIFO4088_RetimingFIFO4111_RetimingFIFO4134_RetimingFIFO4157_RetimingFIFO4180_RetimingFIFO4203_RetimingFIFO4226_RetimingFIFO4249_RetimingFIFO4272_RetimingFIFO4295_RetimingFIFO4318_RetimingFIFO4341_RetimingFIFO4364_RetimingFIFO4387
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = SRAM82
+  scale_out[0] = 4096
+
+node CE14051 # CUContainer3040(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM82
+  scale_in[0] = 32768
+  buffer[0]=4
+  link_out[0] = RetimingFIFO5589
+  scale_out[0] = 1
+
+node CE14087 # CUContainer3041(pmu) 
+  lat = 4
+  count = 32768
+  link_in[0] = RetimingFIFO4033_RetimingFIFO4057_RetimingFIFO4080_RetimingFIFO4103_RetimingFIFO4126_RetimingFIFO4149_RetimingFIFO4172_RetimingFIFO4195_RetimingFIFO4218_RetimingFIFO4241_RetimingFIFO4264_RetimingFIFO4287_RetimingFIFO4310_RetimingFIFO4333_RetimingFIFO4356_RetimingFIFO4379
+  scale_in[0] = 1
+  buffer[0]=20
+  link_in[1] = RetimingFIFO4041_RetimingFIFO4065_RetimingFIFO4088_RetimingFIFO4111_RetimingFIFO4134_RetimingFIFO4157_RetimingFIFO4180_RetimingFIFO4203_RetimingFIFO4226_RetimingFIFO4249_RetimingFIFO4272_RetimingFIFO4295_RetimingFIFO4318_RetimingFIFO4341_RetimingFIFO4364_RetimingFIFO4387
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = SRAM83
+  scale_out[0] = 4096
+
+node CE14075 # CUContainer3041(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM83
+  scale_in[0] = 32768
+  buffer[0]=4
+  link_out[0] = RetimingFIFO5679
+  scale_out[0] = 1
+
+node CE14111 # CUContainer3042(pmu) 
+  lat = 4
+  count = 32768
+  link_in[0] = RetimingFIFO4033_RetimingFIFO4057_RetimingFIFO4080_RetimingFIFO4103_RetimingFIFO4126_RetimingFIFO4149_RetimingFIFO4172_RetimingFIFO4195_RetimingFIFO4218_RetimingFIFO4241_RetimingFIFO4264_RetimingFIFO4287_RetimingFIFO4310_RetimingFIFO4333_RetimingFIFO4356_RetimingFIFO4379
+  scale_in[0] = 1
+  buffer[0]=20
+  link_in[1] = RetimingFIFO4041_RetimingFIFO4065_RetimingFIFO4088_RetimingFIFO4111_RetimingFIFO4134_RetimingFIFO4157_RetimingFIFO4180_RetimingFIFO4203_RetimingFIFO4226_RetimingFIFO4249_RetimingFIFO4272_RetimingFIFO4295_RetimingFIFO4318_RetimingFIFO4341_RetimingFIFO4364_RetimingFIFO4387
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = SRAM84
+  scale_out[0] = 4096
+
+node CE14099 # CUContainer3042(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM84
+  scale_in[0] = 32768
+  buffer[0]=4
+  link_out[0] = RetimingFIFO5769
+  scale_out[0] = 1
+
+node CE14135 # CUContainer3043(pmu) 
+  lat = 4
+  count = 32768
+  link_in[0] = RetimingFIFO4033_RetimingFIFO4057_RetimingFIFO4080_RetimingFIFO4103_RetimingFIFO4126_RetimingFIFO4149_RetimingFIFO4172_RetimingFIFO4195_RetimingFIFO4218_RetimingFIFO4241_RetimingFIFO4264_RetimingFIFO4287_RetimingFIFO4310_RetimingFIFO4333_RetimingFIFO4356_RetimingFIFO4379
+  scale_in[0] = 1
+  buffer[0]=20
+  link_in[1] = RetimingFIFO4041_RetimingFIFO4065_RetimingFIFO4088_RetimingFIFO4111_RetimingFIFO4134_RetimingFIFO4157_RetimingFIFO4180_RetimingFIFO4203_RetimingFIFO4226_RetimingFIFO4249_RetimingFIFO4272_RetimingFIFO4295_RetimingFIFO4318_RetimingFIFO4341_RetimingFIFO4364_RetimingFIFO4387
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = SRAM85
+  scale_out[0] = 4096
+
+node CE14123 # CUContainer3043(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM85
+  scale_in[0] = 32768
+  buffer[0]=4
+  link_out[0] = RetimingFIFO5859
+  scale_out[0] = 1
+
+node CE14159 # CUContainer3044(pmu) 
+  lat = 4
+  count = 32768
+  link_in[0] = RetimingFIFO4033_RetimingFIFO4057_RetimingFIFO4080_RetimingFIFO4103_RetimingFIFO4126_RetimingFIFO4149_RetimingFIFO4172_RetimingFIFO4195_RetimingFIFO4218_RetimingFIFO4241_RetimingFIFO4264_RetimingFIFO4287_RetimingFIFO4310_RetimingFIFO4333_RetimingFIFO4356_RetimingFIFO4379
+  scale_in[0] = 1
+  buffer[0]=20
+  link_in[1] = RetimingFIFO4041_RetimingFIFO4065_RetimingFIFO4088_RetimingFIFO4111_RetimingFIFO4134_RetimingFIFO4157_RetimingFIFO4180_RetimingFIFO4203_RetimingFIFO4226_RetimingFIFO4249_RetimingFIFO4272_RetimingFIFO4295_RetimingFIFO4318_RetimingFIFO4341_RetimingFIFO4364_RetimingFIFO4387
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = SRAM86
+  scale_out[0] = 4096
+
+node CE14147 # CUContainer3044(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM86
+  scale_in[0] = 32768
+  buffer[0]=4
+  link_out[0] = RetimingFIFO5949
+  scale_out[0] = 1
+
+node CE14183 # CUContainer3045(pmu) 
+  lat = 4
+  count = 32768
+  link_in[0] = RetimingFIFO4033_RetimingFIFO4057_RetimingFIFO4080_RetimingFIFO4103_RetimingFIFO4126_RetimingFIFO4149_RetimingFIFO4172_RetimingFIFO4195_RetimingFIFO4218_RetimingFIFO4241_RetimingFIFO4264_RetimingFIFO4287_RetimingFIFO4310_RetimingFIFO4333_RetimingFIFO4356_RetimingFIFO4379
+  scale_in[0] = 1
+  buffer[0]=20
+  link_in[1] = RetimingFIFO4041_RetimingFIFO4065_RetimingFIFO4088_RetimingFIFO4111_RetimingFIFO4134_RetimingFIFO4157_RetimingFIFO4180_RetimingFIFO4203_RetimingFIFO4226_RetimingFIFO4249_RetimingFIFO4272_RetimingFIFO4295_RetimingFIFO4318_RetimingFIFO4341_RetimingFIFO4364_RetimingFIFO4387
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = SRAM87
+  scale_out[0] = 4096
+
+node CE14171 # CUContainer3045(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM87
+  scale_in[0] = 32768
+  buffer[0]=4
+  link_out[0] = RetimingFIFO6039
+  scale_out[0] = 1
+
+node CE14207 # CUContainer3046(pmu) 
+  lat = 4
+  count = 32768
+  link_in[0] = RetimingFIFO4033_RetimingFIFO4057_RetimingFIFO4080_RetimingFIFO4103_RetimingFIFO4126_RetimingFIFO4149_RetimingFIFO4172_RetimingFIFO4195_RetimingFIFO4218_RetimingFIFO4241_RetimingFIFO4264_RetimingFIFO4287_RetimingFIFO4310_RetimingFIFO4333_RetimingFIFO4356_RetimingFIFO4379
+  scale_in[0] = 1
+  buffer[0]=20
+  link_in[1] = RetimingFIFO4041_RetimingFIFO4065_RetimingFIFO4088_RetimingFIFO4111_RetimingFIFO4134_RetimingFIFO4157_RetimingFIFO4180_RetimingFIFO4203_RetimingFIFO4226_RetimingFIFO4249_RetimingFIFO4272_RetimingFIFO4295_RetimingFIFO4318_RetimingFIFO4341_RetimingFIFO4364_RetimingFIFO4387
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = SRAM88
+  scale_out[0] = 4096
+
+node CE14195 # CUContainer3046(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM88
+  scale_in[0] = 32768
+  buffer[0]=4
+  link_out[0] = RetimingFIFO6129
+  scale_out[0] = 1
+
+node CE14231 # CUContainer3047(pmu) 
+  lat = 4
+  count = 32768
+  link_in[0] = RetimingFIFO4033_RetimingFIFO4057_RetimingFIFO4080_RetimingFIFO4103_RetimingFIFO4126_RetimingFIFO4149_RetimingFIFO4172_RetimingFIFO4195_RetimingFIFO4218_RetimingFIFO4241_RetimingFIFO4264_RetimingFIFO4287_RetimingFIFO4310_RetimingFIFO4333_RetimingFIFO4356_RetimingFIFO4379
+  scale_in[0] = 1
+  buffer[0]=20
+  link_in[1] = RetimingFIFO4041_RetimingFIFO4065_RetimingFIFO4088_RetimingFIFO4111_RetimingFIFO4134_RetimingFIFO4157_RetimingFIFO4180_RetimingFIFO4203_RetimingFIFO4226_RetimingFIFO4249_RetimingFIFO4272_RetimingFIFO4295_RetimingFIFO4318_RetimingFIFO4341_RetimingFIFO4364_RetimingFIFO4387
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = SRAM89
+  scale_out[0] = 4096
+
+node CE14219 # CUContainer3047(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM89
+  scale_in[0] = 32768
+  buffer[0]=4
+  link_out[0] = RetimingFIFO6219
+  scale_out[0] = 1
+
+node CE14255 # CUContainer3048(pmu) 
+  lat = 4
+  count = 32768
+  link_in[0] = RetimingFIFO4033_RetimingFIFO4057_RetimingFIFO4080_RetimingFIFO4103_RetimingFIFO4126_RetimingFIFO4149_RetimingFIFO4172_RetimingFIFO4195_RetimingFIFO4218_RetimingFIFO4241_RetimingFIFO4264_RetimingFIFO4287_RetimingFIFO4310_RetimingFIFO4333_RetimingFIFO4356_RetimingFIFO4379
+  scale_in[0] = 1
+  buffer[0]=20
+  link_in[1] = RetimingFIFO4041_RetimingFIFO4065_RetimingFIFO4088_RetimingFIFO4111_RetimingFIFO4134_RetimingFIFO4157_RetimingFIFO4180_RetimingFIFO4203_RetimingFIFO4226_RetimingFIFO4249_RetimingFIFO4272_RetimingFIFO4295_RetimingFIFO4318_RetimingFIFO4341_RetimingFIFO4364_RetimingFIFO4387
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = SRAM90
+  scale_out[0] = 4096
+
+node CE14243 # CUContainer3048(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM90
+  scale_in[0] = 32768
+  buffer[0]=4
+  link_out[0] = RetimingFIFO6309
+  scale_out[0] = 1
+
+node CE14279 # CUContainer3049(pmu) 
+  lat = 4
+  count = 32768
+  link_in[0] = RetimingFIFO4033_RetimingFIFO4057_RetimingFIFO4080_RetimingFIFO4103_RetimingFIFO4126_RetimingFIFO4149_RetimingFIFO4172_RetimingFIFO4195_RetimingFIFO4218_RetimingFIFO4241_RetimingFIFO4264_RetimingFIFO4287_RetimingFIFO4310_RetimingFIFO4333_RetimingFIFO4356_RetimingFIFO4379
+  scale_in[0] = 1
+  buffer[0]=20
+  link_in[1] = RetimingFIFO4041_RetimingFIFO4065_RetimingFIFO4088_RetimingFIFO4111_RetimingFIFO4134_RetimingFIFO4157_RetimingFIFO4180_RetimingFIFO4203_RetimingFIFO4226_RetimingFIFO4249_RetimingFIFO4272_RetimingFIFO4295_RetimingFIFO4318_RetimingFIFO4341_RetimingFIFO4364_RetimingFIFO4387
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = SRAM91
+  scale_out[0] = 4096
+
+node CE14267 # CUContainer3049(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM91
+  scale_in[0] = 32768
+  buffer[0]=4
+  link_out[0] = RetimingFIFO6399
+  scale_out[0] = 1
+
+node CE14303 # CUContainer3050(pmu) 
+  lat = 4
+  count = 32768
+  link_in[0] = RetimingFIFO4033_RetimingFIFO4057_RetimingFIFO4080_RetimingFIFO4103_RetimingFIFO4126_RetimingFIFO4149_RetimingFIFO4172_RetimingFIFO4195_RetimingFIFO4218_RetimingFIFO4241_RetimingFIFO4264_RetimingFIFO4287_RetimingFIFO4310_RetimingFIFO4333_RetimingFIFO4356_RetimingFIFO4379
+  scale_in[0] = 1
+  buffer[0]=20
+  link_in[1] = RetimingFIFO4041_RetimingFIFO4065_RetimingFIFO4088_RetimingFIFO4111_RetimingFIFO4134_RetimingFIFO4157_RetimingFIFO4180_RetimingFIFO4203_RetimingFIFO4226_RetimingFIFO4249_RetimingFIFO4272_RetimingFIFO4295_RetimingFIFO4318_RetimingFIFO4341_RetimingFIFO4364_RetimingFIFO4387
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = SRAM92
+  scale_out[0] = 4096
+
+node CE14291 # CUContainer3050(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM92
+  scale_in[0] = 32768
+  buffer[0]=4
+  link_out[0] = RetimingFIFO6489
+  scale_out[0] = 1
+
+node CE14327 # CUContainer3051(pmu) 
+  lat = 4
+  count = 32768
+  link_in[0] = RetimingFIFO4033_RetimingFIFO4057_RetimingFIFO4080_RetimingFIFO4103_RetimingFIFO4126_RetimingFIFO4149_RetimingFIFO4172_RetimingFIFO4195_RetimingFIFO4218_RetimingFIFO4241_RetimingFIFO4264_RetimingFIFO4287_RetimingFIFO4310_RetimingFIFO4333_RetimingFIFO4356_RetimingFIFO4379
+  scale_in[0] = 1
+  buffer[0]=20
+  link_in[1] = RetimingFIFO4041_RetimingFIFO4065_RetimingFIFO4088_RetimingFIFO4111_RetimingFIFO4134_RetimingFIFO4157_RetimingFIFO4180_RetimingFIFO4203_RetimingFIFO4226_RetimingFIFO4249_RetimingFIFO4272_RetimingFIFO4295_RetimingFIFO4318_RetimingFIFO4341_RetimingFIFO4364_RetimingFIFO4387
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = SRAM93
+  scale_out[0] = 4096
+
+node CE14315 # CUContainer3051(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM93
+  scale_in[0] = 32768
+  buffer[0]=4
+  link_out[0] = RetimingFIFO6579
+  scale_out[0] = 1
+
+node CE14351 # CUContainer3052(pmu) 
+  lat = 4
+  count = 32768
+  link_in[0] = RetimingFIFO4033_RetimingFIFO4057_RetimingFIFO4080_RetimingFIFO4103_RetimingFIFO4126_RetimingFIFO4149_RetimingFIFO4172_RetimingFIFO4195_RetimingFIFO4218_RetimingFIFO4241_RetimingFIFO4264_RetimingFIFO4287_RetimingFIFO4310_RetimingFIFO4333_RetimingFIFO4356_RetimingFIFO4379
+  scale_in[0] = 1
+  buffer[0]=20
+  link_in[1] = RetimingFIFO4041_RetimingFIFO4065_RetimingFIFO4088_RetimingFIFO4111_RetimingFIFO4134_RetimingFIFO4157_RetimingFIFO4180_RetimingFIFO4203_RetimingFIFO4226_RetimingFIFO4249_RetimingFIFO4272_RetimingFIFO4295_RetimingFIFO4318_RetimingFIFO4341_RetimingFIFO4364_RetimingFIFO4387
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = SRAM94
+  scale_out[0] = 4096
+
+node CE14339 # CUContainer3052(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM94
+  scale_in[0] = 32768
+  buffer[0]=4
+  link_out[0] = RetimingFIFO6669
+  scale_out[0] = 1
+
+node CE14375 # CUContainer3053(pmu) 
+  lat = 4
+  count = 32768
+  link_in[0] = RetimingFIFO4033_RetimingFIFO4057_RetimingFIFO4080_RetimingFIFO4103_RetimingFIFO4126_RetimingFIFO4149_RetimingFIFO4172_RetimingFIFO4195_RetimingFIFO4218_RetimingFIFO4241_RetimingFIFO4264_RetimingFIFO4287_RetimingFIFO4310_RetimingFIFO4333_RetimingFIFO4356_RetimingFIFO4379
+  scale_in[0] = 1
+  buffer[0]=20
+  link_in[1] = RetimingFIFO4041_RetimingFIFO4065_RetimingFIFO4088_RetimingFIFO4111_RetimingFIFO4134_RetimingFIFO4157_RetimingFIFO4180_RetimingFIFO4203_RetimingFIFO4226_RetimingFIFO4249_RetimingFIFO4272_RetimingFIFO4295_RetimingFIFO4318_RetimingFIFO4341_RetimingFIFO4364_RetimingFIFO4387
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = SRAM95
+  scale_out[0] = 4096
+
+node CE14363 # CUContainer3053(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM95
+  scale_in[0] = 32768
+  buffer[0]=4
+  link_out[0] = RetimingFIFO6759
+  scale_out[0] = 1
+
+node CE14399 # CUContainer3054(pmu) 
+  lat = 4
+  count = 32768
+  link_in[0] = RetimingFIFO4033_RetimingFIFO4057_RetimingFIFO4080_RetimingFIFO4103_RetimingFIFO4126_RetimingFIFO4149_RetimingFIFO4172_RetimingFIFO4195_RetimingFIFO4218_RetimingFIFO4241_RetimingFIFO4264_RetimingFIFO4287_RetimingFIFO4310_RetimingFIFO4333_RetimingFIFO4356_RetimingFIFO4379
+  scale_in[0] = 1
+  buffer[0]=20
+  link_in[1] = RetimingFIFO4041_RetimingFIFO4065_RetimingFIFO4088_RetimingFIFO4111_RetimingFIFO4134_RetimingFIFO4157_RetimingFIFO4180_RetimingFIFO4203_RetimingFIFO4226_RetimingFIFO4249_RetimingFIFO4272_RetimingFIFO4295_RetimingFIFO4318_RetimingFIFO4341_RetimingFIFO4364_RetimingFIFO4387
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = SRAM96
+  scale_out[0] = 4096
+
+node CE14387 # CUContainer3054(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM96
+  scale_in[0] = 32768
+  buffer[0]=4
+  link_out[0] = RetimingFIFO6849
+  scale_out[0] = 1
+
+node CE14423 # CUContainer3055(pmu) 
+  lat = 4
+  count = 32768
+  link_in[0] = RetimingFIFO4033_RetimingFIFO4057_RetimingFIFO4080_RetimingFIFO4103_RetimingFIFO4126_RetimingFIFO4149_RetimingFIFO4172_RetimingFIFO4195_RetimingFIFO4218_RetimingFIFO4241_RetimingFIFO4264_RetimingFIFO4287_RetimingFIFO4310_RetimingFIFO4333_RetimingFIFO4356_RetimingFIFO4379
+  scale_in[0] = 1
+  buffer[0]=20
+  link_in[1] = RetimingFIFO4041_RetimingFIFO4065_RetimingFIFO4088_RetimingFIFO4111_RetimingFIFO4134_RetimingFIFO4157_RetimingFIFO4180_RetimingFIFO4203_RetimingFIFO4226_RetimingFIFO4249_RetimingFIFO4272_RetimingFIFO4295_RetimingFIFO4318_RetimingFIFO4341_RetimingFIFO4364_RetimingFIFO4387
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = SRAM97
+  scale_out[0] = 4096
+
+node CE14411 # CUContainer3055(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM97
+  scale_in[0] = 32768
+  buffer[0]=4
+  link_out[0] = RetimingFIFO6939
+  scale_out[0] = 1
+
+node CE13761 # CUContainer3021(pcu) 
+  lat = 6
+  count = 262144
+  link_in[0] = Reg504
+  scale_in[0] = 16
+  buffer[0]=20
+  link_in[1] = RetimingFIFO5589
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = RetimingFIFO5599
+  scale_out[0] = 1
+
+node CE13775 # CUContainer3022(pcu) 
+  lat = 6
+  count = 262144
+  link_in[0] = Reg505
+  scale_in[0] = 16
+  buffer[0]=20
+  link_in[1] = RetimingFIFO5679
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = RetimingFIFO5689
+  scale_out[0] = 1
+
+node CE13789 # CUContainer3023(pcu) 
+  lat = 6
+  count = 262144
+  link_in[0] = Reg506
+  scale_in[0] = 16
+  buffer[0]=20
+  link_in[1] = RetimingFIFO5769
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = RetimingFIFO5779
+  scale_out[0] = 1
+
+node CE13803 # CUContainer3024(pcu) 
+  lat = 6
+  count = 262144
+  link_in[0] = Reg507
+  scale_in[0] = 16
+  buffer[0]=20
+  link_in[1] = RetimingFIFO5859
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = RetimingFIFO5869
+  scale_out[0] = 1
+
+node CE13817 # CUContainer3025(pcu) 
+  lat = 6
+  count = 262144
+  link_in[0] = Reg508
+  scale_in[0] = 16
+  buffer[0]=20
+  link_in[1] = RetimingFIFO5949
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = RetimingFIFO5959
+  scale_out[0] = 1
+
+node CE13831 # CUContainer3026(pcu) 
+  lat = 6
+  count = 262144
+  link_in[0] = Reg509
+  scale_in[0] = 16
+  buffer[0]=20
+  link_in[1] = RetimingFIFO6039
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = RetimingFIFO6049
+  scale_out[0] = 1
+
+node CE13845 # CUContainer3027(pcu) 
+  lat = 6
+  count = 262144
+  link_in[0] = Reg510
+  scale_in[0] = 16
+  buffer[0]=20
+  link_in[1] = RetimingFIFO6129
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = RetimingFIFO6139
+  scale_out[0] = 1
+
+node CE13859 # CUContainer3028(pcu) 
+  lat = 6
+  count = 262144
+  link_in[0] = Reg511
+  scale_in[0] = 16
+  buffer[0]=20
+  link_in[1] = RetimingFIFO6219
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = RetimingFIFO6229
+  scale_out[0] = 1
+
+node CE13873 # CUContainer3029(pcu) 
+  lat = 6
+  count = 262144
+  link_in[0] = Reg512
+  scale_in[0] = 16
+  buffer[0]=20
+  link_in[1] = RetimingFIFO6309
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = RetimingFIFO6319
+  scale_out[0] = 1
+
+node CE13887 # CUContainer3030(pcu) 
+  lat = 6
+  count = 262144
+  link_in[0] = Reg513
+  scale_in[0] = 16
+  buffer[0]=20
+  link_in[1] = RetimingFIFO6399
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = RetimingFIFO6409
+  scale_out[0] = 1
+
+node CE13901 # CUContainer3031(pcu) 
+  lat = 6
+  count = 262144
+  link_in[0] = Reg514
+  scale_in[0] = 16
+  buffer[0]=20
+  link_in[1] = RetimingFIFO6489
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = RetimingFIFO6499
+  scale_out[0] = 1
+
+node CE13915 # CUContainer3032(pcu) 
+  lat = 6
+  count = 262144
+  link_in[0] = Reg515
+  scale_in[0] = 16
+  buffer[0]=20
+  link_in[1] = RetimingFIFO6579
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = RetimingFIFO6589
+  scale_out[0] = 1
+
+node CE13929 # CUContainer3033(pcu) 
+  lat = 6
+  count = 262144
+  link_in[0] = Reg516
+  scale_in[0] = 16
+  buffer[0]=20
+  link_in[1] = RetimingFIFO6669
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = RetimingFIFO6679
+  scale_out[0] = 1
+
+node CE13943 # CUContainer3034(pcu) 
+  lat = 6
+  count = 262144
+  link_in[0] = Reg517
+  scale_in[0] = 16
+  buffer[0]=20
+  link_in[1] = RetimingFIFO6759
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = RetimingFIFO6769
+  scale_out[0] = 1
+
+node CE13957 # CUContainer3035(pcu) 
+  lat = 4
+  count = 262144
+  link_in[0] = Reg518
+  scale_in[0] = 16
+  buffer[0]=20
+  link_in[1] = RetimingFIFO6849
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = RetimingFIFO6859
+  scale_out[0] = 1
+
+node CE13971 # CUContainer3036(pcu) 
+  lat = 6
+  count = 262144
+  link_in[0] = Reg519
+  scale_in[0] = 16
+  buffer[0]=20
+  link_in[1] = RetimingFIFO6939
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = RetimingFIFO6949
+  scale_out[0] = 1
+
+node CE14505 # CUContainer3059(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = RetimingFIFO5599
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = SRAM488
+  scale_out[0] = 16
+
+node CE14495 # CUContainer3059(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM488
+  scale_in[0] = 16
+  buffer[0]=4
+  link_out[0] = RetimingFIFO4545
+  scale_out[0] = 1
+
+node CE14525 # CUContainer3060(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = RetimingFIFO5689
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = SRAM489
+  scale_out[0] = 16
+
+node CE14515 # CUContainer3060(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM489
+  scale_in[0] = 16
+  buffer[0]=4
+  link_out[0] = RetimingFIFO4580
+  scale_out[0] = 1
+
+node CE14545 # CUContainer3061(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = RetimingFIFO5779
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = SRAM490
+  scale_out[0] = 16
+
+node CE14535 # CUContainer3061(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM490
+  scale_in[0] = 16
+  buffer[0]=4
+  link_out[0] = RetimingFIFO4615
+  scale_out[0] = 1
+
+node CE14565 # CUContainer3062(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = RetimingFIFO5869
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = SRAM491
+  scale_out[0] = 16
+
+node CE14555 # CUContainer3062(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM491
+  scale_in[0] = 16
+  buffer[0]=4
+  link_out[0] = RetimingFIFO4650
+  scale_out[0] = 1
+
+node CE14585 # CUContainer3063(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = RetimingFIFO5959
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = SRAM492
+  scale_out[0] = 16
+
+node CE14575 # CUContainer3063(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM492
+  scale_in[0] = 16
+  buffer[0]=4
+  link_out[0] = RetimingFIFO4685
+  scale_out[0] = 1
+
+node CE14605 # CUContainer3064(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = RetimingFIFO6049
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = SRAM493
+  scale_out[0] = 16
+
+node CE14595 # CUContainer3064(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM493
+  scale_in[0] = 16
+  buffer[0]=4
+  link_out[0] = RetimingFIFO4720
+  scale_out[0] = 1
+
+node CE14625 # CUContainer3065(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = RetimingFIFO6139
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = SRAM494
+  scale_out[0] = 16
+
+node CE14615 # CUContainer3065(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM494
+  scale_in[0] = 16
+  buffer[0]=4
+  link_out[0] = RetimingFIFO4755
+  scale_out[0] = 1
+
+node CE14645 # CUContainer3066(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = RetimingFIFO6229
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = SRAM495
+  scale_out[0] = 16
+
+node CE14635 # CUContainer3066(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM495
+  scale_in[0] = 16
+  buffer[0]=4
+  link_out[0] = RetimingFIFO4790
+  scale_out[0] = 1
+
+node CE14665 # CUContainer3067(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = RetimingFIFO6319
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = SRAM496
+  scale_out[0] = 16
+
+node CE14655 # CUContainer3067(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM496
+  scale_in[0] = 16
+  buffer[0]=4
+  link_out[0] = RetimingFIFO4825
+  scale_out[0] = 1
+
+node CE14685 # CUContainer3068(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = RetimingFIFO6409
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = SRAM497
+  scale_out[0] = 16
+
+node CE14675 # CUContainer3068(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM497
+  scale_in[0] = 16
+  buffer[0]=4
+  link_out[0] = RetimingFIFO4860
+  scale_out[0] = 1
+
+node CE14705 # CUContainer3069(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = RetimingFIFO6499
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = SRAM498
+  scale_out[0] = 16
+
+node CE14695 # CUContainer3069(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM498
+  scale_in[0] = 16
+  buffer[0]=4
+  link_out[0] = RetimingFIFO4895
+  scale_out[0] = 1
+
+node CE14725 # CUContainer3070(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = RetimingFIFO6589
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = SRAM499
+  scale_out[0] = 16
+
+node CE14715 # CUContainer3070(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM499
+  scale_in[0] = 16
+  buffer[0]=4
+  link_out[0] = RetimingFIFO4930
+  scale_out[0] = 1
+
+node CE14745 # CUContainer3071(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = RetimingFIFO6679
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = SRAM500
+  scale_out[0] = 16
+
+node CE14735 # CUContainer3071(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM500
+  scale_in[0] = 16
+  buffer[0]=4
+  link_out[0] = RetimingFIFO4965
+  scale_out[0] = 1
+
+node CE14765 # CUContainer3072(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = RetimingFIFO6769
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = SRAM501
+  scale_out[0] = 16
+
+node CE14755 # CUContainer3072(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM501
+  scale_in[0] = 16
+  buffer[0]=4
+  link_out[0] = RetimingFIFO5000
+  scale_out[0] = 1
+
+node CE14785 # CUContainer3073(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = RetimingFIFO6859
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = SRAM502
+  scale_out[0] = 16
+
+node CE14775 # CUContainer3073(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM502
+  scale_in[0] = 16
+  buffer[0]=4
+  link_out[0] = RetimingFIFO5035
+  scale_out[0] = 1
+
+node CE14805 # CUContainer3074(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = RetimingFIFO6949
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = SRAM503
+  scale_out[0] = 16
+
+node CE14795 # CUContainer3074(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = SRAM503
+  scale_in[0] = 16
+  buffer[0]=4
+  link_out[0] = RetimingFIFO5070
+  scale_out[0] = 1
+
+node CE14821 # CUContainer7045(pcu) 
+  lat = 6
+  count = 262144
+  link_in[0] = RetimingFIFO4650
+  scale_in[0] = 1
+  buffer[0]=20
+  link_in[1] = RetimingFIFO4545
+  scale_in[1] = 1
+  buffer[1]=20
+  link_in[2] = RetimingFIFO4580
+  scale_in[2] = 1
+  buffer[2]=20
+  link_in[3] = RetimingFIFO4615
+  scale_in[3] = 1
+  buffer[3]=20
+  link_out[0] = RetimingFIFO7090
+  scale_out[0] = 1
+
+node CE14843 # CUContainer7049(pcu) 
+  lat = 6
+  count = 262144
+  link_in[0] = RetimingFIFO5000
+  scale_in[0] = 1
+  buffer[0]=20
+  link_in[1] = RetimingFIFO5070
+  scale_in[1] = 1
+  buffer[1]=20
+  link_in[2] = RetimingFIFO5035
+  scale_in[2] = 1
+  buffer[2]=20
+  link_in[3] = RetimingFIFO4965
+  scale_in[3] = 1
+  buffer[3]=20
+  link_out[0] = RetimingFIFO7063
+  scale_out[0] = 1
+
+node CE14887 # CUContainer7051(pcu) 
+  lat = 6
+  count = 262144
+  link_in[0] = RetimingFIFO4895
+  scale_in[0] = 1
+  buffer[0]=20
+  link_in[1] = RetimingFIFO4930
+  scale_in[1] = 1
+  buffer[1]=20
+  link_in[2] = RetimingFIFO4860
+  scale_in[2] = 1
+  buffer[2]=20
+  link_in[3] = RetimingFIFO4825
+  scale_in[3] = 1
+  buffer[3]=20
+  link_out[0] = RetimingFIFO7072
+  scale_out[0] = 1
+
+node CE14905 # CUContainer7052(pcu) 
+  lat = 6
+  count = 262144
+  link_in[0] = RetimingFIFO4685
+  scale_in[0] = 1
+  buffer[0]=20
+  link_in[1] = RetimingFIFO4720
+  scale_in[1] = 1
+  buffer[1]=20
+  link_out[0] = RetimingFIFO7081
+  scale_out[0] = 1
+
+node CE14923 # CUContainer7053(pcu) 
+  lat = 6
+  count = 262144
+  link_in[0] = RetimingFIFO4755
+  scale_in[0] = 1
+  buffer[0]=20
+  link_in[1] = RetimingFIFO4790
+  scale_in[1] = 1
+  buffer[1]=20
+  link_in[2] = RetimingFIFO7081
+  scale_in[2] = 1
+  buffer[2]=20
+  link_in[3] = RetimingFIFO7090
+  scale_in[3] = 1
+  buffer[3]=20
+  link_out[0] = RetimingFIFO7054
+  scale_out[0] = 1
+
+node CE14021 # CUContainer3038(pmu) 
+  lat = 4
+  count = 16384
+  link_in[0] = RetimingFIFO3882_RetimingFIFO3936
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = SRAM63
+  scale_out[0] = 2048
+
+node CE14011 # CUContainer3038(pmu) 
+  lat = 4
+  start_at_tokens = 2048
+  count = 16384
+  link_in[0] = SRAM63
+  scale_in[0] = 2048
+  buffer[0]=4
+  link_out[0] = RetimingFIFO3872
+  scale_out[0] = 1
+
+node CE14041 # CUContainer3039(pmu) 
+  lat = 4
+  count = 16384
+  link_in[0] = RetimingFIFO4437
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = SRAM81
+  scale_out[0] = 2048
+
+node CE14031 # CUContainer3039(pmu) 
+  lat = 4
+  count = 16384
+  link_in[0] = SRAM81
+  scale_in[0] = 2048
+  buffer[0]=4
+  link_out[0] = RetimingFIFO3811
+  scale_out[0] = 1
+
+node CE13481 # CUContainer2987(pcu) 
+  lat = 6
+  count = 16384
+  link_in[0] = ArgIn3528_ArgIn3076_ArgIn3634_ArgIn3723_ArgIn7745_ArgIn8299_ArgIn9704_ArgIn13283
+  scale_in[0] = 16384
+  buffer[0]=20
+  link_in[1] = ArgIn3098_ArgIn3681_ArgIn7726_ArgIn8018_ArgIn8213_ArgIn8393_ArgIn13171_ArgIn13264
+  scale_in[1] = 16384
+  buffer[1]=20
+  link_in[2] = RetimingFIFO3811
+  scale_in[2] = 1
+  buffer[2]=20
+  link_in[3] = RetimingFIFO3872
+  scale_in[3] = 1
+  buffer[3]=20
+  link_out[0] = RetimingFIFO3882_RetimingFIFO3936
+  scale_out[0] = 1
+
+node CE13997 # CUContainer3037(pmu) 
+  lat = 4
+  count = 16384
+  link_in[0] = ArgIn3528_ArgIn3076_ArgIn3634_ArgIn3723_ArgIn7745_ArgIn8299_ArgIn9704_ArgIn13283
+  scale_in[0] = 16384
+  buffer[0]=20
+  link_in[1] = ArgIn3098_ArgIn3681_ArgIn7726_ArgIn8018_ArgIn8213_ArgIn8393_ArgIn13171_ArgIn13264
+  scale_in[1] = 16384
+  buffer[1]=20
+  link_in[2] = RetimingFIFO3882_RetimingFIFO3936
+  scale_in[2] = 1
+  buffer[2]=20
+  link_out[0] = SRAM62
+  scale_out[0] = 4096
+
+node CE13983 # CUContainer3037(pmu) 
+  lat = 4
+  count = 8192
+  link_in[0] = SRAM62
+  scale_in[0] = 2048
+  buffer[0]=4
+  link_out[0] = StreamOut2590
+  scale_out[0] = 1
+
+dramnode CE13411 # FringeDenseStore2681(dfg) 
+  offset_trace = traces/EnabledLoadMem7672.trace
+  size_trace = traces/EnabledLoadMem7696.trace
+  dram_cmd_tp=dense_store
+  in_token_size = 64
+  controller=DRAM
+  count = 8192
+  link_in[0] = StreamOut2589
+  scale_in[0] = 16
+  buffer[0]=16
+  link_in[1] = StreamOut2590
+  scale_in[1] = 1
+  buffer[1]=16
+  link_in[2] = StreamOut2588
+  scale_in[2] = 16
+  buffer[2]=16
+  link_out[0] = StreamIn2591
+  scale_out[0] = 1
+
+node CE13461 # CUContainer2809(ocu) 
+  lat = 8
+  count = 8192
+  link_in[0] = ArgIn3098_ArgIn3681_ArgIn7726_ArgIn8018_ArgIn8213_ArgIn8393_ArgIn13171_ArgIn13264
+  scale_in[0] = 8192
+  buffer[0]=20
+  link_in[1] = ArgIn3528_ArgIn3076_ArgIn3634_ArgIn3723_ArgIn7745_ArgIn8299_ArgIn9704_ArgIn13283
+  scale_in[1] = 8192
+  buffer[1]=20
+  link_in[2] = StreamIn2591
+  scale_in[2] = 1
+  buffer[2]=20
+  link_out[0] = TokenOut2816
+  scale_out[0] = 8192
+
+node CE14465 # CUContainer3057(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = RetimingFIFO5115_RetimingFIFO5144
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = SRAM425
+  scale_out[0] = 256
+
+node CE14455 # CUContainer3057(pmu) 
+  lat = 4
+  count = 16384
+  link_in[0] = SRAM425
+  scale_in[0] = 16
+  buffer[0]=4
+  link_out[0] = RetimingFIFO4437
+  scale_out[0] = 1
+
+node CE14485 # CUContainer3058(pmu) 
+  lat = 4
+  count = 262144
+  link_in[0] = RetimingFIFO5115_RetimingFIFO5144
+  scale_in[0] = 1
+  buffer[0]=20
+  link_out[0] = SRAM426
+  scale_out[0] = 16
+
+node CE14475 # CUContainer3058(pmu) 
+  lat = 4
+  start_at_tokens = 16
+  count = 262144
+  link_in[0] = SRAM426
+  scale_in[0] = 16
+  buffer[0]=4
+  link_out[0] = RetimingFIFO5105
+  scale_out[0] = 1
+
+node CE14865 # CUContainer7050(pcu) 
+  lat = 6
+  count = 262144
+  link_in[0] = RetimingFIFO5105
+  scale_in[0] = 1
+  buffer[0]=20
+  link_in[1] = RetimingFIFO7054
+  scale_in[1] = 1
+  buffer[1]=20
+  link_in[2] = RetimingFIFO7063
+  scale_in[2] = 1
+  buffer[2]=20
+  link_in[3] = RetimingFIFO7072
+  scale_in[3] = 1
+  buffer[3]=20
+  link_out[0] = RetimingFIFO5115_RetimingFIFO5144
+  scale_out[0] = 1
+
+netlink ArgIn3098_ArgIn3681_ArgIn7726_ArgIn8018_ArgIn8213_ArgIn8393_ArgIn13171_ArgIn13264 
+  type = scal
+  src[0] = CE13433
+  dst[0] = CE13503
+  dst[1] = CE13581
+  dst[2] = CE13525
+  dst[3] = CE13997
+  dst[4] = CE13461
+  dst[5] = CE13561
+  dst[6] = CE13481
+  dst[7] = CE13545
+  count = 1
+  net = vecnet
+  vc_id = 7856
+  src_id[0] = 2693
+  dst_id[0] = 2988
+  dst_id[1] = 2999
+  dst_id[2] = 2992
+  dst_id[3] = 3037
+  dst_id[4] = 2809
+  dst_id[5] = 2995
+  dst_id[6] = 2987
+  dst_id[7] = 2993
+
+netlink ArgIn3528_ArgIn3076_ArgIn3634_ArgIn3723_ArgIn7745_ArgIn8299_ArgIn9704_ArgIn13283 
+  type = scal
+  src[0] = CE13433
+  dst[0] = CE13503
+  dst[1] = CE13581
+  dst[2] = CE13525
+  dst[3] = CE13997
+  dst[4] = CE13461
+  dst[5] = CE13561
+  dst[6] = CE13481
+  dst[7] = CE13545
+  count = 1
+  net = vecnet
+  vc_id = 7886
+  src_id[0] = 2693
+  dst_id[0] = 2988
+  dst_id[1] = 2999
+  dst_id[2] = 2992
+  dst_id[3] = 3037
+  dst_id[4] = 2809
+  dst_id[5] = 2995
+  dst_id[6] = 2987
+  dst_id[7] = 2993
+
+netlink RetimingFIFO6939 
+  type = vec
+  src[0] = CE14411
+  dst[0] = CE13971
+  count = 262144
+  net = vecnet
+  vc_id = 9679
+  src_id[0] = 3055
+  dst_id[0] = 3036
+
+netlink RetimingFIFO6849 
+  type = vec
+  src[0] = CE14387
+  dst[0] = CE13957
+  count = 262144
+  net = vecnet
+  vc_id = 9624
+  src_id[0] = 3054
+  dst_id[0] = 3035
+
+netlink RetimingFIFO6759 
+  type = vec
+  src[0] = CE14363
+  dst[0] = CE13943
+  count = 262144
+  net = vecnet
+  vc_id = 9569
+  src_id[0] = 3053
+  dst_id[0] = 3034
+
+netlink RetimingFIFO6669 
+  type = vec
+  src[0] = CE14339
+  dst[0] = CE13929
+  count = 262144
+  net = vecnet
+  vc_id = 9514
+  src_id[0] = 3052
+  dst_id[0] = 3033
+
+netlink RetimingFIFO6579 
+  type = vec
+  src[0] = CE14315
+  dst[0] = CE13915
+  count = 262144
+  net = vecnet
+  vc_id = 9459
+  src_id[0] = 3051
+  dst_id[0] = 3032
+
+netlink RetimingFIFO6489 
+  type = vec
+  src[0] = CE14291
+  dst[0] = CE13901
+  count = 262144
+  net = vecnet
+  vc_id = 9404
+  src_id[0] = 3050
+  dst_id[0] = 3031
+
+netlink RetimingFIFO6399 
+  type = vec
+  src[0] = CE14267
+  dst[0] = CE13887
+  count = 262144
+  net = vecnet
+  vc_id = 9349
+  src_id[0] = 3049
+  dst_id[0] = 3030
+
+netlink RetimingFIFO6309 
+  type = vec
+  src[0] = CE14243
+  dst[0] = CE13873
+  count = 262144
+  net = vecnet
+  vc_id = 9294
+  src_id[0] = 3048
+  dst_id[0] = 3029
+
+netlink RetimingFIFO6219 
+  type = vec
+  src[0] = CE14219
+  dst[0] = CE13859
+  count = 262144
+  net = vecnet
+  vc_id = 9239
+  src_id[0] = 3047
+  dst_id[0] = 3028
+
+netlink RetimingFIFO6129 
+  type = vec
+  src[0] = CE14195
+  dst[0] = CE13845
+  count = 262144
+  net = vecnet
+  vc_id = 9184
+  src_id[0] = 3046
+  dst_id[0] = 3027
+
+netlink RetimingFIFO6039 
+  type = vec
+  src[0] = CE14171
+  dst[0] = CE13831
+  count = 262144
+  net = vecnet
+  vc_id = 9129
+  src_id[0] = 3045
+  dst_id[0] = 3026
+
+netlink RetimingFIFO5949 
+  type = vec
+  src[0] = CE14147
+  dst[0] = CE13817
+  count = 262144
+  net = vecnet
+  vc_id = 9074
+  src_id[0] = 3044
+  dst_id[0] = 3025
+
+netlink RetimingFIFO5859 
+  type = vec
+  src[0] = CE14123
+  dst[0] = CE13803
+  count = 262144
+  net = vecnet
+  vc_id = 9019
+  src_id[0] = 3043
+  dst_id[0] = 3024
+
+netlink RetimingFIFO5769 
+  type = vec
+  src[0] = CE14099
+  dst[0] = CE13789
+  count = 262144
+  net = vecnet
+  vc_id = 8964
+  src_id[0] = 3042
+  dst_id[0] = 3023
+
+netlink RetimingFIFO5679 
+  type = vec
+  src[0] = CE14075
+  dst[0] = CE13775
+  count = 262144
+  net = vecnet
+  vc_id = 8909
+  src_id[0] = 3041
+  dst_id[0] = 3022
+
+netlink RetimingFIFO5589 
+  type = vec
+  src[0] = CE14051
+  dst[0] = CE13761
+  count = 262144
+  net = vecnet
+  vc_id = 8854
+  src_id[0] = 3040
+  dst_id[0] = 3021
+
+netlink RetimingFIFO4491 
+  type = vec
+  src[0] = CE13395
+  dst[0] = CE14445
+  count = 16384
+  net = vecnet
+  vc_id = 11624
+  src_id[0] = 378
+  dst_id[0] = 3056
+
+netlink RetimingFIFO5599 
+  type = vec
+  src[0] = CE13761
+  dst[0] = CE14505
+  count = 262144
+  net = vecnet
+  vc_id = 11774
+  src_id[0] = 3021
+  dst_id[0] = 3059
+
+netlink RetimingFIFO5689 
+  type = vec
+  src[0] = CE13775
+  dst[0] = CE14525
+  count = 262144
+  net = vecnet
+  vc_id = 11820
+  src_id[0] = 3022
+  dst_id[0] = 3060
+
+netlink RetimingFIFO5779 
+  type = vec
+  src[0] = CE13789
+  dst[0] = CE14545
+  count = 262144
+  net = vecnet
+  vc_id = 11866
+  src_id[0] = 3023
+  dst_id[0] = 3061
+
+netlink RetimingFIFO5869 
+  type = vec
+  src[0] = CE13803
+  dst[0] = CE14565
+  count = 262144
+  net = vecnet
+  vc_id = 11912
+  src_id[0] = 3024
+  dst_id[0] = 3062
+
+netlink RetimingFIFO5959 
+  type = vec
+  src[0] = CE13817
+  dst[0] = CE14585
+  count = 262144
+  net = vecnet
+  vc_id = 11958
+  src_id[0] = 3025
+  dst_id[0] = 3063
+
+netlink RetimingFIFO6049 
+  type = vec
+  src[0] = CE13831
+  dst[0] = CE14605
+  count = 262144
+  net = vecnet
+  vc_id = 12004
+  src_id[0] = 3026
+  dst_id[0] = 3064
+
+netlink RetimingFIFO6139 
+  type = vec
+  src[0] = CE13845
+  dst[0] = CE14625
+  count = 262144
+  net = vecnet
+  vc_id = 12050
+  src_id[0] = 3027
+  dst_id[0] = 3065
+
+netlink RetimingFIFO6229 
+  type = vec
+  src[0] = CE13859
+  dst[0] = CE14645
+  count = 262144
+  net = vecnet
+  vc_id = 12096
+  src_id[0] = 3028
+  dst_id[0] = 3066
+
+netlink RetimingFIFO6319 
+  type = vec
+  src[0] = CE13873
+  dst[0] = CE14665
+  count = 262144
+  net = vecnet
+  vc_id = 12142
+  src_id[0] = 3029
+  dst_id[0] = 3067
+
+netlink RetimingFIFO6409 
+  type = vec
+  src[0] = CE13887
+  dst[0] = CE14685
+  count = 262144
+  net = vecnet
+  vc_id = 12188
+  src_id[0] = 3030
+  dst_id[0] = 3068
+
+netlink RetimingFIFO6499 
+  type = vec
+  src[0] = CE13901
+  dst[0] = CE14705
+  count = 262144
+  net = vecnet
+  vc_id = 12234
+  src_id[0] = 3031
+  dst_id[0] = 3069
+
+netlink RetimingFIFO6589 
+  type = vec
+  src[0] = CE13915
+  dst[0] = CE14725
+  count = 262144
+  net = vecnet
+  vc_id = 12280
+  src_id[0] = 3032
+  dst_id[0] = 3070
+
+netlink RetimingFIFO6679 
+  type = vec
+  src[0] = CE13929
+  dst[0] = CE14745
+  count = 262144
+  net = vecnet
+  vc_id = 12326
+  src_id[0] = 3033
+  dst_id[0] = 3071
+
+netlink RetimingFIFO6769 
+  type = vec
+  src[0] = CE13943
+  dst[0] = CE14765
+  count = 262144
+  net = vecnet
+  vc_id = 12372
+  src_id[0] = 3034
+  dst_id[0] = 3072
+
+netlink RetimingFIFO6859 
+  type = vec
+  src[0] = CE13957
+  dst[0] = CE14785
+  count = 262144
+  net = vecnet
+  vc_id = 12418
+  src_id[0] = 3035
+  dst_id[0] = 3073
+
+netlink RetimingFIFO6949 
+  type = vec
+  src[0] = CE13971
+  dst[0] = CE14805
+  count = 262144
+  net = vecnet
+  vc_id = 12464
+  src_id[0] = 3036
+  dst_id[0] = 3074
+
+netlink RetimingFIFO4545 
+  type = vec
+  src[0] = CE14495
+  dst[0] = CE14821
+  count = 262144
+  net = vecnet
+  vc_id = 12512
+  src_id[0] = 3059
+  dst_id[0] = 7045
+
+netlink RetimingFIFO4580 
+  type = vec
+  src[0] = CE14515
+  dst[0] = CE14821
+  count = 262144
+  net = vecnet
+  vc_id = 12535
+  src_id[0] = 3060
+  dst_id[0] = 7045
+
+netlink RetimingFIFO4615 
+  type = vec
+  src[0] = CE14535
+  dst[0] = CE14821
+  count = 262144
+  net = vecnet
+  vc_id = 12558
+  src_id[0] = 3061
+  dst_id[0] = 7045
+
+netlink RetimingFIFO4650 
+  type = vec
+  src[0] = CE14555
+  dst[0] = CE14821
+  count = 262144
+  net = vecnet
+  vc_id = 12487
+  src_id[0] = 3062
+  dst_id[0] = 7045
+
+netlink RetimingFIFO7090 
+  type = vec
+  src[0] = CE14821
+  dst[0] = CE14923
+  count = 262144
+  net = vecnet
+  vc_id = 12980
+  src_id[0] = 7045
+  dst_id[0] = 7053
+
+netlink RetimingFIFO4685 
+  type = vec
+  src[0] = CE14575
+  dst[0] = CE14905
+  count = 262144
+  net = vecnet
+  vc_id = 12863
+  src_id[0] = 3063
+  dst_id[0] = 7052
+
+netlink RetimingFIFO4720 
+  type = vec
+  src[0] = CE14595
+  dst[0] = CE14905
+  count = 262144
+  net = vecnet
+  vc_id = 12888
+  src_id[0] = 3064
+  dst_id[0] = 7052
+
+netlink RetimingFIFO7081 
+  type = vec
+  src[0] = CE14905
+  dst[0] = CE14923
+  count = 262144
+  net = vecnet
+  vc_id = 12957
+  src_id[0] = 7052
+  dst_id[0] = 7053
+
+netlink RetimingFIFO4755 
+  type = vec
+  src[0] = CE14615
+  dst[0] = CE14923
+  count = 262144
+  net = vecnet
+  vc_id = 12911
+  src_id[0] = 3065
+  dst_id[0] = 7053
+
+netlink RetimingFIFO4790 
+  type = vec
+  src[0] = CE14635
+  dst[0] = CE14923
+  count = 262144
+  net = vecnet
+  vc_id = 12934
+  src_id[0] = 3066
+  dst_id[0] = 7053
+
+netlink RetimingFIFO7054 
+  type = vec
+  src[0] = CE14923
+  dst[0] = CE14865
+  count = 262144
+  net = vecnet
+  vc_id = 12699
+  src_id[0] = 7053
+  dst_id[0] = 7050
+
+netlink RetimingFIFO4825 
+  type = vec
+  src[0] = CE14655
+  dst[0] = CE14887
+  count = 262144
+  net = vecnet
+  vc_id = 12840
+  src_id[0] = 3067
+  dst_id[0] = 7051
+
+netlink RetimingFIFO4860 
+  type = vec
+  src[0] = CE14675
+  dst[0] = CE14887
+  count = 262144
+  net = vecnet
+  vc_id = 12817
+  src_id[0] = 3068
+  dst_id[0] = 7051
+
+netlink RetimingFIFO4895 
+  type = vec
+  src[0] = CE14695
+  dst[0] = CE14887
+  count = 262144
+  net = vecnet
+  vc_id = 12771
+  src_id[0] = 3069
+  dst_id[0] = 7051
+
+netlink RetimingFIFO4930 
+  type = vec
+  src[0] = CE14715
+  dst[0] = CE14887
+  count = 262144
+  net = vecnet
+  vc_id = 12794
+  src_id[0] = 3070
+  dst_id[0] = 7051
+
+netlink RetimingFIFO7072 
+  type = vec
+  src[0] = CE14887
+  dst[0] = CE14865
+  count = 262144
+  net = vecnet
+  vc_id = 12747
+  src_id[0] = 7051
+  dst_id[0] = 7050
+
+netlink RetimingFIFO4965 
+  type = vec
+  src[0] = CE14735
+  dst[0] = CE14843
+  count = 262144
+  net = vecnet
+  vc_id = 12652
+  src_id[0] = 3071
+  dst_id[0] = 7049
+
+netlink RetimingFIFO5000 
+  type = vec
+  src[0] = CE14755
+  dst[0] = CE14843
+  count = 262144
+  net = vecnet
+  vc_id = 12581
+  src_id[0] = 3072
+  dst_id[0] = 7049
+
+netlink RetimingFIFO5035 
+  type = vec
+  src[0] = CE14775
+  dst[0] = CE14843
+  count = 262144
+  net = vecnet
+  vc_id = 12629
+  src_id[0] = 3073
+  dst_id[0] = 7049
+
+netlink RetimingFIFO5070 
+  type = vec
+  src[0] = CE14795
+  dst[0] = CE14843
+  count = 262144
+  net = vecnet
+  vc_id = 12606
+  src_id[0] = 3074
+  dst_id[0] = 7049
+
+netlink RetimingFIFO7063 
+  type = vec
+  src[0] = CE14843
+  dst[0] = CE14865
+  count = 262144
+  net = vecnet
+  vc_id = 12723
+  src_id[0] = 7049
+  dst_id[0] = 7050
+
+netlink RetimingFIFO3811 
+  type = vec
+  src[0] = CE14031
+  dst[0] = CE13481
+  count = 16384
+  net = vecnet
+  vc_id = 8071
+  src_id[0] = 3039
+  dst_id[0] = 2987
+
+netlink RetimingFIFO4437 
+  type = vec
+  src[0] = CE14455
+  dst[0] = CE14041
+  count = 16384
+  net = vecnet
+  vc_id = 9841
+  src_id[0] = 3057
+  dst_id[0] = 3039
+
+netlink RetimingFIFO5105 
+  type = vec
+  src[0] = CE14475
+  dst[0] = CE14865
+  count = 262144
+  net = vecnet
+  vc_id = 12675
+  src_id[0] = 3058
+  dst_id[0] = 7050
+
+netlink RetimingFIFO3872 
+  type = vec
+  src[0] = CE14011
+  dst[0] = CE13481
+  count = 16384
+  net = vecnet
+  vc_id = 8096
+  src_id[0] = 3038
+  dst_id[0] = 2987
+
+netlink StreamOut313 
+  type = scal
+  src[0] = CE13581
+  dst[0] = CE13395
+  count = 1024
+  net = vecnet
+  vc_id = 7595
+  src_id[0] = 2999
+  dst_id[0] = 378
+
+netlink StreamOut127 
+  type = scal
+  src[0] = CE13525
+  dst[0] = CE13381
+  count = 2048
+  net = vecnet
+  vc_id = 7542
+  src_id[0] = 2992
+  dst_id[0] = 187
+
+netlink StreamOut2588 
+  type = scal
+  src[0] = CE13503
+  dst[0] = CE13411
+  count = 512
+  net = vecnet
+  vc_id = 7648
+  src_id[0] = 2988
+  dst_id[0] = 2681
+
+netlink StreamOut314 
+  type = scal
+  src[0] = CE13581
+  dst[0] = CE13395
+  count = 1024
+  net = vecnet
+  vc_id = 7624
+  src_id[0] = 2999
+  dst_id[0] = 378
+
+netlink StreamOut128 
+  type = scal
+  src[0] = CE13525
+  dst[0] = CE13381
+  count = 2048
+  net = vecnet
+  vc_id = 7571
+  src_id[0] = 2992
+  dst_id[0] = 187
+
+netlink StreamOut2589 
+  type = scal
+  src[0] = CE13503
+  dst[0] = CE13411
+  count = 512
+  net = vecnet
+  vc_id = 7677
+  src_id[0] = 2988
+  dst_id[0] = 2681
+
+link SRAM262 
+  type = vec
+  src[0] = CE14445
+  dst[0] = CE14435
+  count = 1024
+  lat[0, 0] = 1
+
+link SRAM488 
+  type = vec
+  src[0] = CE14505
+  dst[0] = CE14495
+  count = 16384
+  lat[0, 0] = 1
+
+link SRAM489 
+  type = vec
+  src[0] = CE14525
+  dst[0] = CE14515
+  count = 16384
+  lat[0, 0] = 1
+
+link SRAM490 
+  type = vec
+  src[0] = CE14545
+  dst[0] = CE14535
+  count = 16384
+  lat[0, 0] = 1
+
+link SRAM491 
+  type = vec
+  src[0] = CE14565
+  dst[0] = CE14555
+  count = 16384
+  lat[0, 0] = 1
+
+link SRAM492 
+  type = vec
+  src[0] = CE14585
+  dst[0] = CE14575
+  count = 16384
+  lat[0, 0] = 1
+
+link SRAM493 
+  type = vec
+  src[0] = CE14605
+  dst[0] = CE14595
+  count = 16384
+  lat[0, 0] = 1
+
+link SRAM494 
+  type = vec
+  src[0] = CE14625
+  dst[0] = CE14615
+  count = 16384
+  lat[0, 0] = 1
+
+link SRAM495 
+  type = vec
+  src[0] = CE14645
+  dst[0] = CE14635
+  count = 16384
+  lat[0, 0] = 1
+
+link SRAM496 
+  type = vec
+  src[0] = CE14665
+  dst[0] = CE14655
+  count = 16384
+  lat[0, 0] = 1
+
+link SRAM497 
+  type = vec
+  src[0] = CE14685
+  dst[0] = CE14675
+  count = 16384
+  lat[0, 0] = 1
+
+link SRAM498 
+  type = vec
+  src[0] = CE14705
+  dst[0] = CE14695
+  count = 16384
+  lat[0, 0] = 1
+
+link SRAM499 
+  type = vec
+  src[0] = CE14725
+  dst[0] = CE14715
+  count = 16384
+  lat[0, 0] = 1
+
+link SRAM500 
+  type = vec
+  src[0] = CE14745
+  dst[0] = CE14735
+  count = 16384
+  lat[0, 0] = 1
+
+link SRAM501 
+  type = vec
+  src[0] = CE14765
+  dst[0] = CE14755
+  count = 16384
+  lat[0, 0] = 1
+
+link SRAM502 
+  type = vec
+  src[0] = CE14785
+  dst[0] = CE14775
+  count = 16384
+  lat[0, 0] = 1
+
+link SRAM503 
+  type = vec
+  src[0] = CE14805
+  dst[0] = CE14795
+  count = 16384
+  lat[0, 0] = 1
+
+link SRAM425 
+  type = vec
+  src[0] = CE14465
+  dst[0] = CE14455
+  count = 1024
+  lat[0, 0] = 1
+
+link SRAM426 
+  type = vec
+  src[0] = CE14485
+  dst[0] = CE14475
+  count = 16384
+  lat[0, 0] = 1
+
+netlink RetimingFIFO5183_RetimingFIFO5206_RetimingFIFO5229_RetimingFIFO5252_RetimingFIFO5275_RetimingFIFO5298_RetimingFIFO5321_RetimingFIFO5344_RetimingFIFO5367_RetimingFIFO5390_RetimingFIFO5413_RetimingFIFO5436_RetimingFIFO5459_RetimingFIFO5482_RetimingFIFO5505_RetimingFIFO5528 
+  type = scal
+  src[0] = CE14435
+  dst[0] = CE13599
+  dst[1] = CE13609
+  dst[2] = CE13619
+  dst[3] = CE13629
+  dst[4] = CE13639
+  dst[5] = CE13649
+  dst[6] = CE13659
+  dst[7] = CE13669
+  dst[8] = CE13679
+  dst[9] = CE13689
+  dst[10] = CE13699
+  dst[11] = CE13709
+  dst[12] = CE13719
+  dst[13] = CE13729
+  dst[14] = CE13739
+  dst[15] = CE13749
+  count = 16384
+  net = vecnet
+  vc_id = 8482
+  src_id[0] = 3056
+  dst_id[0] = 3005
+  dst_id[1] = 3006
+  dst_id[2] = 3007
+  dst_id[3] = 3008
+  dst_id[4] = 3009
+  dst_id[5] = 3010
+  dst_id[6] = 3011
+  dst_id[7] = 3012
+  dst_id[8] = 3013
+  dst_id[9] = 3014
+  dst_id[10] = 3015
+  dst_id[11] = 3016
+  dst_id[12] = 3017
+  dst_id[13] = 3018
+  dst_id[14] = 3019
+  dst_id[15] = 3020
+
+netlink RetimingFIFO4041_RetimingFIFO4065_RetimingFIFO4088_RetimingFIFO4111_RetimingFIFO4134_RetimingFIFO4157_RetimingFIFO4180_RetimingFIFO4203_RetimingFIFO4226_RetimingFIFO4249_RetimingFIFO4272_RetimingFIFO4295_RetimingFIFO4318_RetimingFIFO4341_RetimingFIFO4364_RetimingFIFO4387 
+  type = vec
+  src[0] = CE13545
+  dst[0] = CE14063
+  dst[1] = CE14087
+  dst[2] = CE14111
+  dst[3] = CE14135
+  dst[4] = CE14159
+  dst[5] = CE14183
+  dst[6] = CE14207
+  dst[7] = CE14231
+  dst[8] = CE14255
+  dst[9] = CE14279
+  dst[10] = CE14303
+  dst[11] = CE14327
+  dst[12] = CE14351
+  dst[13] = CE14375
+  dst[14] = CE14399
+  dst[15] = CE14423
+  count = 32768
+  net = vecnet
+  vc_id = 9958
+  src_id[0] = 2993
+  dst_id[0] = 3040
+  dst_id[1] = 3041
+  dst_id[2] = 3042
+  dst_id[3] = 3043
+  dst_id[4] = 3044
+  dst_id[5] = 3045
+  dst_id[6] = 3046
+  dst_id[7] = 3047
+  dst_id[8] = 3048
+  dst_id[9] = 3049
+  dst_id[10] = 3050
+  dst_id[11] = 3051
+  dst_id[12] = 3052
+  dst_id[13] = 3053
+  dst_id[14] = 3054
+  dst_id[15] = 3055
+
+netlink RetimingFIFO4033_RetimingFIFO4057_RetimingFIFO4080_RetimingFIFO4103_RetimingFIFO4126_RetimingFIFO4149_RetimingFIFO4172_RetimingFIFO4195_RetimingFIFO4218_RetimingFIFO4241_RetimingFIFO4264_RetimingFIFO4287_RetimingFIFO4310_RetimingFIFO4333_RetimingFIFO4356_RetimingFIFO4379 
+  type = vec
+  src[0] = CE13381
+  dst[0] = CE14063
+  dst[1] = CE14087
+  dst[2] = CE14111
+  dst[3] = CE14135
+  dst[4] = CE14159
+  dst[5] = CE14183
+  dst[6] = CE14207
+  dst[7] = CE14231
+  dst[8] = CE14255
+  dst[9] = CE14279
+  dst[10] = CE14303
+  dst[11] = CE14327
+  dst[12] = CE14351
+  dst[13] = CE14375
+  dst[14] = CE14399
+  dst[15] = CE14423
+  count = 32768
+  net = vecnet
+  vc_id = 9934
+  src_id[0] = 187
+  dst_id[0] = 3040
+  dst_id[1] = 3041
+  dst_id[2] = 3042
+  dst_id[3] = 3043
+  dst_id[4] = 3044
+  dst_id[5] = 3045
+  dst_id[6] = 3046
+  dst_id[7] = 3047
+  dst_id[8] = 3048
+  dst_id[9] = 3049
+  dst_id[10] = 3050
+  dst_id[11] = 3051
+  dst_id[12] = 3052
+  dst_id[13] = 3053
+  dst_id[14] = 3054
+  dst_id[15] = 3055
+
+netlink RetimingFIFO5115_RetimingFIFO5144 
+  type = vec
+  src[0] = CE14865
+  dst[0] = CE14465
+  dst[1] = CE14485
+  count = 262144
+  net = vecnet
+  vc_id = 11685
+  src_id[0] = 7050
+  dst_id[0] = 3057
+  dst_id[1] = 3058
+
+netlink RetimingFIFO3882_RetimingFIFO3936 
+  type = vec
+  src[0] = CE13481
+  dst[0] = CE13997
+  dst[1] = CE14021
+  count = 16384
+  net = vecnet
+  vc_id = 9752
+  src_id[0] = 2987
+  dst_id[0] = 3037
+  dst_id[1] = 3038
+
+netlink DramAddress2614 
+  type = scal
+  src[0] = CE13433
+  dst[0] = CE13503
+  count = 1
+  net = vecnet
+  vc_id = 8174
+  src_id[0] = 2693
+  dst_id[0] = 2988
+
+netlink DramAddress342 
+  type = scal
+  src[0] = CE13433
+  dst[0] = CE13581
+  count = 1
+  net = vecnet
+  vc_id = 8458
+  src_id[0] = 2693
+  dst_id[0] = 2999
+
+netlink DramAddress152 
+  type = scal
+  src[0] = CE13433
+  dst[0] = CE13525
+  count = 1
+  net = vecnet
+  vc_id = 8260
+  src_id[0] = 2693
+  dst_id[0] = 2992
+
+link SRAM97 
+  type = vec
+  src[0] = CE14423
+  dst[0] = CE14411
+  count = 8
+  lat[0, 0] = 1
+
+link SRAM96 
+  type = vec
+  src[0] = CE14399
+  dst[0] = CE14387
+  count = 8
+  lat[0, 0] = 1
+
+link SRAM95 
+  type = vec
+  src[0] = CE14375
+  dst[0] = CE14363
+  count = 8
+  lat[0, 0] = 1
+
+link SRAM94 
+  type = vec
+  src[0] = CE14351
+  dst[0] = CE14339
+  count = 8
+  lat[0, 0] = 1
+
+link SRAM93 
+  type = vec
+  src[0] = CE14327
+  dst[0] = CE14315
+  count = 8
+  lat[0, 0] = 1
+
+link SRAM92 
+  type = vec
+  src[0] = CE14303
+  dst[0] = CE14291
+  count = 8
+  lat[0, 0] = 1
+
+link SRAM91 
+  type = vec
+  src[0] = CE14279
+  dst[0] = CE14267
+  count = 8
+  lat[0, 0] = 1
+
+link SRAM90 
+  type = vec
+  src[0] = CE14255
+  dst[0] = CE14243
+  count = 8
+  lat[0, 0] = 1
+
+link SRAM89 
+  type = vec
+  src[0] = CE14231
+  dst[0] = CE14219
+  count = 8
+  lat[0, 0] = 1
+
+link SRAM88 
+  type = vec
+  src[0] = CE14207
+  dst[0] = CE14195
+  count = 8
+  lat[0, 0] = 1
+
+link SRAM87 
+  type = vec
+  src[0] = CE14183
+  dst[0] = CE14171
+  count = 8
+  lat[0, 0] = 1
+
+link SRAM86 
+  type = vec
+  src[0] = CE14159
+  dst[0] = CE14147
+  count = 8
+  lat[0, 0] = 1
+
+link SRAM85 
+  type = vec
+  src[0] = CE14135
+  dst[0] = CE14123
+  count = 8
+  lat[0, 0] = 1
+
+link SRAM84 
+  type = vec
+  src[0] = CE14111
+  dst[0] = CE14099
+  count = 8
+  lat[0, 0] = 1
+
+link SRAM83 
+  type = vec
+  src[0] = CE14087
+  dst[0] = CE14075
+  count = 8
+  lat[0, 0] = 1
+
+link SRAM82 
+  type = vec
+  src[0] = CE14063
+  dst[0] = CE14051
+  count = 8
+  lat[0, 0] = 1
+
+netlink StreamIn2591 
+  type = ctrl
+  src[0] = CE13411
+  dst[0] = CE13461
+  count = 8192
+  net = vecnet
+  vc_id = 7832
+  src_id[0] = 2681
+  dst_id[0] = 2809
+
+netlink TokenOut2816 
+  type = ctrl
+  src[0] = CE13461
+  dst[0] = CE13449
+  count = 1
+  net = vecnet
+  vc_id = 7806
+  src_id[0] = 2809
+  dst_id[0] = 2693
+
+netlink TokenIn13231 
+  type = ctrl
+  src[0] = CE13433
+  dst[0] = CE13545
+  count = 1
+  net = vecnet
+  vc_id = 13244
+  src_id[0] = 2693
+  dst_id[0] = 2993
+
+link SRAM63 
+  type = vec
+  src[0] = CE14021
+  dst[0] = CE14011
+  count = 8
+  lat[0, 0] = 1
+
+link SRAM81 
+  type = vec
+  src[0] = CE14041
+  dst[0] = CE14031
+  count = 8
+  lat[0, 0] = 1
+
+link SRAM62 
+  type = vec
+  src[0] = CE13997
+  dst[0] = CE13983
+  count = 4
+  lat[0, 0] = 1
+
+netlink StreamOut2590 
+  type = vec
+  src[0] = CE13983
+  dst[0] = CE13411
+  count = 8192
+  net = vecnet
+  vc_id = 7701
+  src_id[0] = 3037
+  dst_id[0] = 2681
+
+netlink Reg263 
+  type = scal
+  src[0] = CE13561
+  dst[0] = CE13581
+  count = 1024
+  net = vecnet
+  vc_id = 8350
+  src_id[0] = 2995
+  dst_id[0] = 2999
+
+netlink Reg504 
+  type = scal
+  src[0] = CE13599
+  dst[0] = CE13761
+  count = 16384
+  net = vecnet
+  vc_id = 8823
+  src_id[0] = 3005
+  dst_id[0] = 3021
+
+netlink Reg505 
+  type = scal
+  src[0] = CE13609
+  dst[0] = CE13775
+  count = 16384
+  net = vecnet
+  vc_id = 8878
+  src_id[0] = 3006
+  dst_id[0] = 3022
+
+netlink Reg506 
+  type = scal
+  src[0] = CE13619
+  dst[0] = CE13789
+  count = 16384
+  net = vecnet
+  vc_id = 8933
+  src_id[0] = 3007
+  dst_id[0] = 3023
+
+netlink Reg507 
+  type = scal
+  src[0] = CE13629
+  dst[0] = CE13803
+  count = 16384
+  net = vecnet
+  vc_id = 8988
+  src_id[0] = 3008
+  dst_id[0] = 3024
+
+netlink Reg508 
+  type = scal
+  src[0] = CE13639
+  dst[0] = CE13817
+  count = 16384
+  net = vecnet
+  vc_id = 9043
+  src_id[0] = 3009
+  dst_id[0] = 3025
+
+netlink Reg509 
+  type = scal
+  src[0] = CE13649
+  dst[0] = CE13831
+  count = 16384
+  net = vecnet
+  vc_id = 9098
+  src_id[0] = 3010
+  dst_id[0] = 3026
+
+netlink Reg510 
+  type = scal
+  src[0] = CE13659
+  dst[0] = CE13845
+  count = 16384
+  net = vecnet
+  vc_id = 9153
+  src_id[0] = 3011
+  dst_id[0] = 3027
+
+netlink Reg511 
+  type = scal
+  src[0] = CE13669
+  dst[0] = CE13859
+  count = 16384
+  net = vecnet
+  vc_id = 9208
+  src_id[0] = 3012
+  dst_id[0] = 3028
+
+netlink Reg512 
+  type = scal
+  src[0] = CE13679
+  dst[0] = CE13873
+  count = 16384
+  net = vecnet
+  vc_id = 9263
+  src_id[0] = 3013
+  dst_id[0] = 3029
+
+netlink Reg513 
+  type = scal
+  src[0] = CE13689
+  dst[0] = CE13887
+  count = 16384
+  net = vecnet
+  vc_id = 9318
+  src_id[0] = 3014
+  dst_id[0] = 3030
+
+netlink Reg514 
+  type = scal
+  src[0] = CE13699
+  dst[0] = CE13901
+  count = 16384
+  net = vecnet
+  vc_id = 9373
+  src_id[0] = 3015
+  dst_id[0] = 3031
+
+netlink Reg515 
+  type = scal
+  src[0] = CE13709
+  dst[0] = CE13915
+  count = 16384
+  net = vecnet
+  vc_id = 9428
+  src_id[0] = 3016
+  dst_id[0] = 3032
+
+netlink Reg516 
+  type = scal
+  src[0] = CE13719
+  dst[0] = CE13929
+  count = 16384
+  net = vecnet
+  vc_id = 9483
+  src_id[0] = 3017
+  dst_id[0] = 3033
+
+netlink Reg517 
+  type = scal
+  src[0] = CE13729
+  dst[0] = CE13943
+  count = 16384
+  net = vecnet
+  vc_id = 9538
+  src_id[0] = 3018
+  dst_id[0] = 3034
+
+netlink Reg518 
+  type = scal
+  src[0] = CE13739
+  dst[0] = CE13957
+  count = 16384
+  net = vecnet
+  vc_id = 9593
+  src_id[0] = 3019
+  dst_id[0] = 3035
+
+netlink Reg519 
+  type = scal
+  src[0] = CE13749
+  dst[0] = CE13971
+  count = 16384
+  net = vecnet
+  vc_id = 9648
+  src_id[0] = 3020
+  dst_id[0] = 3036
+
+net vecnet 
+  cfg = mesh_generic.cfg
+  dim[0] = 16
+  dim[1] = 16
+  num_classes = 8
+
+mc DRAM 
+  memfile = /home/yaqiz/plastisim/configs/DDR3_micron_64M_8B_x4_sg15.ini
+  sysfile = /home/yaqiz/plastisim/configs/system.ini
+

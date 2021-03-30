@@ -1,0 +1,14 @@
+\pgfplotstableread[col sep=comma]{../../merged_data/stage_occ_PMU_pipedepth_read.csv}\occread%
+\pgfplotstableread[col sep=comma]{../../merged_data/stage_occ_PMU_pipedepth_write.csv}\occwrite%
+\begin{tikzpicture}
+  \begin{axis}[histstyle,xlabel={Occupancy},ymax=125000]
+  \foreach \pipedepth in {4, 8, 16} {
+    \addplot+ [smooth] table [y expr=\thisrow{\pipedepth-pipedepth}, x expr=\thisrow{stage_occ_PMU_2d}] {\occread};
+    \addlegendentryexpanded{\pipedepth{} Stages, Read}
+    \addplot+ [smooth] table [y expr=\thisrow{\pipedepth-pipedepth}, x expr=\thisrow{stage_occ_PMU_2d}] {\occwrite};
+    \addlegendentryexpanded{\pipedepth{} Stages, Write}
+  }
+  %\addplot+ [smooth] table [y expr=\thisrow{0_none_16_NA}, x expr=\thisrow{Counts}] {\isshist};
+  %\addlegendentryexpanded{No Stalls}
+\end{axis}
+\end{tikzpicture}

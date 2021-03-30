@@ -1,0 +1,22 @@
+
+{
+\newcommand{\barlen}{5ex}\newcommand{\barmax}{16}{\tiny \settoheight{\zeroheight}{0}\begin{tabu}{rrrr@{\hskip.75ex}L{5ex}rr@{\hskip.75ex}L{5ex}rr@{\hskip.75ex}L{5ex}rr@{\hskip.75ex}L{5ex}}
+ \toprule
+\rowfont{\bfseries\sffamily} && \multicolumn{3}{c}{1 Cycles}& \multicolumn{3}{c}{2 Cycles}& \multicolumn{3}{c}{3 Cycles}& \multicolumn{3}{c}{4 Cycles}\\
+\cmidrule(l{3pt}r{3pt}){3-5}\cmidrule(l{3pt}r{3pt}){6-8}\cmidrule(l{3pt}r{3pt}){9-11}\cmidrule(l{3pt}r{3pt}){12-14}\rowfont{\bfseries\sffamily} Stages & Alloc. & Cycles & \multicolumn{2}{c}{Issued}& Cycles & \multicolumn{2}{c}{Issued}& Cycles & \multicolumn{2}{c}{Issued}& Cycles & \multicolumn{2}{c}{Issued}\\ \midrule
+\multirow{2}{*}{1} & IF & \num{513971} & 3.89 & \sparkbar{3.891323}{\barlen}{\barmax}& \num{639837} & 3.13 & \sparkbar{3.125821}{\barlen}{\barmax}& \num{765744} & 2.61 & \sparkbar{2.611860}{\barlen}{\barmax}& \num{891572} & 2.24 & \sparkbar{2.243247}{\barlen}{\barmax}\\
+& Aug & \num{513957} & 3.89 & \sparkbar{3.891429}{\barlen}{\barmax}& \num{639838} & 3.13 & \sparkbar{3.125816}{\barlen}{\barmax}& \num{765719} & 2.61 & \sparkbar{2.611945}{\barlen}{\barmax}& \num{891600} & 2.24 & \sparkbar{2.243176}{\barlen}{\barmax}\\\midrule 
+\multirow{2}{*}{2} & IF & \num{328335} & 6.09 & \sparkbar{6.091504}{\barlen}{\barmax}& \num{385759} & 5.18 & \sparkbar{5.184667}{\barlen}{\barmax}& \num{445195} & 4.49 & \sparkbar{4.492557}{\barlen}{\barmax}& \num{504397} & 3.97 & \sparkbar{3.965194}{\barlen}{\barmax}\\
+& Aug & \num{323829} & 6.18 & \sparkbar{6.176331}{\barlen}{\barmax}& \num{380775} & 5.25 & \sparkbar{5.252614}{\barlen}{\barmax}& \num{439072} & 4.56 & \sparkbar{4.555207}{\barlen}{\barmax}& \num{498190} & 4.01 & \sparkbar{4.014629}{\barlen}{\barmax}\\\midrule 
+\multirow{2}{*}{4} & IF & \num{250749} & 7.98 & \sparkbar{7.976574}{\barlen}{\barmax}& \num{272879} & 7.33 & \sparkbar{7.329479}{\barlen}{\barmax}& \num{297587} & 6.72 & \sparkbar{6.721073}{\barlen}{\barmax}& \num{324495} & 6.16 & \sparkbar{6.163620}{\barlen}{\barmax}\\
+& Aug & \num{243276} & 8.22 & \sparkbar{8.221547}{\barlen}{\barmax}& \num{265327} & 7.54 & \sparkbar{7.538151}{\barlen}{\barmax}& \num{290058} & 6.90 & \sparkbar{6.895504}{\barlen}{\barmax}& \num{316504} & 6.32 & \sparkbar{6.319339}{\barlen}{\barmax}\\\midrule 
+\multirow{2}{*}{8} & IF & \num{226729} & 8.82 & \sparkbar{8.821968}{\barlen}{\barmax}& \num{238853} & 8.37 & \sparkbar{8.374276}{\barlen}{\barmax}& \num{250264} & 7.99 & \sparkbar{7.992276}{\barlen}{\barmax}& \num{262585} & 7.62 & \sparkbar{7.617168}{\barlen}{\barmax}\\
+& Aug & \num{220183} & 9.08 & \sparkbar{9.084239}{\barlen}{\barmax}& \num{231390} & 8.64 & \sparkbar{8.644310}{\barlen}{\barmax}& \num{242468} & 8.25 & \sparkbar{8.249237}{\barlen}{\barmax}& \num{254671} & 7.85 & \sparkbar{7.853961}{\barlen}{\barmax}\\\midrule 
+\multirow{2}{*}{16} & IF & \num{216613} & 9.23 & \sparkbar{9.234584}{\barlen}{\barmax}& \num{224322} & 8.92 & \sparkbar{8.917404}{\barlen}{\barmax}& \num{232586} & 8.60 & \sparkbar{8.600148}{\barlen}{\barmax}& \num{241821} & 8.27 & \sparkbar{8.271742}{\barlen}{\barmax}\\
+& Aug & \num{210188} & 9.52 & \sparkbar{9.516828}{\barlen}{\barmax}& \num{217953} & 9.18 & \sparkbar{9.177841}{\barlen}{\barmax}& \num{226438} & 8.83 & \sparkbar{8.833637}{\barlen}{\barmax}& \num{235510} & 8.49 & \sparkbar{8.493966}{\barlen}{\barmax}\\\midrule 
+\multirow{2}{*}{64} & IF & \num{215192} & 9.30 & \sparkbar{9.295192}{\barlen}{\barmax}& \num{221664} & 9.03 & \sparkbar{9.026360}{\barlen}{\barmax}& \num{230224} & 8.69 & \sparkbar{8.689646}{\barlen}{\barmax}& \num{239701} & 8.35 & \sparkbar{8.345706}{\barlen}{\barmax}\\
+& Aug & \num{209396} & 9.55 & \sparkbar{9.553778}{\barlen}{\barmax}& \num{215383} & 9.29 & \sparkbar{9.288082}{\barlen}{\barmax}& \num{223428} & 8.95 & \sparkbar{8.953779}{\barlen}{\barmax}& \num{232738} & 8.59 & \sparkbar{8.594750}{\barlen}{\barmax}\\
+\bottomrule
+\end{tabu}
+}
+}

@@ -1,0 +1,92 @@
+\subsection{Place and Route Algorithm}
+Our place and route tool uses a genetic algorithm to optimize heuristics, which are selected as indicative of good network performance. 
+%A flow chart of our placement and routing algorithm is shown in Figure~\ref{place:flow:chart}.
+The heuristics that our algorithm uses, and the assigned relative penalties, are shown in Table~\ref{heuristics}.
+\begin{table}
+  \centering
+    \begin{tabular}{l|r}
+Heuristic & Penalty \\\hline
+Total link hops & 10 \\
+Worst link congestion & 1000 \\
+Longest link & 10
+    \end{tabular}
+  \caption{Heuristics and associated penalties used in the placement badness calculation.}
+  \label{heuristics}
+\end{table}
+These heuristics are selected to penalize, for a variety of programs, various metrics. The total link hops is a metric of global congestion, and penalizes programs that are spread out across a wide area of the chip. This would also be a rough metric of the energy consumption of various schemes. The worst link congestion is the total number of tokens sent over the most popular link, and is intended to model the program slowdown due to network congestion, and the longest link is intended to model program slowdown due to a single link taking overly long. The penalty factors for the heuristics are selected to attempt to balance the values, and make each contribute roughly equally to the scoring phase.
+
+Our routing algorithm is built around the realization that the majority of packets are sent by a small minority of routes. 
+Figure~\ref{fig:links} shows, for a variety of benchmarks, how packets are distributed between routes.
+Although certain routing operations, such as deadlock avoidance, need to be performed using the set of all routes, it is more important for program performance to ensure that the common routes are efficient.
+Therefore, our router assigns each route a penalty score, which corresponds to the total packets sent over the route.
+Because Plasticine's operations can typically be expressed in terms of a scaling factor from input to output tokens, and these values can be constant propagated, these penalties are calculated in the compiler.
+
+\subsection{Placement}
+The initial placement is performed randomly.
+After the placement and associated route has been scored, the placer then runs again to randomly unplace either the worst nodes, or a random set of nodes.
+Then, the placer will either place the unplaced nodes randomly or based on the total manhattan distance to nearby nodes.
+
+This combination of randomness with greedy algorithms ensures that the placement tools do not get stuck in a local minimum---one such minimum encountered during testing involved DRAM controllers and their associated Address Generators (AGs).
+If the initial placement located two DRAMs on opposite sides of the chip, directed placement may move the AGs to different sides of the chip as well.
+Then, it is impossible to move the DRAMs together because they will be associated with their respective AGs. 
+However, if an AG is moved randomly to the other half of the chip, then the DRAM can be moved in the next iteration and a more optimal placement is achieved.
+
+%\subsection{Static Route Assignment}
+\subsection{Routing and VC Allocation} \label{ssec:routing}
+We perform routing with a variety of deterministic, adaptive, and oblivious routing algorithms, where each route is assigned a path from its source node to its destination node. They are as follows:
+
+\begin{itemize}
+  \item \textbf{Dimension Order XY:} Deterministic algorithm that assigns all hops in x-direction, followed by all hops in y-direction.
+   \item \textbf{Dimension Order YX:} Deterministic algorithm that assigns all hops in y-direction, followed by all hops in x-direction.
+  \item \textbf{Balanced Dimension Order (BDOR):} Deterministic algorithm that tries to balance load for concentrated traffic patterns by performing either DOR XY or DOR YX based on source and destination information.
+  \item \textbf{Minimal Locally Adaptive:} Chooses the next hop based on local channel congestion. The routing algorithm is minimal because it chooses hops only in the quadrant defined by source and destination nodes.
+  \item \textbf{Valiant:} Picks an intermediate node at random, routes from the source to this node using DOR, and finally routes from the intermediate node to the destination node, again using DOR.
+  \item \textbf{Minimal Valiant:} Valiant routing, except the intermediate node must be within the quadrant defined by the source and destination nodes.
+  \item \textbf{Directed Valiant:} Adaptive Valiant routing in which an optimal intermediate node is chosen based on channel congestion.
+  \item \textbf{Minimal Directed Valiant:} Like directed Valiant routing, except the intermediate node must be within the quadrant defined by the source and destination node.   
+\end{itemize}
+It's worth noting that many of these routing algorithms (particularly the adaptive Valiant algorithms) would not be very practical to implement in a conventional interconnection network, but the fact that we are working with a compiler-driven network that has complete knowledge of all network traffic before run time makes them feasible. Also, many of these approaches combine elements of deterministic, oblivious, and adaptive routing. For example, minimal Valiant routing is oblivious in that it picks from a set of potential intermediate nodes at random, but that set of nodes is deterministically restricted to nodes that will result in minimal routes. With this approach, we are looking for a way to have the load balancing and congestion benefits of oblivious routing while not paying as much of the latency cost.
+
+We can use virtual channels to minimize channel congestion and head-of-line blocking. Our initial to approach to VC allocation, which optimally balance the traffic on each link between the available VCs after routing, is complete. To do this, we iterate over all of the assigned routes, and for each hop within a route, we assign the route to the virtual channel with the least traffic. This ensures that the traffic on each link will be distributed evenly between the available VCs.
+
+\subsection{Avoiding Network Deadlock}
+Network deadlock avoidance is predicated on the availability of a deadlock-free set of routes, where every packet is sent using dimension order routing.
+To check for deadlock, every route in the network is converted to a sequence of holds-waits pairs, where a packets holds an input buffer and waits for an input buffer at the next router; these pairs are then treated as edges in a directed graph.
+Sets of routes without cycles are deadlock free, because there is no way for a packet to indirectly block itself from making progress.
+If there is a cycle, this represents a possible deadlock and must be fixed, using one of three strategies:
+\begin{itemize}
+    \item The first strategy attempts to move the least-heavily weighted route in the cycle to dimension order routing, then
+    \item the next strategy attempts to move a random route in the cycle to dimension order routing,
+    \item the final strategy moves all routes to dimension order routing.
+\end{itemize}
+These passes became less necessary after we added better VC allocation, and are currently unused. We may readd them to simplify the VC allocation problem, or to provide an option for route assignments that require too many VCs.
+
+\subsection{Avoiding Protocol Deadlock}
+Protocol deadlock is a network pathology that begins outside the network, and prevents the system from making progress.
+In Plasticine, we have identified two sources of protocol deadlock: one arises from input buffers, and another is the result of CGRA nodes not breaking the holds-waits relationship between two routes.
+\subsubsection{Input Buffer Deadlock}
+In Plasticine, each node has a fixed-size buffer per input. This creates the possibility of a deadlock when multiple packets contend for some unique resource, then proceed on to the ejection port. An example of this deadlock situation is shown in Figure~\ref{inbuf:deadlock}. To alleviate this condition, we proposed two schemes. The first uses traffic class allocation to ensure that all network flows destined for different input buffers at the same set of nodes are not competing for the same set of network resources. The next uses arbiters within the network to ensure that strict fairness is maintained when contending for shared network resources. Although we were unable to test these schemes, we were able to implement them in our routing tool.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=2in]{plots/buf_deadlock}
+  \caption{Deadlock occurring through a network input buffer.}
+  \label{inbuf:deadlock}
+\end{figure}
+
+\subsubsection{Through-Node Deadlock}
+Late in our project, we also identified the possibility of another form of deadlock, for which our network deadlock avoidance would not be sufficient. This type of deadlock is illustrated in Figure~\ref{net:deadlock}. Although we were eventually able to adapt our VC allocation strategy to account for this, we were unable to run simulations due to another, as yet unexplained, deadlock/bug. This deadlock arises from CGRA nodes not fully breaking the waits-holds dependences---typically, packets can be ejected from, and injected to, the network freely. In the worst case, request packets must be prioritized below replies.
+
+However, our network nodes have fixed-size buffers, and this means that the waits-holds graph must be extended to add relationships through them: packets hold the inputs of the CGRA tiles, and wait on the outputs. Therefore, in Figure~\ref{net:deadlock}, it is possible for node B to backpressure into a shared network resources, that then blocks the flow from C to D. This then prevents B from ever making progress, and deadlocks the entire network. 
+
+\begin{figure}
+  \centering
+  \includegraphics[width=2in]{plots/new_deadlock_prog}
+  \caption{The unexpected form of protocol deadlock (cycles despite DOR routing).}
+  \label{net:deadlock}
+\end{figure}
+
+\subsubsection{Attempts to Solve}
+After encountering this unexpected protocol deadlock, we instead used virtual channels to break cycles that lead to deadlock. We accomplished this using a graph coloring scheme. A function runs to identify potential cycles and dependencies in the graph and returns a list of conflict pairs. 
+Our cycle breaking algorithm (which may not be fully correct) first builds the waits-holds graph of the entire system, including dependences through the network endpoints. It then finds links that are part of a cycle, and adds constraints to ensure that all other links that send to its input buffers, or receive from its output buffers, have different VC allocations.
+These pairs identify routes which must occupy separate virtual channels to avoid protocol deadlock. Our algorithm iterates over the assigned routes, and for each route, assigns the lowest-numbered VC that satisfies the conflict constraints. We do that in order to use the least number of VCs possible. Obviously, this does not result in good balance of the load across the available VCs, like the original VC allocation algorithm does. Combining the conflict constraints and the load balancing in our VC allocation is planned further work.

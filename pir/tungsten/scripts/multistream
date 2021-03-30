@@ -1,0 +1,8 @@
+set /netIn/ addr 0
+set /netIn/ flow 0
+set /netOut/ addr 1
+set  /netOut/ flow 0
+push /network/router0 route f0d0v0i4
+push /network/router1 route f0d4v0i1
+step 100
+exit

@@ -1,0 +1,9 @@
+plastiroute
+tags
+*.aux
+*.pdf
+*.log
+*~
+plastiroute.dSYM/
+*.swp
+*.DS_Store

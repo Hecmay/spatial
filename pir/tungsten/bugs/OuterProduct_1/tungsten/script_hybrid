@@ -1,0 +1,5 @@
+source ../plastisim/final.place
+log2files
+stepall
+dumpstate logs/state.json
+stat

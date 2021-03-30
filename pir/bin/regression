@@ -1,0 +1,63 @@
+#!env/bin/python
+import argparse
+import time
+import subprocess
+from spatial_test import SpatialTest
+from logger import Logger
+from util import *
+import socket
+
+import os
+
+def main():
+    parser = argparse.ArgumentParser(description='Run experiments')
+    parser.add_argument('-b', '--backend', type=str, action="append", help='Testing Backend')
+    parser.add_argument('-t', '--thread', type=int, default=30, help='Number of threads to run')
+    parser.add_argument('-p', '--project', action='append', help='project name')
+    parser.add_argument('-a', '--app', action='append', help='name of application to run')
+    parser.add_argument('-c', '--conti', default=False, action='store_true', 
+        help='Continue from previous regression')
+    (opts, args) = parser.parse_known_args()
+    if not os.path.exists("logs/"):
+        os.mkdir('logs/')
+    hostname = socket.gethostname()
+    print(f'Running regression on {cstr(CYAN,hostname)}', flush=True)
+    create_ivy2()
+
+    remove(os.environ['HOME'] + "/.ivy2/cache/edu.stanford.ppl",force=True)
+    os.system('sbt "; project pir; publishAll"')
+    apps = opts.app
+    if apps is None: apps = []
+    if opts.project is None:
+        opts.project = ['pirTest', 'test']
+    if (opts.backend is None):
+        opts.backend = ['Tst']
+
+    os.chdir("../")
+    os.system('sbt "; project models; publishLocal; project utils; publishLocal"')
+
+    for project in opts.project:
+        for backend in opts.backend:
+            apps = ' '.join(['-a ' + a for a in apps])
+            spatial_args = '-t {} -p {} -b {} {} --fast=true {}'.format(opts.thread, project,backend, apps, ' '.join(args))
+            tester = SpatialTest(spatial_args.split(" "))
+            gendir = tester.opts.gendir
+            if "Tst" in backend:
+                gendir += '/' + backend + "_" + project
+            else:
+                gendir += '/' + backend
+            if not opts.conti:
+                remove(gendir, True)
+            tic()
+            tester.run()
+            duration = toc()
+            logger_args = '{} -d -p {} -b {} {} -m VPCU,VPMU,VDAG --spatial_dir={}'.format(gendir, project,
+                opts.backend,apps,os.getcwd())
+            Logger(logger_args.split(" "))
+            logger_args = '{} -s -d -p {} -b {} {} --spatial_dir={}'.format(gendir, project,
+                opts.backend,apps,os.getcwd())
+            Logger(logger_args.split(" "))
+            print(f'Regression run for {cstr(CYAN,duration)} on {cstr(CYAN,hostname)}')
+
+if __name__ == "__main__":
+    main()

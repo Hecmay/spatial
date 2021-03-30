@@ -1,0 +1,13 @@
+\pgfplotstableread[col sep=comma]{../../merged_data/num_splits.csv}\splittab%
+\pgfplotstableread[col sep=comma]{../../merged_data/iss_lock_reqs.csv}\isslock%
+\begin{tikzpicture}
+  \begin{axis}[histstyle,xlabel={Output Vectors}]
+  %\foreach \splits in {4, 16, 64, 128, 256, 512, 1024} {
+  \foreach \splits/\addr in {4/2, 64/6, 1024/10} {
+    \addplot+ [smooth] table [y expr=\thisrow{\splits-split_width}, x expr=\thisrow{num_splits}] {\splittab};
+    \addlegendentryexpanded{\addr{}-bit address}
+  }
+  \addplot+ [smooth] table [y expr=\thisrow{0-split_width}, x expr=\thisrow{num_splits}] {\splittab};
+  \addlegendentryexpanded{Ideal}
+\end{axis}
+\end{tikzpicture}

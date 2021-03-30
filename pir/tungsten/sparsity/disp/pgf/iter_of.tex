@@ -1,0 +1,14 @@
+\pgfplotstableread[col sep=comma]{../../merged_data/iss_hist.csv}\isshist
+%\pgfplotstableread[col sep=comma]{merged_data/counters.csv}\counters
+\begin{tikzpicture}
+\begin{axis}[histstyle]
+  \foreach \iter in {1,2,3,64} {
+    \foreach \ifof in {{of}} {
+      \addplot+ [smooth] table [y expr=\thisrow{\iter_\ifof_16_rand_4096_1_0_65536}, x expr=\thisrow{Counts}] {\isshist};
+      \addlegendentryexpanded{\iter{} Iter, \ifof}
+    }
+  }
+  \addplot+ [smooth] table [y expr=\thisrow{0_none_16_NA_4096_1_0_65536}, x expr=\thisrow{Counts}] {\isshist};
+  \addlegendentryexpanded{No Stalls}
+\end{axis}
+\end{tikzpicture}

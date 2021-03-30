@@ -1,0 +1,51 @@
+\begin{abstract}
+  In this work, we discuss the techniques necessary for using dynamic networks with Coarse Grained Reconfigurable Arrays (CGRAs). We implemented a simulator based around booksim and a place and routing tool to evaluate the impact of different routing algorithms. Our place and routing tool also attempts to allocate VCs such that it makes deadlocks impossible, but this function currently appears to be broken---we continue to experience deadlocks when running our applications in the simulator. Still, by using a set of heuristic metrics, we are able to evaluate the performance of our place and route tool on benchmark applications with a variety of routing algorithms. We show that we are able to alleviate the congestion on the worst links with our adaptive routing algorithms, but that this is at the cost of a large increase in the total number of hops taken. This suggests that a CGRA router may want to typically implement a minimal routing heuristic (such as DOR) for the majority of routes, and only switch to an adapative routing heuristic when worst-link congestion exceeds a large threshold.
+
+\end{abstract}
+\section{Introduction}
+\label{sec:intro}
+
+Coarse Grained Reconfigurable Arrays (CGRAs) are a computing technology promising to combine a CPU's ease of programming, an FPGA's flexibility, and an ASIC's efficiency.
+CPUs suffer from a lack of compute resources: they only have a small number of computational units, and must use large memories for bookkeeping to support their programming model.
+ASICs allow the user to specify arbitrary circuits, and therefore can have more computing resources, but are limited by high costs and long design times.
+FPGAs provide fast reconfigurability, but pay a heavy price: a large portion of every FPGA is devoted to routing resources, and synthesis tools struggle with the massive graphs necessary to account for bit-level resources.
+
+CGRAs have a distributed set of processing elements and memories, which are traditionally connected using a word-level static interconnect.
+This interconnect is configured once, at compile time, to support all the possible data flows that the application may take; at runtime, crossbars are loaded with the configuration and valid/ready signals are used to coordinate the movement of data through these statically allocated links.
+Plasticine is an example of a CGRA that is specialized for computing on vector data---the processing elements (Pattern Compute Units, PCUs) are 16-lane, 6-stage SIMD arrays, and the memories (Pattern Memory Units, PMUs) are banked 16 ways and a total of \SI{256}{kiB} \cite{plasticine}.
+There are a total of 64 PCUs, 64 PMUs, and 4 DDR3 controllers in Plasticine, with a total area of \SI{113}{\mu m^2} and a clock rate of \SI{1}{GHz}.
+Instead of using solely a word-level interconnect, Plasticine also uses a vector interconnect that supports \SI{512}{b} per cycle.
+
+Dynamic networks are a promising alternative to static networks because they allow resources to be effectively shared at run time \cite{dally2001route}.
+Instead of assigning fixed resources to each network flow, routers throughout the chip arbitrate between packets, allowing an arbitrary number of logical routes to share the same set of physical links.
+This makes dynamic networks a promising technology for CGRAs: there is no longer an invisible ``cliff'' when placing applications, after which routing fails and the application must be refactored.
+Additionally, dynamic networks provide the possibility of using on-chip resources more efficiently, because multiple network flows may otherwise only use a small portion of their alloted time slots.
+
+However, packet-switched dynamic networks come with the possibility of large overheads to compensate for several common pathologies, including deadlock, poor allocation performance, and congestion.
+Deadlock occurs when packets wait on each other in a cycle, and is traditionally mitigated by restricting routing algorithms or using multiple Virtual Channels (VCs).
+However, restricting routing algorithms leads to the possibility of multiple routes attempting to use the same links, and can therefore cause congestion; muliple VCs increases buffering requirements.
+Poor allocation performance is compensated for by using speedup: making the router internals (crossbar, etc.) faster than the surrounding links---this can substantially increase the area and energy consumed by a router.
+Finally, adaptive and oblivious routing can send packets along varying routes, to alleviate congestion on any one link; this would require the addition of expensive reorder buffers at network endpoints and end-to-end flow control to track reorder buffer occupancy.
+
+In this paper, we propose a compiler-directed dynamic network for Plasticine, which is able to use high-level information about the program graph to statically optimize for a dynamic network.
+Our placer runs in seconds, and is able provide co-optimized solution to the placement, adaptive routing, and deadlock avoidance problems.
+The placer uses a derivative-free optimization technique and flexible heuristics to quickly explore a wide variety of configurations and can fix problems at multiple levels: for example, routing congestion can be alleviated by re-routing, re-placing, or reallocating VCs.
+
+%\begin{outline}
+%  \1 Discuss Plasticine I, and reiterate design parameters
+%  \1 Discuss dynamic networks
+%    \2 Show where the power goes by citing prior work---links/xbar/buffer
+%    \2 Discuss why these are necessary (multiple VCs, etc.)
+%  \1 Provide the qualitative rationale for dynamic networks (no cliff)
+%    \2 Also discuss the yield/multitenancy implications
+%  \1 Discuss the algorithms we used, with references to similar prior work
+%    \2 We integrate placement/routing into a feedback loop, where problems with
+%      one drive changes in the other
+%    \2 We have a deadlock avoidance algorithm that uses the safe case for 
+%      guaranteed success
+%    \2 Fast, guaranteed successful placement is a selling point
+%  \1 Introduce the physical area/power methodology
+%  \1 Introduce the set of baseline/alternate designs
+%  \1 Summarize results and conclusions
+%\end{outline}
+

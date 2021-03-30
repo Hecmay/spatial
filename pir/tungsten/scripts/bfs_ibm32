@@ -1,0 +1,15 @@
+source test.place
+apply /DRAM region 0     32 /home/acrucker/fluorine/graphs/ibm32/ibm32.bfs.init2
+apply /DRAM region 1000000 32 - 
+apply /DRAM region 2000000 2048 /home/acrucker/fluorine/graphs/ibm32/ibm32.ridxlen2
+apply /DRAM region 3000000 288 /home/acrucker/fluorine/graphs/ibm32/ibm32.cidx2
+apply /DRAM region 4000000     32 /home/acrucker/fluorine/graphs/ibm32/ibm32.bfs.init2
+set /DUT nodes 512
+set /DUT iter 2
+printevery 1
+stepall
+apply /DRAM dump_u   4000000 32 reached.dat
+apply /DRAM dump_u   0 32 front.dat
+apply /DRAM dump_sparse
+apply /DRAM list_regions
+stallstarve

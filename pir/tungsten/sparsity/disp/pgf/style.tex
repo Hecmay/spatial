@@ -1,0 +1,67 @@
+\pgfplotsset{
+    %/pgfplots/area legend/.style={%
+    %    /pgfplots/legend image code/.code={%
+    %        \fill[##1] (0cm,-0.1cm) rectangle (0.6cm,0.1cm);
+    %    }%
+    %},
+    global/.style={
+      set layers,
+      font=\footnotesize\sffamily,
+      cycle list name=PairedLightDark,
+      legend style={
+        /tikz/every even column/.append style={column sep=0.5pc},
+        draw=none
+      },
+      %cycle list shift=4,
+      %xticklabel={$\mathsf{\pgfmathprintnumber{\tick}}$},
+      minor grid style={line width=.2pt, draw=gray!25},
+      enlarge x limits=0.2,
+%tick label style={/pgf/number format/assume math mode=true}
+    },
+    globother/.style={
+      global,
+      yticklabel={$\mathsf{\pgfmathprintnumber{\tick}}$},
+    },
+    barmixin/.style={
+      bar width=6pt,
+      area legend,
+      log origin=infty,
+      ymajorgrids=true,
+      yminorgrids=true,
+      yminorticks=true,
+    },
+    logbarstyle/.style={%
+      global,
+      every axis plot/.append style={fill, on layer=pre main},
+      /pgfplots/log number format basis/.code 2 args={$\mathsf{##1^{\pgfmathprintnumber{##2}}}$},
+      barmixin,
+    },
+histstyle/.style={
+    width=0.60\paperwidth,
+    height=0.75\paperheight,
+    ylabel={Count}, 
+    xlabel={Issued per Cycle},
+    legend style={
+      legend columns=1,
+      at={(1.10,0.5)},
+      anchor=west,
+    },
+    legend cell align={left},
+    global,
+    cycle list name=PairedLightDarkLines,
+      enlarge x limits=0.0,
+    ymin=0,
+    ymax=75000,
+},
+    globbar/.style={
+      global,
+      every axis plot/.append style={fill, on layer=pre main},
+      yticklabel={$\mathsf{\pgfmathprintnumber{\tick}}$},
+      ytick style={draw=none},
+      barmixin,
+    },
+    tighty/.style={
+ylabel shift = .25pc
+} 
+}
+

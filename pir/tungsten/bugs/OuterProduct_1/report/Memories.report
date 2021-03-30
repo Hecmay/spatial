@@ -1,0 +1,440 @@
+---------------------------
+Estimated Total Memories: 
+---------------------------
+---------------------------
+
+
+
+---------------------------------------------------------------------
+Name: x254
+Type: StreamOut[Tup2[Fix[TRUE,_32,_0],Bit]]
+Src:  OuterProduct.scala:58:42
+Src:            out(i::i+ts1, j::j+ts2 par ip) store outTile
+---------------------------------------------------------------------
+Symbol:     x254 = StreamOutNew(BurstFullDataBus())
+Instances: 1
+
+
+Instance Summary: 
+  #0: Banked
+     Resource: SRAM
+     Depth:    1
+     Padding:  List(0)
+     DarkVolume:  0
+     Accum:    None
+     Banks:    1 <Flat>
+       Dims {0}: Cyclic: N=1, B=1, alpha=<1>, P=<1>
+     Ports: 
+         0 [Type:WR]:
+           - Mux Port #0: 
+             x281 = StreamOutBankedWrite(x254,ArrayBuffer(x280),ArrayBuffer(Set(b270, b252, b197, b170))) {}
+             out(i::i+ts1, j::j+ts2 par ip) store outTile (OuterProduct.scala:58:42)
+               Directly Banked: false
+               Port: <offset: 0, castgroup: (0), broadcast: (0)>
+
+         0 [Type:RD]:
+
+
+
+Control Tree: 
+x282: UnrolledForeach (-1) [Level: InnerControl, Loop: Looped, Schedule: Pipelined]
+  x281: StreamOutBankedWrite
+---------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------
+Name: x172
+Type: StreamOut[BurstCmd]
+Src:  OuterProduct.scala:51:12
+Src:          b1 load vec1(i::i+ts1 par ip)
+---------------------------------------------------------------------
+Symbol:     x172 = StreamOutNew(BurstCmdBus)
+Instances: 1
+
+
+Instance Summary: 
+  #0: Banked
+     Resource: SRAM
+     Depth:    1
+     Padding:  List(0)
+     DarkVolume:  0
+     Accum:    None
+     Banks:    1 <Flat>
+       Dims {0}: Cyclic: N=1, B=1, alpha=<1>, P=<1>
+     Ports: 
+         0 [Type:WR]:
+           - Mux Port #0: 
+             x180 = StreamOutBankedWrite(x172,ArrayBuffer(x178),ArrayBuffer(Set(x179))) {}
+             b1 load vec1(i::i+ts1 par ip) (OuterProduct.scala:51:12)
+               Directly Banked: false
+               Port: <offset: 0, castgroup: (0), broadcast: (0)>
+
+         0 [Type:RD]:
+
+
+
+Control Tree: 
+x181: UnitPipe (-1) [Level: InnerControl, Loop: Single, Schedule: Sequenced]
+  x180: StreamOutBankedWrite
+---------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------
+Name: b1_0 (x171)
+Type: SRAM1[Fix[TRUE,_32,_0]]
+Src:  OuterProduct.scala:50:25
+Src:          val b1 = SRAM[T](ts1)
+---------------------------------------------------------------------
+Symbol:     x171 = SRAMNew(List(Const(64)),SRAM1[Fix[TRUE,_32,_0]])
+Instances: 1
+
+
+Instance Summary: 
+  #0: Banked
+     Resource: SRAM
+     Depth:    2
+     Padding:  List(0)
+     DarkVolume:  0
+     Accum:    None
+     Banks:    1 <Flat>
+       Dims {0}: Cyclic: N=1, B=1, alpha=<1>, P=<1>
+     Ports: 
+         0 [Type:WR]:
+           - Mux Port #0: 
+             x191 = SRAMBankedWrite(x171,Vector(x188),Vector(List(Const(0))),Vector(b185),Vector(Set(b186))) {}
+             b1 load vec1(i::i+ts1 par ip) (OuterProduct.scala:51:12)
+               Directly Banked: true
+               Port: <offset: 0, castgroup: (0), broadcast: (0)>
+
+         0 [Type:RD]:
+         1 [Type:WR]:
+         1 [Type:RD]:
+           - Mux Port #0: 
+             x233 = SRAMBankedRead(x171,Vector(List(Const(0))),Vector(b227),Vector(Set(b229, b230, b197, b170)),Vec[Fix[TRUE,_32,_0]]) {}
+             Foreach(ts1 par ip2, ts2 par ip1){ (ii,jj) => outTile(ii, jj) = b1(ii) * b2(jj) } // 2 (OuterProduct.scala:57:77)
+               Directly Banked: true
+               Port: <offset: -1, castgroup: (0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0), broadcast: (0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)>
+
+         M [Type:WR]:
+         M [Type:RD]:
+
+
+
+Control Tree: 
+x289: UnrolledForeach (-1) [Level: OuterControl, Loop: Looped, Schedule: Pipelined]
+  x193: UnitPipe (-1) [Level: OuterControl, Loop: Single, Schedule: Streaming]
+    x192: UnrolledForeach (-1) [Level: InnerControl, Loop: Looped, Schedule: Pipelined]
+      x191: SRAMBankedWrite
+  x288: UnrolledForeach (-1) [Level: OuterControl, Loop: Looped, Schedule: Pipelined]
+    x248: UnrolledForeach (-1) [Level: InnerControl, Loop: Looped, Schedule: Pipelined]
+      x233: SRAMBankedRead
+---------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------
+Name: outTile_0 (x223)
+Type: SRAM2[Fix[TRUE,_32,_0]]
+Src:  OuterProduct.scala:55:32
+Src:            val outTile = SRAM[T](ts1, ts2)
+---------------------------------------------------------------------
+Symbol:     x223 = SRAMNew(List(Const(64), Const(32)),SRAM2[Fix[TRUE,_32,_0]])
+Instances: 1
+
+
+Instance Summary: 
+  #0: Banked
+     Resource: SRAM
+     Depth:    2
+     Padding:  List(0, 0)
+     DarkVolume:  0
+     Accum:    None
+     Banks:    16 <Hierarchical>
+       Dims {0,1}: Cyclic: N=16, B=1, alpha=<0,1>, P=<1,16>
+     Ports: 
+         0 [Type:WR]:
+           - Mux Port #0: 
+             x247 = SRAMBankedWrite(x223,Vector(x241),Vector(List(b324)),Vector(x243),Vector(Set(b229, b230, b197, b170))) {}
+             Foreach(ts1 par ip2, ts2 par ip1){ (ii,jj) => outTile(ii, jj) = b1(ii) * b2(jj) } // 2 (OuterProduct.scala:57:73)
+               Directly Banked: false
+               Port: <offset: -1, castgroup: (0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15), broadcast: (0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)>
+
+         0 [Type:RD]:
+         1 [Type:WR]:
+         1 [Type:RD]:
+           - Mux Port #0: 
+             x278 = SRAMBankedRead(x223,Vector(List(x325)),Vector(x274),Vector(Set(b270, b252, b197, b170)),Vec[Fix[TRUE,_32,_0]]) {}
+             out(i::i+ts1, j::j+ts2 par ip) store outTile (OuterProduct.scala:58:42)
+               Directly Banked: false
+               Port: <offset: 0, castgroup: (0), broadcast: (0)>
+
+         M [Type:WR]:
+         M [Type:RD]:
+
+
+
+Control Tree: 
+x288: UnrolledForeach (-1) [Level: OuterControl, Loop: Looped, Schedule: Pipelined]
+  x248: UnrolledForeach (-1) [Level: InnerControl, Loop: Looped, Schedule: Pipelined]
+    x247: SRAMBankedWrite
+  x287: UnrolledForeach (-1) [Level: OuterControl, Loop: Looped, Schedule: Streaming]
+    x282: UnrolledForeach (-1) [Level: InnerControl, Loop: Looped, Schedule: Pipelined]
+      x278: SRAMBankedRead
+---------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------
+Name: x173
+Type: StreamIn[Fix[TRUE,_32,_0]]
+Src:  OuterProduct.scala:51:12
+Src:          b1 load vec1(i::i+ts1 par ip)
+---------------------------------------------------------------------
+Symbol:     x173 = StreamInNew(BurstDataBus())
+Instances: 1
+
+
+Instance Summary: 
+  #0: Banked
+     Resource: SRAM
+     Depth:    1
+     Padding:  List(0)
+     DarkVolume:  0
+     Accum:    None
+     Banks:    1 <Flat>
+       Dims {0}: Cyclic: N=1, B=1, alpha=<1>, P=<1>
+     Ports: 
+         0 [Type:WR]:
+         0 [Type:RD]:
+           - Mux Port #0: 
+             x187 = StreamInBankedRead(x173,ArrayBuffer(Set(b186))) {}
+             b1 load vec1(i::i+ts1 par ip) (OuterProduct.scala:51:12)
+               Directly Banked: false
+               Port: <offset: 0, castgroup: (0), broadcast: (0)>
+
+
+
+
+Control Tree: 
+x192: UnrolledForeach (-1) [Level: InnerControl, Loop: Looped, Schedule: Pipelined]
+  x187: StreamInBankedRead
+---------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------
+Name: x200
+Type: StreamIn[Fix[TRUE,_32,_0]]
+Src:  OuterProduct.scala:54:14
+Src:            b2 load vec2(j::j+ts2 par ip)
+---------------------------------------------------------------------
+Symbol:     x200 = StreamInNew(BurstDataBus())
+Instances: 1
+
+
+Instance Summary: 
+  #0: Banked
+     Resource: SRAM
+     Depth:    1
+     Padding:  List(0)
+     DarkVolume:  0
+     Accum:    None
+     Banks:    1 <Flat>
+       Dims {0}: Cyclic: N=1, B=1, alpha=<1>, P=<1>
+     Ports: 
+         0 [Type:WR]:
+         0 [Type:RD]:
+           - Mux Port #0: 
+             x214 = StreamInBankedRead(x200,ArrayBuffer(Set(b213))) {}
+             b2 load vec2(j::j+ts2 par ip) (OuterProduct.scala:54:14)
+               Directly Banked: false
+               Port: <offset: 0, castgroup: (0), broadcast: (0)>
+
+
+
+
+Control Tree: 
+x221: UnrolledForeach (-1) [Level: InnerControl, Loop: Looped, Schedule: Pipelined]
+  x214: StreamInBankedRead
+---------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------
+Name: x199
+Type: StreamOut[BurstCmd]
+Src:  OuterProduct.scala:54:14
+Src:            b2 load vec2(j::j+ts2 par ip)
+---------------------------------------------------------------------
+Symbol:     x199 = StreamOutNew(BurstCmdBus)
+Instances: 1
+
+
+Instance Summary: 
+  #0: Banked
+     Resource: SRAM
+     Depth:    1
+     Padding:  List(0)
+     DarkVolume:  0
+     Accum:    None
+     Banks:    1 <Flat>
+       Dims {0}: Cyclic: N=1, B=1, alpha=<1>, P=<1>
+     Ports: 
+         0 [Type:WR]:
+           - Mux Port #0: 
+             x207 = StreamOutBankedWrite(x199,ArrayBuffer(x205),ArrayBuffer(Set(x206))) {}
+             b2 load vec2(j::j+ts2 par ip) (OuterProduct.scala:54:14)
+               Directly Banked: false
+               Port: <offset: 0, castgroup: (0), broadcast: (0)>
+
+         0 [Type:RD]:
+
+
+
+Control Tree: 
+x208: UnitPipe (-1) [Level: InnerControl, Loop: Single, Schedule: Sequenced]
+  x207: StreamOutBankedWrite
+---------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------
+Name: b2_0 (x198)
+Type: SRAM1[Fix[TRUE,_32,_0]]
+Src:  OuterProduct.scala:53:27
+Src:            val b2 = SRAM[T](ts2)
+---------------------------------------------------------------------
+Symbol:     x198 = SRAMNew(List(Const(32)),SRAM1[Fix[TRUE,_32,_0]])
+Instances: 1
+
+
+Instance Summary: 
+  #0: Banked
+     Resource: SRAM
+     Depth:    2
+     Padding:  List(0)
+     DarkVolume:  0
+     Accum:    None
+     Banks:    16 <Hierarchical>
+       Dims {0}: Cyclic: N=16, B=1, alpha=<1>, P=<16>
+     Ports: 
+         0 [Type:WR]:
+           - Mux Port #0: 
+             x220 = SRAMBankedWrite(x198,Vector(x215),Vector(List(x323)),Vector(x217),Vector(Set(b213))) {}
+             b2 load vec2(j::j+ts2 par ip) (OuterProduct.scala:54:14)
+               Directly Banked: false
+               Port: <offset: 0, castgroup: (0), broadcast: (0)>
+
+         0 [Type:RD]:
+         1 [Type:WR]:
+         1 [Type:RD]:
+           - Mux Port #0: 
+             x239 = SRAMBankedRead(x198,Vector(List(b324)),Vector(x236),Vector(Set(b229, b230, b197, b170)),Vec[Fix[TRUE,_32,_0]]) {}
+             Foreach(ts1 par ip2, ts2 par ip1){ (ii,jj) => outTile(ii, jj) = b1(ii) * b2(jj) } // 2 (OuterProduct.scala:57:86)
+               Directly Banked: false
+               Port: <offset: -1, castgroup: (0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15), broadcast: (0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)>
+
+         M [Type:WR]:
+         M [Type:RD]:
+
+
+
+Control Tree: 
+x288: UnrolledForeach (-1) [Level: OuterControl, Loop: Looped, Schedule: Pipelined]
+  x222: UnitPipe (-1) [Level: OuterControl, Loop: Single, Schedule: Streaming]
+    x221: UnrolledForeach (-1) [Level: InnerControl, Loop: Looped, Schedule: Pipelined]
+      x220: SRAMBankedWrite
+  x248: UnrolledForeach (-1) [Level: InnerControl, Loop: Looped, Schedule: Pipelined]
+    x239: SRAMBankedRead
+---------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------
+Name: x255
+Type: StreamIn[Bit]
+Src:  OuterProduct.scala:58:42
+Src:            out(i::i+ts1, j::j+ts2 par ip) store outTile
+---------------------------------------------------------------------
+Symbol:     x255 = StreamInNew(BurstAckBus)
+Instances: 1
+
+
+Instance Summary: 
+  #0: Banked
+     Resource: SRAM
+     Depth:    1
+     Padding:  List(0)
+     DarkVolume:  0
+     Accum:    None
+     Banks:    1 <Flat>
+       Dims {0}: Cyclic: N=1, B=1, alpha=<1>, P=<1>
+     Ports: 
+         0 [Type:WR]:
+         0 [Type:RD]:
+           - Mux Port #0: 
+             x284 = StreamInBankedRead(x255,ArrayBuffer(Set())) {}
+             out(i::i+ts1, j::j+ts2 par ip) store outTile (OuterProduct.scala:58:42)
+               Directly Banked: false
+               Port: <offset: 0, castgroup: (0), broadcast: (0)>
+
+
+
+
+Control Tree: 
+x286: UnitPipe (-1) [Level: InnerControl, Loop: Single, Schedule: Sequenced]
+  x284: StreamInBankedRead
+---------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------
+Name: x253
+Type: StreamOut[BurstCmd]
+Src:  OuterProduct.scala:58:42
+Src:            out(i::i+ts1, j::j+ts2 par ip) store outTile
+---------------------------------------------------------------------
+Symbol:     x253 = StreamOutNew(BurstCmdBus)
+Instances: 1
+
+
+Instance Summary: 
+  #0: Banked
+     Resource: SRAM
+     Depth:    1
+     Padding:  List(0)
+     DarkVolume:  0
+     Accum:    None
+     Banks:    1 <Flat>
+       Dims {0}: Cyclic: N=1, B=1, alpha=<1>, P=<1>
+     Ports: 
+         0 [Type:WR]:
+           - Mux Port #0: 
+             x265 = StreamOutBankedWrite(x253,ArrayBuffer(x263),ArrayBuffer(Set(x264))) {}
+             out(i::i+ts1, j::j+ts2 par ip) store outTile (OuterProduct.scala:58:42)
+               Directly Banked: false
+               Port: <offset: 0, castgroup: (0), broadcast: (0)>
+
+         0 [Type:RD]:
+
+
+
+Control Tree: 
+x266: UnitPipe (-1) [Level: InnerControl, Loop: Single, Schedule: Sequenced]
+  x265: StreamOutBankedWrite
+---------------------------------------------------------------------
+
+
+
+

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+FILE=$1
+OPT=$2
+
+if [[ $OPT == "-"*"t"*  ]]; then
+  server=tucson
+elif [[ $OPT == "-"*"l"*  ]]; then
+  server=lagos
+fi
+mkdir -p $(dirname $FILE)
+scp -r yaqiz@$server.stanford.edu:~/isca2019/$FILE $FILE

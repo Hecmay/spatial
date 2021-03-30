@@ -1,0 +1,14 @@
+\pgfplotstableread[col sep=comma]{../../merged_data/iss_PMU.csv}\issPMU%
+\pgfplotstableread[col sep=comma]{../../merged_data/iss_lock.csv}\isslock%
+\begin{tikzpicture}
+\begin{axis}[histstyle]
+  \foreach \pipedepth in {8, 16, 64} {
+    \addplot+ [smooth] table [y expr=\thisrow{\pipedepth-stage}, x expr=\thisrow{iss_PMU}] {\issPMU};
+    \addlegendentryexpanded{\pipedepth{} Stages, PMU}
+    \addplot+ [smooth] table [y expr=\thisrow{\pipedepth-stage}, x expr=\thisrow{iss_lock}] {\isslock};
+    \addlegendentryexpanded{\pipedepth{} Stages, Lock}
+  }
+  %\addplot+ [smooth] table [y expr=\thisrow{0_none_16_NA}, x expr=\thisrow{Counts}] {\isshist};
+  %\addlegendentryexpanded{No Stalls}
+\end{axis}
+\end{tikzpicture}

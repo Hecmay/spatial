@@ -1,0 +1,12 @@
+#!env/bin/python
+
+import os
+from spatial_test import SpatialTest
+
+def main():
+    os.chdir("../")
+    tester = SpatialTest()
+    tester.run()
+
+if __name__ == "__main__":
+    main()

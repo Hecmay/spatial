@@ -1,0 +1,12 @@
+\pgfplotstableread[col sep=comma]{../../merged_data/iss_lock_reqs.csv}\isslock%
+\begin{tikzpicture}
+\begin{axis}[histstyle]
+  %\foreach \subbanks in {4, 16, 64, 256, 1024} {
+  \foreach \subbanks in {4, 64, 1024} {
+    \addplot+ [smooth] table [y expr=\thisrow{\subbanks-subbanks}, x expr=\thisrow{iss_lock}] {\isslock};
+    \addlegendentryexpanded{\subbanks{} sub-banks}
+  }
+  %\addplot+ [smooth] table [y expr=\thisrow{0_none_16_NA}, x expr=\thisrow{Counts}] {\isshist};
+  %\addlegendentryexpanded{No Stalls}
+\end{axis}
+\end{tikzpicture}

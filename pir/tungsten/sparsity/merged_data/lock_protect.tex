@@ -1,0 +1,20 @@
+
+{
+\newcommand{\barlen}{5ex}\newcommand{\barmax}{16}{\tiny \settoheight{\zeroheight}{0}\begin{tabu}{rrrr@{\hskip.75ex}L{5ex}rr@{\hskip.75ex}L{5ex}rr@{\hskip.75ex}L{5ex}rr@{\hskip.75ex}L{5ex}}
+ \toprule
+\rowfont{\bfseries\sffamily} && \multicolumn{3}{c}{4 Stages}& \multicolumn{3}{c}{8 Stages}& \multicolumn{3}{c}{16 Stages}& \multicolumn{3}{c}{64 Stages}\\
+\cmidrule(l{3pt}r{3pt}){3-5}\cmidrule(l{3pt}r{3pt}){6-8}\cmidrule(l{3pt}r{3pt}){9-11}\cmidrule(l{3pt}r{3pt}){12-14}\rowfont{\bfseries\sffamily} Size & Alloc. & Cycles & \multicolumn{2}{c}{Issued}& Cycles & \multicolumn{2}{c}{Issued}& Cycles & \multicolumn{2}{c}{Issued}& Cycles & \multicolumn{2}{c}{Issued}\\ \midrule
+\multirow{2}{*}{4} & IF & \num{270601} & 7.39 & \sparkbar{7.391310}{\barlen}{\barmax}& \num{269929} & 7.41 & \sparkbar{7.409793}{\barlen}{\barmax}& \num{270073} & 7.41 & \sparkbar{7.405901}{\barlen}{\barmax}& \num{270073} & 7.41 & \sparkbar{7.405901}{\barlen}{\barmax}\\
+& Aug & \num{269390} & 7.42 & \sparkbar{7.424507}{\barlen}{\barmax}& \num{268999} & 7.44 & \sparkbar{7.435266}{\barlen}{\barmax}& \num{269079} & 7.43 & \sparkbar{7.433178}{\barlen}{\barmax}& \num{269079} & 7.43 & \sparkbar{7.433178}{\barlen}{\barmax}\\\midrule 
+\multirow{2}{*}{16} & IF & \num{261922} & 7.64 & \sparkbar{7.636186}{\barlen}{\barmax}& \num{259663} & 7.70 & \sparkbar{7.702699}{\barlen}{\barmax}& \num{259497} & 7.71 & \sparkbar{7.707526}{\barlen}{\barmax}& \num{259497} & 7.71 & \sparkbar{7.707526}{\barlen}{\barmax}\\
+& Aug & \num{257246} & 7.77 & \sparkbar{7.774997}{\barlen}{\barmax}& \num{255640} & 7.82 & \sparkbar{7.823928}{\barlen}{\barmax}& \num{255635} & 7.82 & \sparkbar{7.824054}{\barlen}{\barmax}& \num{255635} & 7.82 & \sparkbar{7.824054}{\barlen}{\barmax}\\\midrule 
+\multirow{2}{*}{64} & IF & \num{253672} & 7.88 & \sparkbar{7.884544}{\barlen}{\barmax}& \num{237179} & 8.43 & \sparkbar{8.432833}{\barlen}{\barmax}& \num{237397} & 8.43 & \sparkbar{8.425161}{\barlen}{\barmax}& \num{237978} & 8.40 & \sparkbar{8.404516}{\barlen}{\barmax}\\
+& Aug & \num{246262} & 8.12 & \sparkbar{8.121862}{\barlen}{\barmax}& \num{231453} & 8.64 & \sparkbar{8.641564}{\barlen}{\barmax}& \num{231792} & 8.63 & \sparkbar{8.628956}{\barlen}{\barmax}& \num{231807} & 8.63 & \sparkbar{8.628536}{\barlen}{\barmax}\\\midrule 
+\multirow{2}{*}{256} & IF & \num{251256} & 7.96 & \sparkbar{7.960534}{\barlen}{\barmax}& \num{225201} & 8.88 & \sparkbar{8.881697}{\barlen}{\barmax}& \num{219251} & 9.12 & \sparkbar{9.122950}{\barlen}{\barmax}& \num{220259} & 9.08 & \sparkbar{9.082022}{\barlen}{\barmax}\\
+& Aug & \num{243808} & 8.20 & \sparkbar{8.203644}{\barlen}{\barmax}& \num{218592} & 9.15 & \sparkbar{9.150188}{\barlen}{\barmax}& \num{212908} & 9.39 & \sparkbar{9.394950}{\barlen}{\barmax}& \num{214634} & 9.32 & \sparkbar{9.320369}{\barlen}{\barmax}\\\midrule 
+\multirow{2}{*}{1048576} & IF & \num{250986} & 7.97 & \sparkbar{7.968998}{\barlen}{\barmax}& \num{229478} & 8.72 & \sparkbar{8.716317}{\barlen}{\barmax}& \num{220256} & 9.08 & \sparkbar{9.082254}{\barlen}{\barmax}& \num{215768} & 9.27 & \sparkbar{9.272167}{\barlen}{\barmax}\\
+& Aug & \num{243367} & 8.22 & \sparkbar{8.218481}{\barlen}{\barmax}& \num{221450} & 9.03 & \sparkbar{9.032256}{\barlen}{\barmax}& \num{211806} & 9.44 & \sparkbar{9.444166}{\barlen}{\barmax}& \num{208951} & 9.57 & \sparkbar{9.574986}{\barlen}{\barmax}\\
+\bottomrule
+\end{tabu}
+}
+}

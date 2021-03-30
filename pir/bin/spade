@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [ $# -lt 1 ]; then
+  echo "Usage: spade <App> <arg0> <arg1> .. <argN>"
+  exit -1
+fi
+
+argsArray=( "$@" )
+
+if [ "$PIR_HOME" != "" ]
+then 
+  cd $PIR_HOME
+else
+  echo "Please set environment variable PIR_HOME!"
+  exit -1
+fi
+
+sbtArgs=${argsArray[@]:0:$#}
+
+sbt "; project arch; run-main arch.$sbtArgs"

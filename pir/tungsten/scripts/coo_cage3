@@ -1,0 +1,14 @@
+source test.place
+apply /DRAM region 0     16 /home/acrucker/fluorine/matrices/cage3/cage3.vec
+apply /DRAM region 1000000 32 /home/acrucker/fluorine/matrices/cage3/cage3.coo.cidx1
+apply /DRAM region 2000000 32 /home/acrucker/fluorine/matrices/cage3/cage3.coo.val1
+apply /DRAM region 3000000 32 /home/acrucker/fluorine/matrices/cage3/cage3.coo.ridx1
+apply /DRAM region 4000000 16 -
+set /DUT vec_size 16
+set /DUT mat_size 32
+printevery 1
+stepall
+apply /DRAM dump   4000000 16 out.dat
+apply /DRAM dump_sparse
+apply /DRAM list_regions
+stallstarve

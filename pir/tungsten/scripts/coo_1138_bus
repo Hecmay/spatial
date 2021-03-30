@@ -1,0 +1,14 @@
+source test.place
+apply /DRAM region 0       1152 /home/acrucker/fluorine/matrices/1138_bus/1138_bus.vec
+apply /DRAM region 1000000 2608 /home/acrucker/fluorine/matrices/1138_bus/1138_bus.coo.cidx1
+apply /DRAM region 2000000 2608 /home/acrucker/fluorine/matrices/1138_bus/1138_bus.coo.val1
+apply /DRAM region 3000000 2608 /home/acrucker/fluorine/matrices/1138_bus/1138_bus.coo.ridx1
+apply /DRAM region 4000000 1152 -
+set /DUT vec_size 1152
+set /DUT mat_size 2608
+printevery 1
+stepall
+apply /DRAM dump   4000000 1152 out.dat
+apply /DRAM dump_sparse
+apply /DRAM list_regions
+stallstarve

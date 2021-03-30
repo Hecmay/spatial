@@ -1,0 +1,19 @@
+\section{Related Work}
+\label{sec:related}
+\subsection{CGRA Networks}
+Multiple previous works have attempted to reduce the overhead CGRA networks. 
+Many of these approaches have focused on scheduling computations using a modulo schedule \cite{van2009static, dimitroulakos2006exploring, wave}.
+This strategy is effective for applications that have a single, well-defined inner loop that can be written with a fixed Initiation Interval (II).
+However, applications with a hierarchical nesting of loops provide two poor options to arrive a single modulo schedule: the II can be extended to cover the entirety of the innermost loop, or the outer loop can have resources reserved in the inner loop schedule. 
+The first option is frequently not realistic because scheduled hardware has a hard cap on the II, and loops can be of arbitrary length.
+If outer loops have resources reserved in the inner loop schedule, then the schedule will become congested with reserved, but infrequently used, resources. 
+\subsection{Compiler Driven NoCs}
+Other prior works have used compiler techniques to optimize various facets of NoCs.
+Ozturk et al. \cite{ozturk2010compiler} propose a scheme to increase the reliability of NoCs for chip multiprocessors by sending packets over multiple links. 
+Their approach uses integer linear programming to balance the total number of links activated (an energy-based metric) against the amount of packet duplication (reliability).
+Ababei et al. \cite{ababei2011energy} use a static placement algorithm and an estimate of reliability to attempt to guide placement decisions for NoCs.
+Kapre et al. \cite{kapre2011noc} develop a workflow to map applications to CGRAs using several transformations, including efficient multicast routing and node splitting, but do not consider network-directed operations including non-minimal routing.
+
+Our approach provides an extension of these techniques by using a ``closed-loop'' iterative process. 
+Instead of doing each step (placement, routing, deadlock avoidance) sequentially, we are able to use heuristics to quantify the impact that each step has on the badness of the overall design.
+For example, this allows us to fix routing pathologies by re-placement, because we can identify the specific placement decisions that led to the poor set of routes.

@@ -1,0 +1,400 @@
+\documentclass[aspectratio=169]{beamer}
+
+\definecolor{cardinal}{RGB}{140,21,21}
+\definecolor{offblack}{RGB}{46,45,41}
+\definecolor{cloud}{RGB}{218,215,203}
+\definecolor{driftwood}{RGB}{182,177,169}
+\usetheme[progressbar=frametitle,sectionpage=progressbar]{metropolis}
+%\usetheme[progressbar=frametitle,sectionpage=progressbar]{metropolis}
+
+%\setbeamercolor{palette primary}{bg=cardinal,fg=white}
+%\setbeamercolor{palette secondary}{bg=cardinal,fg=white}
+%\setbeamercolor{palette tertiary}{bg=cardinal,fg=white}
+%\setbeamercolor{palette quaternary}{bg=cardinal,fg=white}
+%\setbeamercolor{structure}{fg=cardinal} % itemize, enumerate, etc
+%\setbeamercolor{section in toc}{fg=cardinal} % TOC sections
+
+\setbeamercolor{normal text}{bg=white,fg=offblack}
+\setbeamercolor{frametitle}{fg=white,bg=cardinal}
+\setbeamercolor{progress bar}{fg=white,bg=white}
+\setbeamercolor{title separator}{fg=cardinal}
+%\setbeamercolor{progress bar in head/foot}{bg=cardinal,fg=white}
+\setbeamercolor{progress bar in section page}{fg=cardinal,bg=driftwood}
+\setsansfont[BoldFont={Source Sans Pro Semibold}, RawFeature={+kern, +ss01, +lnum, +liga, +tlig},
+             SmallCapsFont={Source Sans Pro}, SmallCapsFeatures={Letters=SmallCaps}]{Source Sans Pro}
+\setmonofont{Source Code Pro}
+\newfontfamily{\halfbf}{Source Sans Pro Semibold}[RawFeature={+kern, +ss01, +liga, +tlig}]
+\DeclareTextFontCommand{\texthalfbf}{\halfbf}
+\newfontfamily{\fullbf}{Source Sans Pro Bold}[RawFeature={+kern, +ss01, +liga, +tlig}]
+\DeclareTextFontCommand{\textfullbf}{\fullbf}
+\newfontfamily{\doublebf}{Source Sans Pro Black}[RawFeature={+kern, +ss01, +liga, +tlig}]
+\DeclareTextFontCommand{\textdoublebf}{\doublebf}
+\usepackage{tabu}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{graphicx}
+\usepackage{textpos}
+\usepackage{savesym}
+\savesymbol{checkmark}
+\usepackage{dingbat}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{siunitx}
+\sisetup{detect-all}
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage{calc}
+\usetikzlibrary{calc}
+\usepackage{outlines}
+
+\definecolor{CB-Pl-blue}{HTML}{a6cee3}
+\definecolor{CB-Pd-blue}{HTML}{1F78b4}
+\definecolor{CB-Pl-green}{HTML}{b2dF8a}
+\definecolor{CB-Pd-green}{HTML}{33a02c}
+\definecolor{CB-Pl-red}{HTML}{Fb9a99}
+\definecolor{CB-Pd-red}{HTML}{e31a1c}
+\definecolor{CB-Pl-orange}{HTML}{FdbF6F}
+\definecolor{CB-Pd-orange}{HTML}{FF7F00}
+\definecolor{CB-Pl-purple}{HTML}{cab2d6}
+\definecolor{CB-Pd-purple}{HTML}{6a3d9a}
+\definecolor{CB-Pl-brown}{HTML}{FFFF99}
+\definecolor{CB-Pd-brown}{HTML}{b15928}
+\pgfplotscreateplotcyclelist{PairedLightDark}{%
+  {CB-Pd-blue,draw=none},
+  {CB-Pl-blue,draw=none},
+  {CB-Pd-green,draw=none},
+  {CB-Pl-green,draw=none}}
+\pgfplotscreateplotcyclelist{PairedLightDarkLines}{%
+  {CB-Pd-blue,solid,thick},
+  {CB-Pd-green,densely dotted,very thick},
+  {CB-Pd-red,densely dashed,thick},
+  {CB-Pd-brown,solid,very thick},
+  {CB-Pd-purple,densely dotted,thick},
+  {CB-Pd-orange,densely dashed,thick}}
+
+% Tikz global options
+\tikzset{every picture/.style={/utils/exec={\small\sffamily}}}
+
+% Tikz named styles
+\tikzstyle{hairline}=[very thin,draw=gray]
+\tikzstyle{line}=[semithick]
+\tikzstyle{arrow}=[line,->,>=latex]
+
+\pgfplotsset{compat=1.13}
+%\usepackage[duration=15,lastminutes=2]{pdfpcnotes}
+\renewcommand{\emph}[1]{\textcolor{cardinal}{{\halfbf #1}}}
+
+\newcommand*{\lhand}[2]{
+  \only<.(1)> {
+  \begin{textblock}{2}(#1,#2)%
+    \LARGE%
+    \textcolor{cardinalred} {%
+    \rightpointleft%
+    }%
+  \end{textblock}%
+  }
+}
+\newcommand*{\rhand}[2]{
+  \only<.(1)> {
+  \begin{textblock}{2}(#1,#2)%
+    \LARGE%
+    \textcolor{cardinalred} {%
+    \leftpointright%
+    }%
+  \end{textblock}%
+  }
+}
+\newcommand*{\uhand}[2]{
+  \only<.(1)> {
+  \begin{textblock}{2}(#1,#2)%
+    \LARGE%
+    \textcolor{cardinalred} {%
+      \rotatebox{90}{\leftpointright}%}
+    }%
+  \end{textblock}%
+  }
+}
+\newcommand*{\dhand}[2]{
+  \only<.(1)> {
+  \begin{textblock}{2}(#1,#2)%
+    \LARGE%
+    \textcolor{cardinal} {%
+      \rotatebox{90}{\rightpointleft}%}
+    }%
+  \end{textblock}%
+  }
+}
+
+\makeatletter
+\def\convertto#1#2{\strip@pt\dimexpr #2*65536/\number\dimexpr 1#1}
+\makeatother
+
+\input{../pgf/style.tex}
+
+\title{{\Huge \doublebf Capstan}}% {\Huge \bf [eRSS]}}
+\subtitle{{\Large Regular Hardware for Irregular Problems}}
+\author{{\halfbf{Alexander Rucker}}\\
+Stanford University}
+%\date{September 11, 2019}
+
+\titlegraphic{\hfill \includegraphics[scale=0.20]{SU_Seal_Red_darkbgrd.eps}}
+\newlength{\zeroheight}
+\newcommand{\sparkbar}[3]{\textcolor{CB-Pd-blue}{\rule[0.5\zeroheight-1ex*\real{0.5}]{#2*\real{#1}/\real{#3}}{1ex}}}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+
+\begin{document}
+\maketitle
+\if 0
+\begin{frame}
+  Height: \convertto{in}{\the\paperheight} in
+
+  Width: \convertto{in}{\the\paperwidth} in
+\end{frame}
+\fi
+\begin{frame}
+  \frametitle{Goals}
+    \begin{outline}
+      \1 Reconfigurability
+      \2 Built on Plasticine fabric
+      \2 Maintain PMU/PCU abstraction
+      \pause
+      \1 Performance
+      \2 High-throughput issue logic
+      \2 Outer-parallelization support
+      \pause
+      \1 Programmability
+      \2 Understandable memory model
+    \end{outline}
+\end{frame}
+\begin{frame}
+  \frametitle{Bank allocation for high throughput}
+  \centering
+  \includegraphics[scale=2.0]{sparse_read_pipe.png}
+\end{frame}
+\begin{frame}
+  \frametitle{More pipeline stages improve throughput}
+  \hskip1.5in\input{../pgf/pipedepth.tex}
+\end{frame}
+%\begin{frame}
+  %\frametitle{Better allocators improve throughput}
+  %\hskip1.5in\input{../pgf/pipedepth.tex}
+%\end{frame}
+\begin{frame}
+  \frametitle{Two separable iterations is ideal}
+  \hskip1.5in\input{../pgf/iter_of.tex}
+\end{frame}
+\begin{frame}
+  \frametitle{Random allocation improves performance}
+  \hskip1.5in\input{../pgf/rand.tex}
+\end{frame}
+\begin{frame}
+  \frametitle{Guaranteeing memory consistency}
+  \begin{outline}
+    \1 Parallelization
+    \2 Arises from vectorizing accesses
+    \2 Conflicting accesses may be in the same vector
+    \2 Worst case: can't vectorize
+    \pause
+    \1 Pipelining
+    \2 Vectors may access memory out-of-order
+    \2 Worst case: need to use barriers
+    \pause
+    \1 If addresses are computed, these are impossible to analyze statically
+  \end{outline}
+\end{frame}
+\if 0
+\begin{frame}
+  \frametitle{Protected dependences}
+  \newcommand{\rwsep}{5}
+  \newcommand{\drawgrid}{
+    \foreach \x in {0,1,2,3} {
+      \draw[hairline] (-1,-\x) -- (14,-\x);
+      \draw[hairline] (-1,-\rwsep-\x) -- (14,-\rwsep-\x);
+    }
+    \node[anchor=east] at (-2,-1.5) {Read};
+    \node[anchor=east] at (-2,-\rwsep-1.5) {Write};
+  }
+  \newcommand{\drawstage}[2]{
+        \foreach \i/\j in {#2} {
+          \node[pipe_addr] (#1r\i\j) at (#1,-\i) {\j};
+          \node[pipe_addr] (#1w\i\j) at (#1+4,-\rwsep-\i) {\j};
+        }
+      }
+  \tikzstyle{pipe_addr}=[fill=white]
+      \begin{tikzpicture}[x=1em,y=1.1em]
+        \drawgrid
+        \drawstage{0}{0/A,1/B,2/C,3/D}
+        \drawstage{1}{0/E,1/F,2/G,3/H}
+        \drawstage{5}{0/J,1/K,2/A}
+        \drawstage{10}{3/A}
+        \draw[arrow] (0w0A) -- (5r2A);
+        \draw[arrow] (5w2A) -- (10r3A);
+      \end{tikzpicture}
+\end{frame}
+\fi
+\begin{frame}
+  \frametitle{Splitting vectors}
+  \begin{outline}
+    \1 Solves the problem of conflicting accesses in the same vector
+    \1 At runtime, compare all addresses within a vector
+    \1 If two are equal, split the vector
+    \pause
+    \1 Added to PCU
+  \end{outline}
+\end{frame}
+\begin{frame}
+  \frametitle{Impact of splitter granularity}
+  \hskip1.5in\input{../pgf/split_rates.tex}
+\end{frame}
+\begin{frame}
+  \frametitle{Locking}
+  \begin{outline}
+    \1 Track read-modify-write operations in progress
+    \1 Stall the pipeline to avoid conflicting accesses
+    \pause
+    \1 Added to PMU
+    \2 Similar to performing memory access
+    \pause
+    \1 Can't reorder accesses
+    \2 Add an extra bloom filter to prevent reordering accesses to a single lock
+    \2 Still support reordering non-conflicting accesses within a bank for allocation throughput
+  \end{outline}
+\end{frame}
+\begin{frame}
+  \frametitle{Lock issue rates as a function of subbank count}
+  \hskip1.5in\input{../pgf/lock_iss_protect.tex}
+\end{frame}
+\begin{frame}
+  \frametitle{Supporting outer parallelization}
+  Need to merge multiple partially-valid vectors going to a single memory:
+
+  \centering
+{
+  \centering
+  \begin{tikzpicture}[x=1.6cm]
+    \foreach \i in {0,...,3} {
+      \node (Comp\i-A)   at (2*\i,0)  {Compute};
+      \node (Mem\i) at (2*\i,-2) {Mem};
+      \node (Comp\i-B) at (2*\i,-4) {Compute};
+      \node (DM\i-A0) at (2*\i-0.5,-3) {Demerge};
+      \node (DM\i-A1) at (2*\i+0.5,-3) {Demerge};
+      \node (M\i-A0) at (2*\i-0.5,-1) {Merge};
+      \node (M\i-A1) at (2*\i+0.5,-1) {Merge};
+      \draw[arrow] (M\i-A0.south) -- (Mem\i.north);
+      \draw[arrow] (M\i-A1.south) -- (Mem\i.north);
+      \draw[arrow] (DM\i-A0.south) -- (Comp\i-B.north);
+      \draw[arrow] (DM\i-A1.south) -- (Comp\i-B.north);
+    }
+    \foreach \i in {0,...,3} {
+      \draw[arrow] (Comp0-A.south) -- (M\i-A0.north);
+      \draw[arrow] (Comp1-A.south) -- (M\i-A0.north);
+      \draw[arrow] (Comp2-A.south) -- (M\i-A1.north);
+      \draw[arrow] (Comp3-A.south) -- (M\i-A1.north);
+      \draw[arrow] (Mem0.south) -- (DM\i-A0.north);
+      \draw[arrow] (Mem1.south) -- (DM\i-A0.north);
+      \draw[arrow] (Mem2.south) -- (DM\i-A1.north);
+      \draw[arrow] (Mem3.south) -- (DM\i-A1.north);
+    }
+  \end{tikzpicture}
+}
+\end{frame}
+\begin{frame}
+  \frametitle{How to merge vectors?}
+  \begin{outline}
+    \1 Lane-by-lane basis
+    \2 Low rate of successful merges
+    \pause
+    \1 Full crossbar
+    \2 Expensive
+    \pause
+    \1 Restricted crossbar
+    \2 Each lane can move one lane to the left or right
+    \2 97\% success rate
+    \2 Re-use PCU stages for data movement
+  \end{outline}
+\end{frame}
+\begin{frame}
+  \frametitle{Preliminary results}
+  \begin{outline}
+    \1 GEMV-CSR is 2x faster than GPU without optimization
+    %pause
+    \2 Outer-parallelization will increase speed
+    %pause
+    \2 GEMV-COO will increase speed
+    %\pause
+    \2 HBM will increase speed
+    \1 Reorder pipeline is roughly 14\% of 6-stage PCU area
+    \1 Splitter and merger are <1\% of PCU area
+  \end{outline}
+\end{frame}
+\begin{frame}
+  \frametitle{Any questions?}
+\end{frame}
+\end{document}
+
+\begin{frame}
+  \frametitle{PMU issue count (not normalized, to show total cycles)}
+  \hskip1.5in\input{../pgf/iter_of.tex}
+\end{frame}
+\begin{frame}
+  \frametitle{Impact of allocator direction (\texttt{if} or \texttt{of})}
+  \hskip1.5in\mbox{\input{../pgf/ifof.tex}}
+\end{frame}
+\begin{frame}
+  \frametitle{Impact of allocator randomness}
+  \hskip1.5in\input{../pgf/rand.tex}
+\end{frame}
+\begin{frame}
+  \frametitle{Impact of pipeline depth}
+  \hskip1.5in\input{../pgf/pipedepth.tex}
+\end{frame}
+\begin{frame}
+  \frametitle{PMU vs. Lock issue rates}
+  \hskip1.5in\input{../pgf/lock_pmu.tex}
+\end{frame}
+\begin{frame}
+  \frametitle{Lock issue rates as a function of subbank count.}
+  \hskip1.5in\input{../pgf/lock_iss_protect.tex}
+\end{frame}
+\begin{frame}
+  \frametitle{Impact of allocator type}
+  \hskip1.5in\input{../pgf/alloc.tex}
+\end{frame}
+\begin{frame}
+  \frametitle{PMU read and write pipeline occupancy.}
+  \hskip1.5in\input{../pgf/read_write_PMU_occ.tex}
+\end{frame}
+\begin{frame}
+  \frametitle{Average separable allocator performance}
+  \centering
+  \input{../../merged_data/main_table.tex}
+\end{frame}
+\begin{frame}
+  \frametitle{Impact of pipeline depth}
+  \centering
+  \input{../../merged_data/pipedepth.tex}
+\end{frame}
+%\begin{frame}
+  %\frametitle{Impact of access latency (IF-3-Rand)}
+  %\centering
+  %\input{../../merged_data/pipedepth_lat_if.tex}
+%\end{frame}
+%\begin{frame}
+  %\frametitle{Impact of access latency (Augmenting)}
+  %\centering
+  %\input{../../merged_data/pipedepth_lat_aug.tex}
+%\end{frame}
+\begin{frame}
+  \frametitle{Impact of access latency}
+  \centering
+  \input{../../merged_data/pipedepth_lat.tex}
+\end{frame}
+\begin{frame}
+  \frametitle{Impact of lock protector size}
+  \centering
+  \input{../../merged_data/lock_protect.tex}
+\end{frame}
+\end{document}

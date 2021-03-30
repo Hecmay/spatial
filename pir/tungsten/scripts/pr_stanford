@@ -1,0 +1,15 @@
+source test.place
+apply /DRAM region 0     290432 /home/acrucker/fluorine/graphs/Stanford/Stanford.init8
+apply /DRAM region 1000000 290432 -
+apply /DRAM region 2000000 3835520 /home/acrucker/fluorine/graphs/Stanford/Stanford.from8
+apply /DRAM region 3000000 3835520 /home/acrucker/fluorine/graphs/Stanford/Stanford.to8
+apply /DRAM region 4000000 290432 /home/acrucker/fluorine/graphs/Stanford/Stanford.deg2 
+set /DUT nodes 36304
+set /DUT edges 479440
+printevery 1000
+stepall
+apply /DRAM dump   1000000 290432 out.dat
+apply /DRAM dump_sparse
+apply /DRAM list_regions
+apply /vector_data_new1/PMU_a0_p0 dump
+stallstarve

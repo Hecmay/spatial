@@ -1,0 +1,1 @@
+/usr/bin/time -f Runtime:%E /local/ssd/home/yaqiz/spatial/./pir/plastiroute/plastiroute -n node.csv -l link.csv -v summary.csv -g proute.dot -G final.place -T checkerboard -a route_min_directed_valient -r 18 -c 18 -x 3 -e 4 -S -1 -q 4 -E -1 -s0 -i300 -XTop -p100 -t1 -d100

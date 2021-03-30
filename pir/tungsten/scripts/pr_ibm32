@@ -1,0 +1,15 @@
+source test.place
+apply /DRAM region 0     32 /home/acrucker/fluorine/graphs/ibm32/ibm32.pr.init2
+apply /DRAM region 10000000 32 -
+apply /DRAM region 20000000 160 /home/acrucker/fluorine/graphs/ibm32/ibm32.from2
+apply /DRAM region 30000000 160 /home/acrucker/fluorine/graphs/ibm32/ibm32.to2
+apply /DRAM region 40000000 32 /home/acrucker/fluorine/graphs/ibm32/ibm32.deg2 
+set /DUT nodes 16
+set /DUT edges 80
+printevery 1
+stepall
+apply /DRAM dump   10000000 32 out.dat
+apply /DRAM dump_sparse
+apply /DRAM list_regions
+apply /vector_data_new1/PMU_a0_p0 dump
+stallstarve

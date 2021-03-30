@@ -1,0 +1,1 @@
+/home/mvilim/ASPLOS_temp/sim/plastiroute/plastiroute -n node_combined.csv -l link_combined.csv -r 14 -c 14 -T checkerboard -x 4 -e 4 -g proute.dot -v summary.csv -a route_dor_YX  -q1  -s0  -i10 -p100 -t1 -d100 -G hybrid.place -X / -A2

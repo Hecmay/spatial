@@ -1,0 +1,14 @@
+source test.place
+apply /DRAM region 0     10000 /home/acrucker/fluorine/matrices/lap2D_5pt_n100/lap2D_5pt_n100.vec
+apply /DRAM region 1000000 29808 /home/acrucker/fluorine/matrices/lap2D_5pt_n100/lap2D_5pt_n100.coo.cidx1
+apply /DRAM region 2000000 29808 /home/acrucker/fluorine/matrices/lap2D_5pt_n100/lap2D_5pt_n100.coo.val1
+apply /DRAM region 3000000 29808 /home/acrucker/fluorine/matrices/lap2D_5pt_n100/lap2D_5pt_n100.coo.ridx1
+apply /DRAM region 4000000 10000 -
+set /DUT vec_size 10000
+set /DUT mat_size 29808
+printevery 1000
+stepall
+apply /DRAM dump   4000000 10000 out.dat
+apply /DRAM dump_sparse
+apply /DRAM list_regions
+stallstarve

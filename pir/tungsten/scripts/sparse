@@ -1,0 +1,38 @@
+set /Locks/reorder_lock/iss_hist   clip_hist 16
+set /Locks/reorder_unlock/iss_hist clip_hist 16
+set /PMU/reorder/iss_hist          clip_hist 16
+set /Locks/reorder_lock/iss_hist   name iss_lock
+set /Locks/reorder_unlock/iss_hist name iss_unlock
+set /PMU/reorder/iss_hist          name iss_hist
+
+set /Locks/reorder_lock/req_hist   clip_hist 64
+set /Locks/reorder_unlock/req_hist clip_hist 64
+set /PMU/reorder/req_hist          clip_hist 64
+set /Locks/reorder_lock/req_hist   name req_lock
+set /Locks/reorder_unlock/req_hist name req_unlock
+set /PMU/reorder/req_hist          name req_hist
+
+set /Locks/reorder_lock   alloc_iter 1
+set /Locks/reorder_unlock alloc_iter 1
+set /PMU/reorder          alloc_iter 1
+
+set /Locks/reorder_lock   alloc_type if
+set /Locks/reorder_unlock alloc_type if
+set /PMU/reorder          alloc_type if
+
+set /Locks/reorder_lock   tx 8
+set /Locks/reorder_unlock tx 8
+set /PMU/reorder          tx 8
+
+printevery 1000
+
+stepall
+apply /Locks dump
+apply /PMU dump
+
+#get /Locks/reorder_lock/iss_hist   dense
+#get /Locks/reorder_unlock/iss_hist dense
+#get /PMU/reorder/iss_hist          dense
+#get /Locks/reorder_lock/req_hist   dense
+#get /Locks/reorder_unlock/req_hist dense
+#get /PMU/reorder/req_hist          dense

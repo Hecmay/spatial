@@ -1,0 +1,3 @@
+[submodule "c-minheap-array"]
+	path = c-minheap-array
+	url = https://github.com/armon/c-minheap-array.git

@@ -1,0 +1,45 @@
+\section{Evaluation}
+\label{sec:results}
+The first phase of our evaluation was quantifying the popularity of the most popular links in the program graph. Although the relative link activity factors depend heavily on the actual program that is being run, the results for several constant-propagated counter values are shown in Figure~\ref{fig:links}. This shows that there is a wide variety of link activity factors: BlackScholes has a large number of very ``flat'' links, where almost all logical program links are equally popular. Other programs, like LogReg, have a few very popular links due to the presence of an inner and outer loop.
+\begin{figure}
+\includegraphics{plots/link_cdf.pdf}
+\caption{An analysis of which links in the program are the most popular.}
+\label{fig:links}
+\end{figure}
+%\subsection{Placement Speed}
+\subsection{Static-Adaptive Routing}
+For all of the possible routing algorithm-application pairs, we ran our place and route algorithm and collected data on the total weighted heuristic score and on each of its individual components: total hops, worst link congestion, and longest link.  By looking at the individual components of the score in Figure~\ref{fig:routefunc}, we can see the relative strengths and weaknesses of our routing algorithms. For OuterProduct and Blackscholes, we can see that,as expected, our Valiant and Valiant hybrid routing algorithms decrease overall congestion in the network. This comes at the cost of increased total hops taken in the network, which is again consistent with our expectations. Our directed Valiant routing algorithm is particularly promising because it achieves the same or better congestion performance as normal Valiant routing, and it also pays a much lower cost in total hops and significantly decreases the maximum length route.
+Also, on Blackscholes, balanced DOR routing achieves lower congestion than normal DOR. These changes in performance aren't as evident in DotProduct because this is a much simpler application than the others, and it does not inserts less traffic into the network.
+
+Figure~\ref{fig:score} shows the weighted scores achieved by each of the routing algorithms on each of the applications. Overall, the Valiant approaches consistently incur higher weighted penalties than the simple DOR approaches. This is likely because increased hop count is penalized much more heavily than increased congestion. This is an indicator that depending on the goals of the application, it would be useful to re-evaluate the heuristics used and how they're weighted to calculate the final score.
+
+Figure~\ref{fig:vcs} shows the number of VCs that each of the routing algorithms to eliminate waits-holds dependencies from the network. In all of our benchmark applications, the normal Valiant routing algorithm requires more VCs than all of the other algorithms because overall, it takes longer routes, which makes cycles more likely to occur.
+
+Also, for each routing algorithm-application pair, we ran the place and route algorithm 100, 300, 500, 700, and 900 times. We did this in order to get an idea of how long the genetic algorithm takes to converge on a good route assignment. Figure~\ref{fig:iter} shows the number of iterations each of the routing algorithms takes to converge to a local minimum score route. The main takeaway here is that all of the routing algorithms tested outperform normal Valiant in this regard. This is because Valiant routing has a very large search space relative to the other approaches.  
+\begin{figure*}
+  \includegraphics[width=\textwidth]{plots/routefunc.pdf}
+  \caption{The raw routing statistics for each route.}
+  \label{fig:routefunc}
+\end{figure*}
+\begin{figure*}
+  \includegraphics[width=\textwidth]{plots/score.pdf}
+  \caption{The computed scores for each route.}
+  \label{fig:score}
+\end{figure*}
+\begin{figure*}
+  \includegraphics[width=\textwidth]{plots/vc.pdf}
+  \caption{The VCs required by our allocation algorithm for each routing function.}
+  \label{fig:vcs}
+\end{figure*}
+
+%We ran all of the applications shown in Figure~\ref{fig:links} with all of the routing algorithms in the Routing and VC Allocation section. 
+\begin{figure*}
+  \includegraphics[width=\textwidth]{plots/iter.pdf}
+  \caption{The convergence speed of each routing algorithm.}
+  \label{fig:iter}
+\end{figure*}
+%\subsection{Network Area}
+%\subsection{Static Network Usage}
+%\subsection{Performance--EDP Tradeoff}
+%\subsection{Yield Enhancement}
+%\subsection{Multitenancy}

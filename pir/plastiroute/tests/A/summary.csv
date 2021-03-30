@@ -1,0 +1,2 @@
+Key,it,s,EndVC,NetVC,Score,TotPkts,DynHopsVec,DynHopsScal,StatHopsVec,StatHopsScal,LinkLim,InjectLim,EjectLim,LongRoute,Q0Pct,Q0Lim
+-,1000,80.714,0,0,3.00,64000000,0,0,116000000,49000000,0.0000,0.0000,0.0000,6,-nan,0.0000

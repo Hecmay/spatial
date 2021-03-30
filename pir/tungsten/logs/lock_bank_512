@@ -1,0 +1,227 @@
+PMU_a0_p0 set bank 0 shift 16
+lock_p0 set bank 0 shift 16
+/sparsermw/load_ag_p0 set base 0 size 65536
+/sparsermw/flush_ag_p0 set base 0 size 65536
+Run simulation with with 63 children
+Tungsten REPL started, commit a2d4bf98809cb42690d0880ea448460e3c19b392
+> #printchildren
+Command not found: #printchildren
+> source test.place
+Tungsten REPL started, commit a2d4bf98809cb42690d0880ea448460e3c19b392
+test.place> set /DUT/sparsermw/lock_out_p0/in addr 23
+test.place> set /DUT/sparsermw/lock_out_p0/in vc 40
+test.place> set /DUT/sparsermw/lock_out_p0/in flow 40
+test.place> set /DUT/sparsermw/lock_out_p0/in net static
+test.place> set /DUT/sparsermw/lock_out_p0/out0 addr 0
+test.place> set /DUT/sparsermw/lock_out_p0/out0 flow 40
+test.place> set /DUT/sparsermw/lock_out_p0/out0 net static
+test.place> set /DUT/sparsermw/lock_out_p0/out0 vc 40
+test.place> set /DUT/sparsermw/lock_out_p0/in addr 23
+test.place> set /DUT/sparsermw/lock_out_p0/in vc 40
+test.place> set /DUT/sparsermw/lock_out_p0/in flow 40
+test.place> set /DUT/sparsermw/lock_out_p0/in net static
+test.place> set /DUT/sparsermw/lock_out_p0/out1 addr 1
+test.place> set /DUT/sparsermw/lock_out_p0/out1 flow 40
+test.place> set /DUT/sparsermw/lock_out_p0/out1 net static
+test.place> set /DUT/sparsermw/lock_out_p0/out1 vc 40
+test.place> set /DUT/sparsermw/lock_in_p0/in addr 2
+test.place> set /DUT/sparsermw/lock_in_p0/in vc 41
+test.place> set /DUT/sparsermw/lock_in_p0/in flow 41
+test.place> set /DUT/sparsermw/lock_in_p0/in net static
+test.place> set /DUT/sparsermw/lock_in_p0/out0 addr 2
+test.place> set /DUT/sparsermw/lock_in_p0/out0 flow 41
+test.place> set /DUT/sparsermw/lock_in_p0/out0 net static
+test.place> set /DUT/sparsermw/lock_in_p0/out0 vc 41
+test.place> set /DUT/sparsermw/lock_in_p0/in addr 2
+test.place> set /DUT/sparsermw/lock_in_p0/in vc 41
+test.place> set /DUT/sparsermw/lock_in_p0/in flow 41
+test.place> set /DUT/sparsermw/lock_in_p0/in net static
+test.place> set /DUT/sparsermw/lock_in_p0/out1 addr 3
+test.place> set /DUT/sparsermw/lock_in_p0/out1 flow 41
+test.place> set /DUT/sparsermw/lock_in_p0/out1 net static
+test.place> set /DUT/sparsermw/lock_in_p0/out1 vc 41
+test.place> set /DUT/flush_en/in addr 45
+test.place> set /DUT/flush_en/in vc 42
+test.place> set /DUT/flush_en/in flow 42
+test.place> set /DUT/flush_en/in net static
+test.place> set /DUT/flush_en/out0 addr 4
+test.place> set /DUT/flush_en/out0 flow 42
+test.place> set /DUT/flush_en/out0 net static
+test.place> set /DUT/flush_en/out0 vc 42
+test.place> set /DUT/sparsermw/flush_p0/data0/in addr 2
+test.place> set /DUT/sparsermw/flush_p0/data0/in vc 39
+test.place> set /DUT/sparsermw/flush_p0/data0/in flow 39
+test.place> set /DUT/sparsermw/flush_p0/data0/in net static
+test.place> set /DUT/sparsermw/flush_p0/data0/out0 addr 5
+test.place> set /DUT/sparsermw/flush_p0/data0/out0 flow 39
+test.place> set /DUT/sparsermw/flush_p0/data0/out0 net static
+test.place> set /DUT/sparsermw/flush_p0/data0/out0 vc 39
+test.place> set /DUT/sparsermw/lock_addr_p0/in addr 1
+test.place> set /DUT/sparsermw/lock_addr_p0/in vc 32
+test.place> set /DUT/sparsermw/lock_addr_p0/in flow 32
+test.place> set /DUT/sparsermw/lock_addr_p0/in net static
+test.place> set /DUT/sparsermw/lock_addr_p0/out0 addr 6
+test.place> set /DUT/sparsermw/lock_addr_p0/out0 flow 32
+test.place> set /DUT/sparsermw/lock_addr_p0/out0 net static
+test.place> set /DUT/sparsermw/lock_addr_p0/out0 vc 32
+test.place> set /DUT/sparsermw/pmu_wA_retimed_p0/in addr 25
+test.place> set /DUT/sparsermw/pmu_wA_retimed_p0/in vc 29
+test.place> set /DUT/sparsermw/pmu_wA_retimed_p0/in flow 29
+test.place> set /DUT/sparsermw/pmu_wA_retimed_p0/in net static
+test.place> set /DUT/sparsermw/pmu_wA_retimed_p0/out0 addr 7
+test.place> set /DUT/sparsermw/pmu_wA_retimed_p0/out0 flow 29
+test.place> set /DUT/sparsermw/pmu_wA_retimed_p0/out0 net static
+test.place> set /DUT/sparsermw/pmu_wA_retimed_p0/out0 vc 29
+test.place> set /DUT/init_en/in addr 45
+test.place> set /DUT/init_en/in vc 43
+test.place> set /DUT/init_en/in flow 43
+test.place> set /DUT/init_en/in net static
+test.place> set /DUT/init_en/out0 addr 8
+test.place> set /DUT/init_en/out0 flow 43
+test.place> set /DUT/init_en/out0 net static
+test.place> set /DUT/init_en/out0 vc 43
+test.place> set /DUT/sparsermw/in_c0/data0/in addr 26
+test.place> set /DUT/sparsermw/in_c0/data0/in vc 36
+test.place> set /DUT/sparsermw/in_c0/data0/in flow 36
+test.place> set /DUT/sparsermw/in_c0/data0/in net static
+test.place> set /DUT/sparsermw/in_c0/data0/out0 addr 9
+test.place> set /DUT/sparsermw/in_c0/data0/out0 flow 36
+test.place> set /DUT/sparsermw/in_c0/data0/out0 net static
+test.place> set /DUT/sparsermw/in_c0/data0/out0 vc 36
+test.place> set /DUT/sparsermw/comp_p0/data_out0/in addr 2
+test.place> set /DUT/sparsermw/comp_p0/data_out0/in vc 33
+test.place> set /DUT/sparsermw/comp_p0/data_out0/in flow 33
+test.place> set /DUT/sparsermw/comp_p0/data_out0/in net static
+test.place> set /DUT/sparsermw/comp_p0/data_out0/out0 addr 10
+test.place> set /DUT/sparsermw/comp_p0/data_out0/out0 flow 33
+test.place> set /DUT/sparsermw/comp_p0/data_out0/out0 net static
+test.place> set /DUT/sparsermw/comp_p0/data_out0/out0 vc 33
+test.place> set /DUT/sparsermw/comp_p0/data_in0/in addr 3
+test.place> set /DUT/sparsermw/comp_p0/data_in0/in vc 34
+test.place> set /DUT/sparsermw/comp_p0/data_in0/in flow 34
+test.place> set /DUT/sparsermw/comp_p0/data_in0/in net static
+test.place> set /DUT/sparsermw/comp_p0/data_in0/out0 addr 11
+test.place> set /DUT/sparsermw/comp_p0/data_in0/out0 flow 34
+test.place> set /DUT/sparsermw/comp_p0/data_in0/out0 net static
+test.place> set /DUT/sparsermw/comp_p0/data_in0/out0 vc 34
+test.place> set /DUT/sparsermw/pmu_rA_retimed_p0/in addr 46
+test.place> set /DUT/sparsermw/pmu_rA_retimed_p0/in vc 31
+test.place> set /DUT/sparsermw/pmu_rA_retimed_p0/in flow 31
+test.place> set /DUT/sparsermw/pmu_rA_retimed_p0/in net static
+test.place> set /DUT/sparsermw/pmu_rA_retimed_p0/out0 addr 12
+test.place> set /DUT/sparsermw/pmu_rA_retimed_p0/out0 flow 31
+test.place> set /DUT/sparsermw/pmu_rA_retimed_p0/out0 net static
+test.place> set /DUT/sparsermw/pmu_rA_retimed_p0/out0 vc 31
+test.place> set /DUT/sparsermw/in_c0/ack/in addr 24
+test.place> set /DUT/sparsermw/in_c0/ack/in vc 37
+test.place> set /DUT/sparsermw/in_c0/ack/in flow 37
+test.place> set /DUT/sparsermw/in_c0/ack/in net static
+test.place> set /DUT/sparsermw/in_c0/ack/out0 addr 13
+test.place> set /DUT/sparsermw/in_c0/ack/out0 flow 37
+test.place> set /DUT/sparsermw/in_c0/ack/out0 net static
+test.place> set /DUT/sparsermw/in_c0/ack/out0 vc 37
+test.place> set /DUT/sparsermw/init_p0/ack/in addr 2
+test.place> set /DUT/sparsermw/init_p0/ack/in vc 38
+test.place> set /DUT/sparsermw/init_p0/ack/in flow 38
+test.place> set /DUT/sparsermw/init_p0/ack/in net static
+test.place> set /DUT/sparsermw/init_p0/ack/out0 addr 14
+test.place> set /DUT/sparsermw/init_p0/ack/out0 flow 38
+test.place> set /DUT/sparsermw/init_p0/ack/out0 net static
+test.place> set /DUT/sparsermw/init_p0/ack/out0 vc 38
+test.place> set /DUT/sparsermw/in_c0/addr/in addr 45
+test.place> set /DUT/sparsermw/in_c0/addr/in vc 35
+test.place> set /DUT/sparsermw/in_c0/addr/in flow 35
+test.place> set /DUT/sparsermw/in_c0/addr/in net static
+test.place> set /DUT/sparsermw/in_c0/addr/out0 addr 15
+test.place> set /DUT/sparsermw/in_c0/addr/out0 flow 35
+test.place> set /DUT/sparsermw/in_c0/addr/out0 net static
+test.place> set /DUT/sparsermw/in_c0/addr/out0 vc 35
+test.place> push /statnet link f35s23d1
+test.place> push /statnet link f35s45d23
+test.place> push /statnet link f38s1d0
+test.place> push /statnet link f38s2d1
+test.place> push /statnet link f37s46d45
+test.place> push /statnet link f37s24d46
+test.place> push /statnet link f31s24d2
+test.place> push /statnet link f31s46d24
+test.place> push /statnet link f34s3d2
+test.place> push /statnet link f33s2d3
+test.place> push /statnet link f36s4d3
+test.place> push /statnet link f36s26d4
+test.place> push /statnet link f43s1d2
+test.place> push /statnet link f43s23d1
+test.place> push /statnet link f43s45d23
+test.place> push /statnet link f29s3d2
+test.place> push /statnet link f29s25d3
+test.place> push /statnet link f32s1d23
+test.place> push /statnet link f39s1d0
+test.place> push /statnet link f39s2d1
+test.place> push /statnet link f42s1d2
+test.place> push /statnet link f42s23d1
+test.place> push /statnet link f42s45d23
+test.place> push /statnet link f41s2d24
+test.place> push /statnet link f41s24d23
+test.place> push /statnet link f40s24d25
+test.place> push /statnet link f40s23d24
+test.place> push /statnet link f40s45d46
+test.place> push /statnet link f40s23d45
+test.place> push /statnet output f40s25d1
+test.place> push /statnet output f40s46d0
+test.place> push /statnet output f42s2d4
+test.place> push /statnet output f29s2d7
+test.place> push /statnet output f43s2d8
+test.place> push /statnet output f34s2d11
+test.place> push /statnet output f31s2d12
+test.place> push /statnet output f41s23d2
+test.place> push /statnet output f32s23d6
+test.place> push /statnet output f35s1d15
+test.place> push /statnet output f36s3d9
+test.place> push /statnet output f33s3d10
+test.place> push /statnet output f38s0d14
+test.place> push /statnet output f39s0d5
+test.place> push /statnet output f37s45d13
+test.place> push /statnet output f41s24d3
+test.place> apply /statnet finalize
+test.place> Exiting... 😊
+> stepall
+0...
+/DUT/sparsermw/load_ag_p0 Become enabled
+Initialization done at cycle 8213
+10000...
+20000...
+30000...
+40000...
+50000...
+60000...
+70000...
+80000...
+90000...
+100000...
+110000...
+120000...
+Execution done at cycle 124053 elapsed: 115840
+/DUT/sparsermw/flush_ag_p0 Become enabled
+130000...
+Simulation complete at cycle 132266
+> > apply /DUT/sparsermw/PMU_a0_p0 dump
+PMU write reordering pipeline state
+	Pending transactions
+	Scheduled transactions	
+
+PMU read reordering pipeline state
+	Pending transactions
+	Scheduled transactions	
+
+
+> apply /DUT/sparsermw/lock_p0 dump
+Lock reordering pipeline state
+	Pending transactions
+	Scheduled transactions	
+
+Unlock reordering pipeline state
+	Pending transactions
+	Scheduled transactions	
+
+Held locks
+	
+> Exiting... 😊
