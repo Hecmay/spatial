@@ -1,6 +1,6 @@
 import spatial.dsl._
 
-@spatial object GEMM_Blocked extends SpatialApp { // Regression (Dense) // Args: 128
+@spatial object GEMM_Blocked_1K extends SpatialApp { // Regression (Dense) // Args: 128
   //override def dseModelArgs: Args = "128 128 128"
   //override def finalModelArgs: Args = "128 128 128"
   //override def runtimeArgs: Args = "128"   
